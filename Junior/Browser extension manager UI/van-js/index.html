@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body class="px-5">
+    <main class="grid grid-cols-1 gap-5" id="extensions-list">
+      <div class="bg-[#1F2535] p-5 rounded-xl text-white flex flex-col gap-8">
+        <div class="flex gap-5 items-start">
+          <img src="./assets/images/logo-grid-guides.svg" alt="" />
+          <div class="flex flex-col gap-1">
+            <h3 class="text-xl font-bold">DevLens</h3>
+            <p class="text-sm">
+              Overlay customizable grids and alignment guides on any webpage.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <button
+            class="px-5 py-2 rounded-full border-[1px] border-white text-sm hover:bg-red-400 hover:text-[#1F2535] hover:border-red-400 font-bold"
+            type="button"
+          >
+            Remove
+          </button>
+
+          <label class="flex cursor-pointer">
+            <input class="hidden" type="checkbox" />
+            <!-- bg-red-400 -->
+            <span
+              class="flex w-12 h-7 bg-[#525868] items-center rounded-full p-1"
+            >
+              <span class="bg-white w-5 h-5 rounded-full"></span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script src="app.js"></script>
+</html>
