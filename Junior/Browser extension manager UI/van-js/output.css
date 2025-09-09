@@ -701,6 +701,11 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -2616,8 +2621,25 @@ video {
 }
 
 @media (min-width: 700px) {
+  .tablet\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tablet\:max-w-\[1300px\] {
+    max-width: 1300px;
+  }
+
   .tablet\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tablet\:flex-row {
+    flex-direction: row;
+  }
+
+  .tablet\:gap-0 {
+    gap: 0px;
   }
 }
 
