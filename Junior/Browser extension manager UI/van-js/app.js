@@ -1,46 +1,85 @@
-// let extensions = [];
-// const listContainer = document.getElementById("extensions-list");
+let extensions = [];
+const listContainer = document.getElementById("extensions-list");
 
-// fetch("data.json")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     extensions = data; // guardamos las extensiones
-//     renderExtensions(extensions); // primera pintada
-//   })
-//   .catch((err) => console.error("Error cargando JSON:", err));
+fetch("data.json")
+  .then((response) => response.json())
+  .then((data) => {
+    extensions = data; // guardamos las extensiones
+    renderExtensions(extensions); // primera pintada
+  })
+  .catch((err) => console.error("Error cargando JSON:", err));
 
-// function renderExtensions(data) {
-//   listContainer.innerHTML = ""; // limpiar antes de pintar
+function renderExtensions(data) {
+  listContainer.innerHTML = ""; // limpiar antes de pintar
 
-//   data.forEach((ext) => {
-//     const card = document.createElement("div");
-//     card.className =
-//       "bg-slate-800 rounded-2xl p-4 shadow-lg flex flex-col gap-3";
+  data.forEach((ext) => {
+    const card = document.createElement("div");
+    card.className =
+      "bg-[#1F2535] p-5 rounded-xl text-white flex flex-col gap-8";
 
-//     card.innerHTML = `
-//       <h3 class="text-lg font-semibold">${ext.name}</h3>
-//       <p class="text-sm text-slate-300">${ext.description}</p>
+    card.innerHTML = `
+             <div class="flex gap-5 items-start">
+          <img src="${ext.logo}" alt="" />
+          <div class="flex flex-col gap-1">
+            <h3 class="text-xl font-bold">${ext.name}</h3>
+            <p class="text-sm">
+              ${ext.description}
+            </p>
+          </div>
+        </div>
 
-//       <div class="flex items-center justify-between">
-//         <button class="remove px-3 py-1 bg-red-600 hover:bg-red-700 rounded-lg text-sm">Remove</button>
+        <div class="flex justify-between items-center ">
+          <button
+            class="remove-btn px-5 py-2 rounded-full border-[1px] border-white text-sm hover:bg-red-400 hover:text-[#1F2535] hover:border-red-400 font-bold"
+            type="button"
+          >
+            Remove
+          </button>
 
-//         <label class="flex items-center gap-2 cursor-pointer">
-//           <input type="checkbox" class="toggle hidden" ${
-//             ext.isActive ? "checked" : ""
-//           }>
-//           <span class="w-10 h-5 flex items-center bg-slate-600 rounded-full p-1 transition ${
-//             ext.isActive ? "bg-green-500" : ""
-//           }">
-//             <span class="dot bg-white w-4 h-4 rounded-full shadow-md transform ${
-//               ext.isActive ? "translate-x-5" : ""
-//             }"></span>
-//           </span>
-//         </label>
-//       </div>
-//     `;
+          <label class="flex cursor-pointer">
+            <input id="checkbox-btn" class="hidden checkbox" type="checkbox" ${
+              ext.isActive ? "checked" : ""
+            }/>
+            <span
+              class="flex w-12 h-7 bg-[#525868] ball-container items-center rounded-full p-1 ${
+                ext.isActive ? "!bg-red-400" : ""
+              }"
+            >
+              <span class="bg-white ball w-5 h-5 rounded-full ${
+                ext.isActive ? "translate-x-5" : ""
+              }"></span>
+            </span>
+          </label>
+        </div>
+    `;
 
-//     listContainer.appendChild(card);
-//   });
-// }
+    // switch function
+    const checkbox = card.querySelector(".checkbox");
+    const ballContainer = card.querySelector(".ball-container");
+    const ball = card.querySelector(".ball");
 
-// renderExtensions(extensions);
+    checkbox.addEventListener("click", () => {
+      if (checkbox.checked == true) {
+        console.log("es verdadero");
+        ball.classList.add("translate-x-5");
+        ballContainer.classList.add("!bg-red-400");
+      }
+
+      if (checkbox.checked == false) {
+        console.log("es falso");
+        ball.classList.remove("translate-x-5");
+        ballContainer.classList.remove("!bg-red-400");
+      }
+    });
+
+    const removeBtn = card.querySelector(".remove-btn");
+
+    removeBtn.addEventListener("click", () => {
+      card.remove();
+    });
+
+    listContainer.appendChild(card);
+  });
+}
+
+renderExtensions(extensions);
