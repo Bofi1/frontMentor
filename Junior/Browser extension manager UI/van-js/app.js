@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
     data.forEach((ext) => {
       const card = document.createElement("div");
       card.className =
-        "bg-white text-black dark:text-white dark:bg-[#1F2535] p-5 rounded-xl flex flex-col gap-8 shadow-xl";
+        "bg-white text-black dark:text-white dark:bg-[#1F2535] p-5 rounded-xl flex flex-col gap-8 shadow-xl max-h-[202px] flex flex-col justify-between";
 
       const cardContent = `
              <div class="flex gap-5 items-start">
