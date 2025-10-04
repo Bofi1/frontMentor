@@ -6,7 +6,7 @@
     <title>News homepage</title>
     <link rel="stylesheet" href="output.css" />
   </head>
-  <body class="p-5">
+  <body id="body" class="p-5 transition-all duration-200">
     <header class="flex justify-between">
       <img src="./assets/images/logo.svg" alt="logo" />
       <button class="z-[99]" type="button">
@@ -18,8 +18,11 @@
       </button>
 
       <!-- menu -->
-      <nav class="bg-red-300 absolute right-0 top-0 h-full w-[60%]">
-        <ul>
+      <nav
+        id="menu"
+        class="bg-white absolute right-0 top-0 h-full w-[60%] pt-[120px] pl-7 transition-all duration-200 menu-closed"
+      >
+        <ul class="flex flex-col gap-5">
           <li>Home</li>
           <li>New</li>
           <li>Popular</li>
