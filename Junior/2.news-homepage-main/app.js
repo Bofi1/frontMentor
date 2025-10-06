@@ -1,6 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
   let buttonMenu = document.getElementById("button-menu");
-  let body = document.getElementById("body");
 
   buttonMenu.addEventListener("click", () => {
     console.log(buttonMenu.src);
@@ -15,8 +14,12 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   let menu = document.getElementById("menu");
+  let overlay = document.getElementById("overlay");
+  let body = document.getElementById("body");
+
   function menuToggle() {
     menu.classList.toggle("menu-closed");
-    body.classList.toggle("bg-black/50");
+    body.classList.toggle("body-closed");
+    overlay.classList.toggle("hidden");
   }
 });

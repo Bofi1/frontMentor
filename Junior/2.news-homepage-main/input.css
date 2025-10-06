@@ -5,6 +5,15 @@
 @tailwind utilities;
 
 .menu-closed {
-  transform: translateX(100px);
+  transform: translateX(10%);
+  opacity: 0;
+}
+
+.body-closed {
+  overflow-y: hidden;
+}
+
+.header-scroll {
+  transform: translateY(-100%);
   opacity: 0;
 }
