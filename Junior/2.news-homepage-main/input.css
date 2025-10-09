@@ -4,9 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
-.menu-closed {
-  transform: translateX(10%);
-  opacity: 0;
+@layer components {
+  .menu-closed {
+    transform: translateX(10%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Si quieres transiciones suaves */
+  }
+
+  @screen xl {
+    .menu-closed {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 }
 
 .body-closed {

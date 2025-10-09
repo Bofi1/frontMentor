@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="flex justify-center xl:h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News homepage</title>
     <link rel="stylesheet" href="output.css" />
   </head>
-  <body id="body" class="transition-all duration-200 pb-[100px]">
+  <body id="body" class="transition-all duration-200 pb-[100px] max-w-[1460px]">
     <!-- overlay negro -->
     <div
       id="overlay"
@@ -18,7 +18,7 @@
       class="flex justify-between transition-all duration-200 px-5 py-10 w-full h-[111px]"
     >
       <img class="h-6" src="./assets/images/logo.svg" alt="logo" />
-      <button class="z-[99]" type="button">
+      <button class="z-[99] xl:hidden" type="button">
         <img
           id="button-menu"
           class=""
@@ -30,9 +30,11 @@
       <!-- menu -->
       <nav
         id="menu"
-        class="bg-white right-0 top-0 h-full w-[60%] pt-[120px] pl-7 transition-all duration-200 menu-closed fixed z-[98]"
+        class="bg-white right-0 top-0 h-full w-[60%] pt-[120px] pl-7 transition-all duration-200 menu-closed fixed z-[98] xl:h-auto xl:pt-0 xl:top-auto xl:right-0 xl:pl-0 xl:bg-transparent xl:w-auto xl:relative"
       >
-        <ul class="flex flex-col gap-5 font-bold text-lg">
+        <ul
+          class="flex flex-col gap-5 font-bold text-lg xl:flex xl:flex-row xl:justify-end xl:text-gray-500"
+        >
           <li>Home</li>
           <li>New</li>
           <li>Popular</li>
@@ -44,7 +46,17 @@
 
     <div class="px-5">
       <main class="grid gap-6">
-        <img src="./assets/images/image-web-3-mobile.jpg" alt="" />
+        <img
+          class="xl:hidden"
+          src="./assets/images/image-web-3-mobile.jpg"
+          alt=""
+        />
+        <img
+          class="hidden xl:flex"
+          src="./assets/images/image-web-3-desktop.jpg"
+          alt=""
+        />
+
         <h1 class="font-[800] leading-[40px] text-[40px]">
           The Bright <br />
           Future of Web <br />
