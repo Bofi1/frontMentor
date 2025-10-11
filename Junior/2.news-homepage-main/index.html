@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News homepage</title>
     <link rel="stylesheet" href="output.css" />
+    <meta
+      name="description"
+      content="Latest tech and web 3.0 news and updates."
+    />
+    <meta name="author" content="Angel Borquez" />
   </head>
   <body
     id="body"
@@ -38,15 +43,13 @@
         <ul
           class="flex flex-col gap-5 font-bold text-lg desktop:flex desktop:flex-row desktop:justify-end desktop:text-gray-500"
         >
-          <a class="hover:text-[#E8A852]" href="#home"> <li>Home</li> </a>
-          <a class="hover:text-[#E8A852]" href="#new"> <li>New</li> </a>
-          <a class="hover:text-[#E8A852]" href="#popular"> <li>Popular</li> </a>
-          <a class="hover:text-[#E8A852]" href="#trending">
-            <li>Trending</li>
-          </a>
-          <a class="hover:text-[#E8A852]" href="#categories">
-            <li>Categories</li>
-          </a>
+          <li><a class="hover:text-[#E8A852]" href="#home">Home</a></li>
+          <li><a class="hover:text-[#E8A852]" href="#new">New</a></li>
+          <li><a class="hover:text-[#E8A852]" href="#popular">Popular</a></li>
+          <li><a class="hover:text-[#E8A852]" href="#trending">Trending</a></li>
+          <li>
+            <a class="hover:text-[#E8A852]" href="#categories">Categories</a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -56,12 +59,12 @@
         <img
           class="desktop:hidden w-full"
           src="./assets/images/image-web-3-mobile.jpg"
-          alt=""
+          alt="bg-mobile"
         />
         <img
           class="hidden desktop:flex col-span-2 mb-5"
           src="./assets/images/image-web-3-desktop.jpg"
-          alt=""
+          alt="bg-desktop"
         />
 
         <h1
@@ -82,12 +85,11 @@
             really fulfilling its promise?
           </h2>
 
-          <a href="">
-            <div
-              class="font-bold tracking-[2px] text-sm py-3 px-8 bg-[#F15D51] inline-block desktop:text-lg desktop:mt-2 hover:bg-[#00001A] hover:text-white cursor-pointer"
-            >
-              READ MORE
-            </div>
+          <a
+            href="#read-more"
+            class="font-bold tracking-[2px] text-sm py-3 px-8 bg-[#F15D51] w-fit desktop:text-lg desktop:mt-2 hover:bg-[#00001A] hover:text-white cursor-pointer"
+          >
+            READ MORE
           </a>
         </div>
 
@@ -144,7 +146,7 @@
         <section class="flex items-center gap-5">
           <img
             class="h-[120px]"
-            src=".//assets/images/image-retro-pcs.jpg"
+            src="./assets/images/image-retro-pcs.jpg"
             alt="retro-pc"
           />
           <div class="flex flex-col gap-2">
@@ -162,7 +164,7 @@
         <section class="flex items-center gap-5">
           <img
             class="h-[120px]"
-            src=".//assets/images/image-top-laptops.jpg"
+            src="./assets/images/image-top-laptops.jpg"
             alt="top-laptops"
           />
           <div class="flex flex-col gap-2">
@@ -180,7 +182,7 @@
         <section class="flex items-center gap-5">
           <img
             class="h-[120px]"
-            src=".//assets/images/image-gaming-growth.jpg"
+            src="./assets/images/image-gaming-growth.jpg"
             alt="top-laptops"
           />
           <div class="flex flex-col gap-2">

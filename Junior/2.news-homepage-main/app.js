@@ -22,4 +22,11 @@ window.addEventListener("DOMContentLoaded", () => {
     body.classList.toggle("body-closed");
     overlay.classList.toggle("hidden");
   }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menu.classList.contains("menu-closed")) {
+      menuToggle();
+      buttonMenu.src = "./assets/images/icon-menu.svg"; // Cambiar icono a menú cerrado
+    }
+  });
 });
