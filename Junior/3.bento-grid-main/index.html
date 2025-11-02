@@ -7,10 +7,10 @@
     <title>Document</title>
   </head>
   <body class="font-DMSans px-5 py-8 bg-[#F5F5F5]">
-    <main class="flex flex-col gap-8">
+    <main class="mx-auto grid gap-[30px] max-w-[1120px]">
       <!-- 1st -->
       <section
-        class="bg-[#7651DB] flex flex-col rounded-xl text-white p-8 items-center"
+        class="bg-[#7651DB] flex flex-col rounded-xl text-white p-8 items-center n2"
       >
         <h1 class="font-[500] text-5xl text-center">
           Social Media <span class="text-[#FECC66] font-[400]">10x</span> Faster
@@ -25,12 +25,12 @@
       </section>
 
       <!-- 2nd -->
-      <section class="bg-white p-5 flex flex-col gap-5 rounded-xl">
+      <section class="bg-white p-5 flex flex-col gap-5 rounded-xl n4 desktop:overflow-hidden desktop:justify-between">
         <!-- social media cards -->
         <div class="flex justify-between gap-5">
           <!-- instagram -->
           <div
-            class="rounded-full bg-white shadow-xl flex p-3 items-center gap-2 w-1/2"
+            class="rounded-full bg-white shadow-xl flex p-3 items-center gap-2 w-1/2 desktop:min-w-[151px]"
           >
             <!-- logo -->
             <div class="bg-[#FFCC69] p-2 rounded-[100%]">
@@ -50,7 +50,7 @@
 
           <!-- twitter -->
           <div
-            class="rounded-full bg-white shadow-xl flex p-3 items-center gap-2 w-1/2"
+            class="rounded-full bg-white shadow-xl flex p-3 items-center gap-2 w-1/2 desktop:min-w-[151px]"
           >
             <!-- logo -->
             <div class="bg-[#FFCC69] p-2 rounded-[100%]">
@@ -68,14 +68,14 @@
             </div>
           </div>
         </div>
-        <h2 class="font-[800] text-[22px] text-xl leading-[25px]">
+        <h2 class="font-[800] text-[22px] text-xl desktop:leading-[25px] desktop:text-2xl desktop:pr-10 ">
           Manage multiple accounts and platforms.
         </h2>
       </section>
 
       <!-- 3rd -->
-      <section class="rounded-xl bg-[#FFCC69] p-5 pb-0">
-        <h2 class="font-[800] text-[22px] text-xl leading-[25px] mb-4">
+      <section class="rounded-xl bg-[#FFCC69] p-5 pb-0 n5 overflow-hidden">
+        <h2 class="font-[800] text-[22px] text-xl leading-[25px] mb-4 desktop:leading-[30px] desktop:pr-10 desktop:text-2xl">
           Maintain a consistent <br />
           posting schedule.
         </h2>
@@ -88,13 +88,13 @@
 
       <!-- 4th -->
       <section
-        class="bg-[#DCD0FC] px-5 py-10 flex flex-col items-center gap-5 rounded-xl"
+        class="bg-[#DCD0FC] px-5 py-10 flex flex-col items-center gap-5 rounded-xl n3 desktop:justify-between desktop:overflow-hidden desktop:px-5"
       >
-        <h2 class="font-[700] text-[23px] text-xl leading-[25px]">
+        <h2 class="font-[700] text-[23px] text-xl leading-[25px] desktop:text-2xl desktop:font-[500] desktop:pr-5">
           Schedule to social media.
         </h2>
-        <img src="assets/images/illustration-schedule-posts.webp" alt="" />
-        <p class="text-center text-lg leading-[25px] text-[600]">
+        <img class="desktop:min-w-[300px] desktop:relative desktop:left-[40%]" src="assets/images/illustration-schedule-posts.webp" alt="" />
+        <p class="text-center text-lg leading-[25px] text-[600] desktop:text-sm desktop:pr-6 desktop:text-start">
           Optimize post timings to publish content at the perfect time for your
           audience.
         </p>
@@ -102,15 +102,15 @@
 
       <!-- 5th -->
       <section
-        class="bg-[#7651DB] px-5 py-10 flex flex-col items-center gap-5 rounded-xl"
+        class="bg-[#7651DB] px-5 py-10 flex flex-col items-center gap-5 rounded-xl n7 desktop:flex-row desktop:justify-center"
       >
         <img
-          class="w-[250px]"
+          class="w-[250px] desktop:w-[200px]"
           src="assets/images/illustration-grow-followers.webp"
           alt=""
         />
         <h2
-          class="font-[400] text-3xl text-center mt-3 leading-[30px] text-[#FCF4FF]"
+          class="font-[400] text-3xl text-center mt-3 leading-[30px] text-[#FCF4FF] desktop:text-start"
         >
           Grow followers <br />
           with non-stop <br />
@@ -119,9 +119,9 @@
       </section>
 
       <!-- 6th -->
-      <section class="bg-white p-5 rounded-xl flex flex-col gap-5">
-        <h2 class="text-5xl font-[600]">>56%</h2>
-        <p>faster audience growth</p>
+      <section class="bg-white p-5 rounded-xl flex flex-col gap-5 n6">
+        <h2 class="text-5xl font-[600] desktop:text-6xl">>56%</h2>
+        <p class="desktop:text-xl">faster audience growth</p>
         <img
           class="w-[200px]"
           src="assets/images/illustration-audience-growth.webp"
@@ -130,47 +130,30 @@
       </section>
 
       <!-- 7th -->
-      <section class="bg-[#FAEDE1] p-5 rounded-xl flex flex-col gap-5">
-        <h2 class="text-3xl font-[600]">
-          Create and schedule content
-          <span class="text-[#7553C5]">quicker.</span>
-        </h2>
+<section class="flex flex-col gap-8 n1">
+  <div class="bg-[#FAEDE1] p-5 rounded-xl flex flex-col gap-5 desktop:px-5">
+    <h2 class="text-3xl font-[600]">
+      Create and schedule content
+      <span class="text-[#7553C5]">quicker.</span>
+    </h2>
 
-        <img
-          class="w-[200px]"
-          src="assets/images/illustration-create-post.webp"
-          alt=""
-        />
-      </section>
+    <img
+      class="w-[200px] desktop:w-[180px]"
+      src="assets/images/illustration-create-post.webp"
+      alt=""
+    />
+  </div>
 
-      <!-- 8th -->
-      <section class="bg-[#FFCC69] p-5 rounded-xl flex flex-col gap-5">
-        <h2 class="text-3xl font-[600]">Write your content using AI.</h2>
+  <div class="bg-[#FFCC69] p-5 rounded-xl flex flex-col gap-5 desktop:justify-between">
+    <h2 class="text-3xl font-[600] desktop:text-4xl desktop:pr-10">Write your content using AI.</h2>
 
-        <img
-          class="w-[200px]"
-          src="assets/images/illustration-ai-content.webp"
-          alt=""
-        />
-      </section>
+    <img
+      class="w-[200px]"
+      src="assets/images/illustration-ai-content.webp"
+      alt=""
+    />
+  </div>
+</section>
     </main>
   </body>
 </html>
-
-<!-- Social Media 10x Faster with AI
-Over 4,000 5-star reviews
-
-Manage multiple accounts and platforms.
-
-Maintain a consistent posting schedule.
-
-Schedule to social media.
-Optimize post timings to publish content at the perfect time for your audience.
-
-Grow followers with non-stop content.
-
->56% faster audience growth
-
-Create and schedule content quicker.
-
-Write your content using AI. -->

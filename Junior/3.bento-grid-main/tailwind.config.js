@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         DMSans: ["'DM Sans',sans-serif"],
       },
+      screens: {
+        desktop: "1000px",
+      },
     },
   },
   plugins: [],

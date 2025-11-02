@@ -3,3 +3,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (width > 1000px) {
+
+
+
+  main {
+    display: grid;
+    grid-template-columns: 250px 250px 250px 220px;
+    grid-template-rows: 250px 240px 270px;
+    gap: 30px 30px;
+    grid-auto-flow: row;
+    grid-template-areas: 
+      "n1 n2 n2 n3"
+      "n1 n4 n5 n3"
+      "n1 n6 n7 n7";
+  }
+
+  .n1{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 350px auto;
+    gap: 30px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:     
+      "."
+      "."
+    ;
+    grid-area: n1;
+  }
+  
+  .n2{
+    grid-area: n2;
+  }
+  
+  .n3{
+    grid-area: n3;
+  }
+  
+  .n4{
+    grid-area: n4;
+  }
+  
+  .n5{
+    grid-area: n5;
+  }
+  
+  .n6{
+    grid-area: n6;
+  }
+  
+  .n7{
+    grid-area: n7;
+  }
+}
+
