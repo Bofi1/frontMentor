@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="output.css" />
   </head>
   <body class="font-Barlow">
-    <div class="bg-[#3CBEFF]">
+    <div class="bg-[#3CBEFF] overflow-x-hidden">
       <header class="bg-[#3CBEFF] flex justify-between relative pt-5 z-[99]">
         <h2 class="font-[700] text-2xl text-white pl-5">sunnyside</h2>
 
@@ -42,20 +42,19 @@
       </header>
 
       <!-- first -->
-      <div class="flex flex-col items-center">
-        <h1
-          class="text-4xl text-white z-[98] font-bold font-Fraunces px-10 text-center tracking-widest mt-20"
-        >
-          WE ARE CREATIVES
-        </h1>
 
-        <img class="z-[98] mt-14" src="images/icon-arrow-down.svg" alt="" />
+      <div class="relative flex flex-col items-center">
+        <div class="flex flex-col items-center absolute">
+          <h1
+            class="text-5xl text-white z-[98] font-bold font-Fraunces px-10 text-center tracking-widest mt-[130px]"
+          >
+            WE ARE CREATIVES
+          </h1>
 
-        <img
-          class="w-[1000px] mt-[-400px]"
-          src="images/mobile/image-header.jpg"
-          alt=""
-        />
+          <img class="z-[98] mt-16" src="images/icon-arrow-down.svg" alt="" />
+        </div>
+
+        <img class="" src="images/mobile/image-header.jpg" alt="" />
       </div>
 
       <main>
@@ -138,6 +137,99 @@
           </div>
         </div>
       </main>
+
+      <!-- testimonials -->
+      <div class="bg-[#FEFCF8] flex flex-col items-center p-5">
+        <h2
+          class="tracking-[0.3rem] font-[600] font-Fraunces mt-10 mb-14 text-[#A7ABAD]"
+        >
+          CLIENT TESTIMONIAL
+        </h2>
+
+        <div class="flex flex-col gap-14">
+          <!-- Emily R. -->
+          <div class="flex flex-col px-4">
+            <div class="flex flex-col items-center gap-7">
+              <img
+                class="w-16 rounded-full"
+                src="images/image-emily.jpg"
+                alt=""
+              />
+              <div class="text-center text-lg font-[500] text-[#575F67]">
+                We put our trust in Sunnyside and they delivered, making sure
+                our needs were met and deadlines were always hit.
+              </div>
+
+              <div class="mx-auto text-center">
+                <p class="font-bold text-lg mb-2 text-[#28303D]">Emily R.</p>
+                <span class="text-sm text-[#ABAAAC]">Marketing Director</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thomas S. -->
+          <div class="flex flex-col px-4">
+            <div class="flex flex-col items-center gap-7">
+              <img
+                class="w-16 rounded-full"
+                src="images/image-thomas.jpg"
+                alt="thomas-pic"
+              />
+              <div class="text-center text-lg font-[500] text-[#575F67]">
+                Sunnyside’s enthusiasm coupled with their keen interest in our
+                brand’s success made it a satisfying and enjoyable experience.
+              </div>
+
+              <div class="mx-auto text-center">
+                <p class="font-bold text-lg mb-2 text-[#28303D]">Thomas S.</p>
+                <span class="text-sm text-[#ABAAAC]"
+                  >Chief Operating Officer</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Jennie F. -->
+          <div class="flex flex-col px-4">
+            <div class="flex flex-col items-center gap-7">
+              <img
+                class="w-16 rounded-full"
+                src="images/image-jennie.jpg"
+                alt="jennie-pic"
+              />
+              <div class="text-center text-lg font-[500] text-[#575F67]">
+                Incredible end result! Our sales increased over 400% when we
+                worked with Sunnyside. Highly recommended!
+              </div>
+
+              <div class="mx-auto text-center">
+                <p class="font-bold text-lg mb-2 text-[#28303D]">Jennie F.</p>
+                <span class="text-sm text-[#ABAAAC]">Business Owner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- images -->
+      <div class="flex flex-wrap">
+        <img
+          class="w-1/2"
+          src="images/mobile/image-gallery-milkbottles.jpg"
+          alt=""
+        />
+        <img
+          class="w-1/2"
+          src="images/mobile/image-gallery-orange.jpg"
+          alt=""
+        />
+        <img class="w-1/2" src="images/mobile/image-gallery-cone.jpg" alt="" />
+        <img
+          class="w-1/2"
+          src="images/mobile/image-gallery-sugar-cubes.jpg"
+          alt=""
+        />
+      </div>
     </div>
 
     <script src="app.js"></script>
