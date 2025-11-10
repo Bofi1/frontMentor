@@ -3,13 +3,14 @@ module.exports = {
   content: ["./**/*.{html,js}"],
   theme: {
     extend: {
-      fontFamily:{
-        Fraunces:["'Fraunces'", "sans-serif"],
-        Barlow:["'Barlow'", "sans-serif"],
-
-      }
+      screens: {
+        desktop: "710px",
+      },
+      fontFamily: {
+        Fraunces: ["'Fraunces'", "sans-serif"],
+        Barlow: ["'Barlow'", "sans-serif"],
+      },
     },
   },
   plugins: [],
-}
-
+};
