@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (width > 710px) {
+@media (width > 973px) {
   .desktop-grid {
     display: grid;
     grid-template-areas:
@@ -12,6 +12,7 @@
       "n3 n4"
       "n5 n6";
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
   }
 
   .n1 {

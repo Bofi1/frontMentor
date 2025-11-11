@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        desktop: "710px",
+        desktop: "973px",
       },
       fontFamily: {
         Fraunces: ["'Fraunces'", "sans-serif"],
