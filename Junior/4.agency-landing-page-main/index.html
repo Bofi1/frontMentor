@@ -75,19 +75,21 @@
           alt="egg-photo"
         />
         <img
-          class="hidden desktop:flex h-full w-full n1"
+          class="hidden desktop:flex h-full w-full n2"
           src="images/desktop/image-transform.jpg"
           alt="egg-photo"
         />
         <div
-          class="px-5 py-10 flex flex-col items-center gap-8 bg-[#FEFCF8] justify-center n2"
+          class="px-5 py-10 flex flex-col items-center gap-8 bg-[#FEFCF8] justify-center n1 desktop:p-[67px] desktop:items-start"
         >
           <h2
-            class="font-[800] font-Fraunces text-3xl px-5 text-center text-[#272F3B]"
+            class="font-[800] font-Fraunces text-3xl px-5 text-center text-[#272F3B] desktop:px-0"
           >
             Transform your brand
           </h2>
-          <p class="text-center text-lg text-[#949399] font-[600]">
+          <p
+            class="text-center text-lg text-[#949399] font-[600] desktop:text-start"
+          >
             We are a full-service creative agency specializing in helping brands
             grow fast. Engage your clients through compelling visuals that do
             most of the marketing for you.
@@ -108,19 +110,21 @@
           alt=""
         />
         <img
-          class="hidden desktop:flex w-full h-full n4"
+          class="hidden desktop:flex w-full h-full n3"
           src="images/desktop/image-stand-out.jpg"
           alt=""
         />
         <div
-          class="px-5 py-10 flex flex-col items-center gap-8 bg-[#FEFCF8] n3"
+          class="px-5 py-10 flex flex-col items-center gap-8 bg-[#FEFCF8] justify-center n4 desktop:p-[67px] desktop:items-start"
         >
           <h2
-            class="font-[800] font-Fraunces text-3xl px-5 text-center text-[#272F3B]"
+            class="font-[800] font-Fraunces text-3xl px-5 text-center text-[#272F3B] desktop:px-0"
           >
             Stand out to the right audience
           </h2>
-          <p class="text-center text-lg text-[#949399] font-[600]">
+          <p
+            class="text-center text-lg text-[#949399] font-[600] desktop:text-start"
+          >
             Using a collaborative formula of designers, researchers,
             photographers, videographers, and copywriters, we’ll build and
             extend your brand in digital places.
@@ -136,9 +140,19 @@
 
         <!-- cherry -->
         <div class="flex flex-col items-center relative n5">
-          <img src="images/mobile/image-graphic-design.jpg" alt="" />
+          <img
+            class="desktop:hidden"
+            src="images/mobile/image-graphic-design.jpg"
+            alt=""
+          />
+          <img
+            class="hidden desktop:flex"
+            src="images/desktop/image-graphic-design.jpg"
+            alt=""
+          />
+
           <div
-            class="px-5 flex flex-col items-center gap-5 absolute bottom-[100px]"
+            class="px-5 flex flex-col items-center gap-5 absolute bottom-[100px] desktop:top-[310px]"
           >
             <h2
               class="font-[800] font-Fraunces text-3xl text-center text-[#22564A]"
@@ -146,7 +160,7 @@
               Graphic Design
             </h2>
             <p
-              class="text-base font-Barlow text-center font-[600] text-[#285D50]"
+              class="text-base font-Barlow text-center font-[600] text-[#285D50] desktop:px-[100px]"
             >
               Great design makes you memorable. We deliver artwork that
               underscores your brand message and captures potential clients’
@@ -157,9 +171,20 @@
 
         <!-- orange -->
         <div class="flex flex-col items-center relative n6">
-          <img src="images/mobile/image-photography.jpg" alt="" />
+          <img
+            class="desktop:hidden"
+            src="images/mobile/image-photography.jpg"
+            alt=""
+          />
+
+          <img
+            class="hidden desktop:flex"
+            src="images/desktop/image-photography.jpg"
+            alt=""
+          />
+
           <div
-            class="px-5 flex flex-col items-center gap-5 absolute bottom-[100px]"
+            class="px-5 flex flex-col items-center gap-5 absolute bottom-[100px] desktop:top-[310px]"
           >
             <h2
               class="font-[800] font-Fraunces text-3xl text-center text-[#17546F]"
@@ -167,7 +192,7 @@
               Photography
             </h2>
             <p
-              class="text-base font-Barlow text-center font-[600] text-[#17526F]"
+              class="text-base font-Barlow text-center font-[600] text-[#17526F] desktop:px-[100px]"
             >
               Increase your credibility by getting the most stunning,
               high-quality photos that improve your business image.
@@ -177,14 +202,18 @@
       </main>
 
       <!-- testimonials -->
-      <div class="bg-[#FEFCF8] flex flex-col items-center px-5 py-14">
+      <div
+        class="bg-[#FEFCF8] flex flex-col items-center px-5 py-14 desktop:py-[150px]"
+      >
         <h2
-          class="tracking-[0.3rem] font-[600] font-Fraunces mb-14 text-[#A7ABAD]"
+          class="tracking-[0.3rem] font-[600] font-Fraunces mb-14 text-[#A7ABAD] desktop:font-[800] text-lg desktop:mb-20"
         >
-          CLIENT TESTIMONIAL
+          CLIENT TESTIMONIALS
         </h2>
 
-        <div class="flex flex-col gap-14">
+        <div
+          class="grid grid-cols-1 gap-14 desktop:grid-cols-3 desktop:gap-7 desktop:justify-around"
+        >
           <!-- Emily R. -->
           <div class="flex flex-col px-4">
             <div class="flex flex-col items-center gap-7">
@@ -250,30 +279,18 @@
       </div>
 
       <!-- images -->
-      <div class="flex flex-wrap">
-        <img
-          class="w-1/2"
-          src="images/mobile/image-gallery-milkbottles.jpg"
-          alt=""
-        />
-        <img
-          class="w-1/2"
-          src="images/mobile/image-gallery-orange.jpg"
-          alt=""
-        />
-        <img class="w-1/2" src="images/mobile/image-gallery-cone.jpg" alt="" />
-        <img
-          class="w-1/2"
-          src="images/mobile/image-gallery-sugar-cubes.jpg"
-          alt=""
-        />
+      <div class="grid grid-cols-2 desktop:grid-cols-4">
+        <img src="images/mobile/image-gallery-milkbottles.jpg" alt="" />
+        <img src="images/mobile/image-gallery-orange.jpg" alt="" />
+        <img src="images/mobile/image-gallery-cone.jpg" alt="" />
+        <img src="images/mobile/image-gallery-sugar-cubes.jpg" alt="" />
       </div>
 
       <!-- footer -->
 
       <footer class="flex flex-col items-center gap-10 bg-[#90D5C5] py-16">
         <img class="mx-auto" src="images/logo.svg" alt="" />
-        <ul class="w-full flex justify-around mb-10">
+        <ul class="w-full flex justify-around mb-10 desktop:max-w-[400px]">
           <li><a class="text-[#519988] font-[600]" href="#About">About</a></li>
           <li>
             <a class="text-[#519988] font-[600]" href="#Services">Services</a>
