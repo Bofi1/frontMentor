@@ -4,6 +4,6 @@ This project delivers a custom, interactive bar chart component using the Chart.
 
 Its primary functionality is the dynamic consumption of data from a local JSON file, ensuring the visualization is automatically updated and remains flexible.
 
-take a look ---> luminous-crostata-a62642.netlify.app
+[Take a look](https://app.netlify.com/projects/luminous-crostata-a62642/overview)
 
 ![Vista previa del gráfico de barras](preview.jpg)
