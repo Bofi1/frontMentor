@@ -4,4 +4,4 @@ This project delivers a custom, interactive bar chart component using the Chart.
 
 Its primary functionality is the dynamic consumption of data from a local JSON file, ensuring the visualization is automatically updated and remains flexible.
 
-(preview.jpg)
+[(preview.jpg)]
