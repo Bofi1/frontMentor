@@ -1,64 +1,83 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let button = document.getElementById("button");
-
-  button.addEventListener("click", () => {
-    let day = parseInt(document.getElementById("dd_input").value);
-    valid(day, 31, "dd_input");
-
-    //   let month = parseInt(document.getElementById("mm_input").value);
-
-    //   let year = parseInt(document.getElementById("yy_input").value);
-
-    //   date_result = new Date(year, month - 1, day);
-    //   console.log(date_result);
-
-    //   console.log(date_result.getDate());
-  });
-
-  function valid(Input, Limit, Id) {
-    //   range of number allowed
-    if (Input < 0 || Input > Limit) {
-      alert(Input);
-
-      clearInput(Id);
-    }
-
-    // base clear input fuction
-    function clearInput(Id) {
-      let input_value = document.getElementById(Id);
-      input_value.value = "";
-    }
-  }
-
-  //   keyup para no poner menor que cero o que sobrepase
+  // funcion para no sobrepasar length
   let day_input = document.getElementById("dd_input");
   let month_input = document.getElementById("mm_input");
   let year_input = document.getElementById("yy_input");
 
-  day_input.addEventListener("keyup", () => {
-    value = parseInt(day_input.value);
-    if (value > 99 || value < 0) {
-      day_input.value = "";
-      // <---- aqui ponle un error con tailwind
+  let date_inputs = [day_input, month_input, year_input];
+
+  for (let i = 0; i < date_inputs.length; i++) {
+    date_inputs[i].addEventListener("input", function () {
+      if (this.value.length > this.maxLength) {
+        this.value = this.value.slice(0, this.maxLength);
+      }
+
+      if (this.value < 1) {
+        this.value = "";
+      }
+    });
+  }
+
+  let button = document.getElementById("button");
+
+  button.addEventListener("click", () => {
+    let dayValue = parseInt(document.getElementById("dd_input").value);
+    let dayValid = false;
+
+    let monthValue = parseInt(document.getElementById("mm_input").value);
+    let monthValid = false;
+
+    let yearValue = parseInt(document.getElementById("yy_input").value);
+    let yearValid = false;
+
+    // day validation
+    if (isNaN(dayValue)) {
+      console.log("This field is required");
+
+      dayValid = false;
+    } else if (dayValue < 1 || dayValue > 31) {
+      console.log("Must be a valid day");
+      dayValid = false;
+    } else {
+      dayValid = true;
     }
-  });
 
-  month_input.addEventListener("keyup", () => {
-    value = parseInt(month_input.value);
-    if (value > 12 || value < 0) {
-      month_input.value = "";
-      // <---- aqui ponle un error con tailwind
+    // month validation
+    if (isNaN(monthValue)) {
+      console.log("This field is required");
+      monthValid = false;
+    } else if (monthValue < 1 || monthValue > 12) {
+      console.log("Must be a valid month");
+      monthValid = false;
+    } else {
+      monthValid = true;
     }
-  });
 
-  year_input.addEventListener("keyup", () => {
-    value = parseInt(year_input.value);
-    date = new Date();
-    actual_year = date.getFullYear();
+    // year validation
+    let date = new Date();
+    let actualYear = date.getFullYear();
 
-    if (value > actual_year || value < 0) {
-      year_input.value = "";
-      // <---- aqui ponle un error con tailwind
+    if (isNaN(yearValue)) {
+      console.log("This field is required");
+      yearValid = false;
+    } else if (monthValue < 1 || yearValue > actualYear) {
+      console.log("Must be in the past");
+      yearValid = false;
+    } else {
+      yearValid = true;
+    }
+
+    if (dayValid && monthValid && yearValid) {
+      let yourdate = new Date(yearValue, monthValue - 1, dayValue);
+      let yourDay = yourdate.getDate();
+      let yourMonth = yourdate.getMonth();
+      let yourYear = yourdate.getFullYear();
+
+      if (yourDay != dayValue) {
+        console.log("Must be a valid day");
+      } else {
+        console.log("la fecha esta correcta");
+      }
     }
   });
 });

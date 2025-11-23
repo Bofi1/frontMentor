@@ -10,15 +10,21 @@
     <div>
       <!-- inputs | DD | MM | YYYY -->
       <div>
-        <input type="number" name="" id="dd_input" placeholder="DD" />
-        <input type="number" name="" id="mm_input" placeholder="MM" />
-        <input type="number" name="" id="yy_input" placeholder="YYYY" />
+        <input type="number" id="dd_input" placeholder="DD" maxlength="2" />
+        <input type="number" id="mm_input" placeholder="MM" maxlength="2" />
+        <input type="number" id="yy_input" placeholder="YYYY" maxlength="4" />
       </div>
 
       <div>
         <!-- grey bar -->
         <div></div>
         <button type="button" id="button">click me</button>
+      </div>
+
+      <div>
+        <p><span id="year_showed">- -</span> years</p>
+        <p><span id="month_showed">- -</span> months</p>
+        <p><span id="day_showed">- -</span> days</p>
       </div>
     </div>
 
