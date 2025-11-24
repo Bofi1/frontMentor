@@ -6,3 +6,5 @@ num.slice(0,2) --> // 1, 2
 (ya que 3 esta en la posicion 2 y este se detuvo antes de 2)
 
 oninput ---> cada que se modifica el input
+
+appearance-none focus:outline-none --> estilos default input quitar

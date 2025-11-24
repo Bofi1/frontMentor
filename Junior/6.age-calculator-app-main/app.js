@@ -32,29 +32,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2.1 day validation
     if (isNaN(dayValue)) {
-      console.log("This field is required");
+      error(day_input, "This field is required");
       clearCalculation();
 
       dayValid = false;
     } else if (dayValue < 1 || dayValue > 31) {
-      console.log("Must be a valid day");
+      error(day_input, "Must be a valid day");
       clearCalculation();
+
       dayValid = false;
     } else {
       dayValid = true;
+      cleanError(day_input);
     }
 
     // 2.2 month validation
     if (isNaN(monthValue)) {
-      console.log("This field is required");
+      error(month_input, "This field is required");
       clearCalculation();
+
       monthValid = false;
     } else if (monthValue < 1 || monthValue > 12) {
-      console.log("Must be a valid month");
+      error(month_input, "Must be a valid day");
       clearCalculation();
+
       monthValid = false;
     } else {
       monthValid = true;
+      cleanError(month_input);
     }
 
     // 2.3 year validation
@@ -62,15 +67,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let actualYear = date.getFullYear();
 
     if (isNaN(yearValue)) {
-      console.log("This field is required");
+      error(year_input, "This field is required");
       clearCalculation();
       yearValid = false;
     } else if (monthValue < 1 || yearValue > actualYear) {
-      console.log("Must be in the past");
+      error(year_input, "Must be a valid day");
       clearCalculation();
       yearValid = false;
     } else {
       yearValid = true;
+      cleanError(year_input);
     }
 
     // 3.  aqui se valida que no haya ej. 30 feb y sino pues ya se calcula
@@ -81,11 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
       let yourYear = yourdate.getFullYear();
 
       if (yourDay != dayValue) {
-        console.log("Must be a valid day");
+        error(day_input, "Must be a valid day");
         clearCalculation();
       } else {
-        console.log("la fecha esta correcta");
-
         let birthday = new Date(yourYear, yourMonth, yourDay);
 
         console.log(birthday);
@@ -152,4 +156,20 @@ document.addEventListener("DOMContentLoaded", () => {
     monthShowed.innerHTML = "- -";
     dayShowed.innerHTML = "- -";
   }
+
+  function error(input, text) {
+    input.classList.add("border-red-500");
+    input.previousElementSibling.classList.add("text-red-500");
+    input.nextElementSibling.classList.add("text-red-500");
+    input.nextElementSibling.innerText = text;
+  }
+
+  function cleanError(input, text) {
+    input.classList.remove("border-red-500");
+    input.previousElementSibling.classList.remove("text-red-500");
+    input.nextElementSibling.classList.remove("text-red-500");
+    input.nextElementSibling.innerText = "";
+  }
 });
+error(day_input, "This field is required");
+error(month_input, "Must be a valid day");
