@@ -544,15 +544,21 @@ input[type="number"]::-webkit-inner-spin-button,
   width: 100%;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 560px) {
   .container {
-    max-width: 600px;
+    max-width: 560px;
   }
 }
 
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
+  }
+}
+
+@media (min-width: 700px) {
+  .container {
+    max-width: 700px;
   }
 }
 
@@ -693,6 +699,10 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .clear-none {
   clear: none;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .mb-2 {
@@ -838,12 +848,24 @@ input[type="number"]::-webkit-inner-spin-button,
   width: 100%;
 }
 
-.max-w-\[150px\] {
-  max-width: 150px;
+.max-w-\[200px\] {
+  max-width: 200px;
 }
 
 .max-w-\[700px\] {
   max-width: 700px;
+}
+
+.max-w-\[900px\] {
+  max-width: 900px;
+}
+
+.max-w-\[800px\] {
+  max-width: 800px;
+}
+
+.max-w-\[850px\] {
+  max-width: 850px;
 }
 
 .flex-shrink {
@@ -1358,10 +1380,6 @@ input[type="number"]::-webkit-inner-spin-button,
   justify-items: stretch;
 }
 
-.gap-14 {
-  gap: 3.5rem;
-}
-
 .gap-5 {
   gap: 1.25rem;
 }
@@ -1713,8 +1731,8 @@ input[type="number"]::-webkit-inner-spin-button,
   border-bottom-right-radius: 0.25rem;
 }
 
-.rounded-br-\[100px\] {
-  border-bottom-right-radius: 100px;
+.rounded-br-\[150px\] {
+  border-bottom-right-radius: 150px;
 }
 
 .rounded-ee {
@@ -1951,6 +1969,10 @@ input[type="number"]::-webkit-inner-spin-button,
      object-fit: scale-down;
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
@@ -1963,16 +1985,6 @@ input[type="number"]::-webkit-inner-spin-button,
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 
 .py-4 {
@@ -2474,15 +2486,21 @@ input[type="number"]::-webkit-inner-spin-button,
     width: 100%;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 560px) {
     .sm\:container {
-      max-width: 600px;
+      max-width: 560px;
     }
   }
 
   @media (min-width: 640px) {
     .sm\:container {
       max-width: 640px;
+    }
+  }
+
+  @media (min-width: 700px) {
+    .sm\:container {
+      max-width: 700px;
     }
   }
 
@@ -2548,7 +2566,23 @@ input[type="number"]::-webkit-inner-spin-button,
   text-align: center;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 560px) {
+  .mid\:text-\[80px\] {
+    font-size: 80px;
+  }
+
+  .mid\:text-\[70px\] {
+    font-size: 70px;
+  }
+}
+
+@media (min-width: 640px) {
+  .sm\:underline {
+    text-decoration-line: underline;
+  }
+}
+
+@media (min-width: 700px) {
   .desktop\:h-10 {
     height: 2.5rem;
   }
@@ -2569,6 +2603,22 @@ input[type="number"]::-webkit-inner-spin-button,
     align-self: flex-end;
   }
 
+  .desktop\:text-\[100px\] {
+    font-size: 100px;
+  }
+
+  .desktop\:text-\[120px\] {
+    font-size: 120px;
+  }
+
+  .desktop\:text-\[140px\] {
+    font-size: 140px;
+  }
+
+  .desktop\:text-\[130px\] {
+    font-size: 130px;
+  }
+
   .desktop\:placeholder\:text-xl::-moz-placeholder {
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -2577,12 +2627,6 @@ input[type="number"]::-webkit-inner-spin-button,
   .desktop\:placeholder\:text-xl::placeholder {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-}
-
-@media (min-width: 640px) {
-  .sm\:underline {
-    text-decoration-line: underline;
   }
 }
 
