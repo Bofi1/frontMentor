@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     input.classList.add("border-red-500");
     input.previousElementSibling.classList.add("text-red-500");
     input.nextElementSibling.classList.add("text-red-500");
+    input.nextElementSibling.classList.remove("hidden");
     input.nextElementSibling.innerText = text;
   }
 
