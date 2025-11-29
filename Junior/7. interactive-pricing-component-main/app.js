@@ -4,16 +4,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const amountRange = document.getElementById("amountRange");
   const amountDisplay = document.getElementById("amountDisplay");
+  const checkbox = document.getElementById("checkbox");
   const value = document.getElementById("value");
 
-  calculation();
+  amountRange.addEventListener("input", price);
 
-  amountRange.addEventListener("input", calculation);
+  checkbox.addEventListener("input", price);
 
-  function calculation() {
-    amountDisplay.innerText = kDisplayValue[amountRange.value];
-    value.innerText = `$${kDisplayPrice[amountRange.value]}.00`;
+  function price() {
+    if (checkbox.checked) {
+      calculation(0.75);
+    } else {
+      calculation(1);
+    }
   }
 
-  function discount() {}
+  function calculation(discount) {
+    amountDisplay.innerText = kDisplayValue[amountRange.value];
+    value.innerText = `$${kDisplayPrice[amountRange.value] * discount}.00`;
+  }
 });
