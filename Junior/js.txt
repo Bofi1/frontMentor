@@ -1,0 +1,30 @@
+
+.addEventListener("on", function() )
+
+document.getElementBy
+
+
+5. - Chart.js
+
+// fetch de un archivo JSON local
+  try {
+    const response = await fetch(JSON_FILE_PATH);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    console.log("enlazado correctamente");
+
+    const dataFromJSON = await response.json();
+
+    // codigo
+
+  } catch (error) {
+    // Es importante incluir un bloque 'catch' en un 'try...catch'
+    console.error("Error al cargar datos:", error);
+  }
+
+6. 
+- this.  
+- new Date(), .getDate(), .getMonth(), .getFullYear()
+
