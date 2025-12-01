@@ -9,7 +9,10 @@
   <body class="">
     <div>
       <!-- title -->
-      <div></div>
+      <div>
+        <h1>Simple, traffic-based pricing</h1>
+        <p>Sign-up for our 30-day trial. No credit card required</p>
+      </div>
 
       <main>
         <p><span id="amountDisplay">100K</span> PAGEVIEWS</p>
@@ -20,11 +23,29 @@
           max="4"
           step="1"
           value="2"
+          class="hover:cursor-pointer"
         />
       </main>
       <p><span id="value">$16.00</span> / month</p>
 
-      <input type="checkbox" name="" id="checkbox" />
+      <div class="flex items-center">
+        <span>Monthly Billing</span>
+        <label
+          for="checkbox"
+          class="bg-[#CFD8EF] w-14 rounded-full py-1 px-[5px] transition-all duration-300 ease-in-out hover:cursor-pointer"
+        >
+          <div
+            id="discountBtn"
+            class="bg-white w-5 h-5 rounded-full transition-all duration-300 ease-in-out"
+          ></div>
+        </label>
+        <span>Yearly Billing</span>
+        <span
+          class="bg-[#FDEDEA] text-[#EF9D88] font-bold py-1 px-2 rounded-full text-[10px]"
+          >-25%</span
+        >
+        <input class="hidden" type="checkbox" name="" id="checkbox" />
+      </div>
     </div>
 
     <script src="app.js"></script>

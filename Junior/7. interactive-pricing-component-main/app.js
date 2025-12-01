@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const amountDisplay = document.getElementById("amountDisplay");
   const checkbox = document.getElementById("checkbox");
   const value = document.getElementById("value");
+  const discountBtn = document.getElementById("discountBtn");
 
   amountRange.addEventListener("input", price);
 
@@ -13,8 +14,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function price() {
     if (checkbox.checked) {
+      discountBtn.classList.add("ml-[27px]");
+      discountBtn.parentElement.classList.add("bg-[#12D8C5]");
       calculation(0.75);
     } else {
+      discountBtn.classList.remove("ml-[27px]");
+      discountBtn.parentElement.classList.remove("bg-[#12D8C5]");
+
       calculation(1);
     }
   }
