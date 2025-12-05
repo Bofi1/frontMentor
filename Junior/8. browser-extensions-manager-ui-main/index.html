@@ -6,36 +6,72 @@
     <title>prueba</title>
     <link rel="stylesheet" href="output.css" />
   </head>
-  <body class="p-5">
-    <div id="main" class="grid grid-cols-1 gap-5">
-      <div class="bg-[#1F2535] p-5 flex flex-col rounded-xl">
-        <div class="flex flex-row gap-5 items-start">
-          <img src="./assets/images/logo-devlens.svg" alt="" />
-          <div>
-            <h2 class="text-white font-bold text-xl">DevLens</h2>
-            <p class="text-[#838690]">
-              Quickly inspect page layouts and visualize element boundaries
-            </p>
-          </div>
-        </div>
-        <div class="flex items-center justify-between mt-4">
-          <button
-            id="btn"
-            class="appearance-none outline-none px-4 py-2 rounded-3xl text-white border-2 border-[#444959] text-sm"
-          >
-            Remove
-          </button>
-          <label for="isValidSwitch">
-            <div
-              class="bg-[#525767] w-[50px] h-6 rounded-xl p-[3px] flex active"
-            >
-              <div class="bg-white rounded-full w-[18px] h-full"></div>
-            </div>
-          </label>
-          <input class="hidden" type="checkbox" name="" id="isValidSwitch" />
-        </div>
+  <body class="p-5 bg-[#050A1E] flex flex-col items-center">
+    <header
+      class="bg-[#1F2535] flex justify-between px-5 py-3 rounded-xl w-full"
+    >
+      <img src="assets/images/logo-light.svg" alt="" />
+      <div
+        class="bg-[#2F354C] flex justify-center items-center p-3 rounded-xl hover:cursor-pointer"
+      >
+        <img
+          class="w-[20px] h-[20px]"
+          src="assets/images/icon-sun.svg"
+          alt=""
+        />
       </div>
-    </div>
+    </header>
+
+    <nav class="flex flex-col justify-center items-center">
+      <h2 class="font-bold text-white text-3xl mt-10">Extension List</h2>
+
+      <div id="navegation" class="my-10 flex gap-2">
+        <label
+          class="appearance-none outline-none px-5 py-2 bg-[#2F354D] rounded-full text-white checked hover:cursor-pointer"
+        >
+          <input
+            class="hidden"
+            id="allNav"
+            type="radio"
+            name="options"
+            value="All"
+            checked
+          />
+          All
+        </label>
+        <!--  -->
+        <label
+          class="appearance-none outline-none px-5 py-2 bg-[#2F354D] rounded-full text-white hover:cursor-pointer"
+        >
+          <input
+            class="hidden"
+            id="activeNav"
+            type="radio"
+            name="options"
+            value="Active"
+          />
+          Active</label
+        >
+        <!--  -->
+        <label
+          class="appearance-none outline-none px-5 py-2 bg-[#2F354D] rounded-full text-white hover:cursor-pointer"
+        >
+          <input
+            class="hidden"
+            id="inactiveNav"
+            type="radio"
+            name="options"
+            value="Inactive"
+          />
+          Inactive
+        </label>
+      </div>
+    </nav>
+
+    <div
+      id="main"
+      class="grid justify-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10"
+    ></div>
     <script src="app.js"></script>
   </body>
 </html>

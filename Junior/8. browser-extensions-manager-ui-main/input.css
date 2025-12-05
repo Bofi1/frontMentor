@@ -6,3 +6,8 @@
   justify-content: end;
   background: #ef5d58;
 }
+
+.checked {
+  background: #f85a4f;
+  color: #050a1e;
+}

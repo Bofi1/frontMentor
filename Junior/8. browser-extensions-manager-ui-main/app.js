@@ -43,7 +43,7 @@ loadJSON().then(() => {
 function renderComponents(info) {
   const components = info.map((component) => {
     return `      
-    <div class="bg-[#1F2535] p-5 flex flex-col rounded-xl">
+    <div class="bg-[#1F2535] p-5 flex flex-col rounded-xl max-w-[400px] min-h-[200px] justify-between">
         <div class="flex flex-row gap-5 items-start">
           <img src="${component.logo}" alt="" />
           <div>
@@ -54,21 +54,25 @@ function renderComponents(info) {
           </div>
         </div>
         <div class="flex items-center justify-between mt-4">
-          <button
-            class="appearance-none outline-none px-4 py-2 rounded-3xl text-white border-2 border-[#444959] text-sm"
+          <button id="${component.id}"
+            class="appearance-none outline-none px-4 py-2 rounded-3xl text-white border-2 border-[#444959] text-sm" onclick="remove(event)"
           >
             Remove
           </button>
           <label for="isValidSwitch${component.id}">
-            <div class="bg-[#525767] w-[50px] h-6 rounded-xl p-[3px] flex ${
+            <div class="bg-[#525767] w-[50px] h-6 hover:cursor-pointer rounded-xl p-[3px] flex ${
               component.isActive == true ? "active" : ""
             }">
               <div class="bg-white rounded-full w-[18px] h-full "></div>
             </div>
           </label>
-          <input class="" type="checkbox" name="" id="isValidSwitch${
-            component.id
-          }" />
+          <input ${
+            component.isActive == true ? "checked" : ""
+          } onclick="switchActive(event, ${
+      component.id
+    })" class="hidden" type="checkbox" name="" id="isValidSwitch${
+      component.id
+    }" />
         </div>
       </div>
       `;
@@ -79,30 +83,109 @@ function renderComponents(info) {
   main.innerHTML = HTMLrenderComponents;
 }
 
-// // mostrar nombres
-// function show(info) {
-//   const nombres = info.map((nombre) => {
-//     return `<p>${nombre.name}, valor: ${nombre.isActive}</p>`;
-//   });
+function remove(event) {
+  const btnTarget = event.target.id;
 
-//   const HTMLnombres = nombres.join(``);
+  event.target.parentElement.parentElement.remove();
 
-//   padre.innerHTML = HTMLnombres;
-// }
+  globalData = globalData.filter((globalDataRemove) => {
+    return globalDataRemove.id != btnTarget;
+  });
 
-// // filtrar isActive False
-// function activeFalse(info) {
-//   const isActiveFalse = info.filter((isActiveFalseOne) => {
-//     return isActiveFalseOne.isActive == false;
-//   });
+  console.log(globalData);
+}
 
-//   show(isActiveFalse);
-// }
+function switchActive(event, componentID) {
+  if (event.target.checked) {
+    event.target.previousElementSibling.firstElementChild.classList.add(
+      "active"
+    );
+  } else {
+    event.target.previousElementSibling.firstElementChild.classList.remove(
+      "active"
+    );
+  }
 
-// function activeTrue(info) {
-//   const isActiveFalse = info.filter((isActiveFalseOne) => {
-//     return isActiveFalseOne.isActive !== false;
-//   });
+  globalData = globalData.map((objeto) => {
+    // Buscamos si el ID del objeto coincide con el ID del checkbox
+    if (objeto.id == componentID) {
+      // Si coincide, retornamos un nuevo objeto CON la propiedad 'isActive' actualizada
+      return {
+        ...objeto, // Copiamos todas las demás propiedades
+        isActive: event.target.checked, // Sobreescribimos la propiedad isActive
+      };
+    }
 
-//   show(isActiveFalse);
-// }
+    // Si no coincide, retornamos el objeto sin cambios
+    return objeto;
+  });
+
+  console.log(globalData);
+}
+
+function activeFilter() {
+  globalDataActive = globalData.filter((onlyActive) => {
+    return onlyActive.isActive == true;
+  });
+
+  renderComponents(globalDataActive);
+}
+
+function falseFilter() {
+  globalDataActive = globalData.filter((onlyActive) => {
+    return onlyActive.isActive == false;
+  });
+
+  renderComponents(globalDataActive);
+}
+
+let navegation = document.getElementById("navegation");
+let allNav = document.getElementById("allNav");
+let activeNav = document.getElementById("activeNav");
+let inactiveNav = document.getElementById("inactiveNav");
+
+navegation.addEventListener("change", (event) => {
+  label = event.target.parentElement;
+
+  if (event.target.value === "All") {
+    console.log("radio All seleccionado");
+
+    if (allNav.checked) {
+      allNav.parentElement.classList.add("checked");
+      activeNav.parentElement.classList.remove("checked");
+      inactiveNav.parentElement.classList.remove("checked");
+    }
+
+    main.innerHTML = "";
+
+    renderComponents(globalData);
+  }
+
+  if (event.target.value === "Active") {
+    console.log("radio Active seleccionado");
+
+    if (activeNav.checked) {
+      allNav.parentElement.classList.remove("checked");
+      activeNav.parentElement.classList.add("checked");
+      inactiveNav.parentElement.classList.remove("checked");
+    }
+
+    main.innerHTML = "";
+
+    activeFilter();
+  }
+
+  if (event.target.value === "Inactive") {
+    console.log("radio Inactive seleccionado");
+
+    if (inactiveNav.checked) {
+      allNav.parentElement.classList.remove("checked");
+      activeNav.parentElement.classList.remove("checked");
+      inactiveNav.parentElement.classList.add("checked");
+    }
+
+    main.innerHTML = "";
+
+    falseFilter();
+  }
+});
