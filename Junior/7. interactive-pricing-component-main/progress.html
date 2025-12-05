@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Range Input con Progreso de Color</title>
+    <style>
+      /* -------------------------- */
+      /* 1. ESTILOS BASE Y VARIABLES */
+      /* -------------------------- */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f4f9;
+        font-family: Arial, sans-serif;
+        flex-direction: column;
+      }
+
+      .range-container {
+        width: 80%;
+        max-width: 500px;
+        margin-top: 20px;
+      }
+
+      /* Definimos el color del progreso y el gris del carril */
+      :root {
+        --progress-color: #10b981; /* Verde esmeralda */
+        --track-color: #d1d5db; /* Gris 300 */
+      }
+
+      /* -------------------------- */
+      /* 2. ESTILOS DEL INPUT RANGE */
+      /* -------------------------- */
+
+      .color-progress-slider {
+        /* Remover apariencia por defecto, crucial */
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        background: transparent;
+        cursor: pointer;
+        outline: none;
+
+        /* Sombra y esquinas del carril (para Webkit) */
+        --track-border-radius: 4px;
+
+        /* Variable CSS para almacenar el valor actual (se actualiza con JS) */
+        --value-percent: 50%;
+      }
+
+      /* ------------------------------------- */
+      /* ESTILOS ESPECÍFICOS PARA WEBKIT (Chrome, Edge, Safari) */
+      /* ------------------------------------- */
+
+      /* A. Estilo del Pomo (Thumb) - Webkit */
+      .color-progress-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--progress-color);
+        border: 2px solid white;
+        box-shadow: 0 0 0 1px var(--progress-color);
+        margin-top: -5px; /* Ajuste para centrar verticalmente en el carril */
+      }
+
+      /* B. Estilo del Carril (Track) - Webkit */
+      .color-progress-slider::-webkit-slider-runnable-track {
+        height: 8px;
+        border-radius: var(--track-border-radius);
+
+        /* **LA CLAVE: USAR UN GRADIENTE LINEAL** */
+        background: linear-gradient(
+          to right,
+          var(--progress-color) 0%,
+          var(--progress-color) var(--value-percent),
+          var(--track-color) var(--value-percent),
+          var(--track-color) 100%
+        );
+      }
+
+      /* ------------------------------------- */
+      /* ESTILOS ESPECÍFICOS PARA FIREFOX */
+      /* ------------------------------------- */
+
+      /* C. Estilo del Pomo (Thumb) - Firefox */
+      .color-progress-slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--progress-color);
+        border: 2px solid white;
+        box-shadow: 0 0 0 1px var(--progress-color);
+      }
+
+      /* D. Estilo del Progreso (porción recorrida) - Firefox */
+      .color-progress-slider::-moz-range-progress {
+        background-color: var(--progress-color);
+        height: 8px;
+        border-radius: var(--track-border-radius);
+      }
+
+      /* E. Estilo del Carril (Track) - Firefox */
+      .color-progress-slider::-moz-range-track {
+        background-color: var(--track-color);
+        height: 8px;
+        border-radius: var(--track-border-radius);
+      }
+
+      /* Estilo para mostrar el valor */
+      #rangeValue {
+        margin-top: 15px;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: var(--progress-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="range-container">
+      <h2>Control de Volumen</h2>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="50"
+        class="color-progress-slider"
+        id="myRangeInput"
+      />
+      <div id="rangeValue">Valor: 50</div>
+    </div>
+
+    <script>
+      const rangeInput = document.getElementById("myRangeInput");
+      const rangeValueDisplay = document.getElementById("rangeValue");
+
+      /**
+       * Función que actualiza la variable CSS y el texto de valor.
+       * @param {HTMLElement} inputElement El elemento input de tipo range.
+       */
+      function updateSliderStyle(inputElement) {
+        const value = inputElement.value;
+        const min = inputElement.min || 0;
+        const max = inputElement.max || 100;
+
+        // 1. Calcula el porcentaje del valor actual.
+        const percent = ((value - min) / (max - min)) * 100;
+
+        // 2. Actualiza la variable CSS --value-percent con el porcentaje.
+        // Esto es lo que mueve el gradiente lineal en Webkit.
+        inputElement.style.setProperty("--value-percent", `${percent}%`);
+
+        // 3. Actualiza el valor mostrado en pantalla.
+        rangeValueDisplay.textContent = `Valor: ${value}`;
+      }
+
+      // Inicializa el estilo al cargar la página
+      updateSliderStyle(rangeInput);
+
+      // Agrega el evento para actualizar el estilo y el texto mientras el usuario desliza
+      rangeInput.addEventListener("input", () => {
+        updateSliderStyle(rangeInput);
+      });
+    </script>
+  </body>
+</html>

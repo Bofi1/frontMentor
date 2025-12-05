@@ -28,3 +28,7 @@ document.getElementBy
 - this.  
 - new Date(), .getDate(), .getMonth(), .getFullYear()
 
+7.
+label for={id} - input:checkbox#id ---> para que enlazar el checkbox
+- transition-all duration-300 ease-in-out --> animation smuth
+
