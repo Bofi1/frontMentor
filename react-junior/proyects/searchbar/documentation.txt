@@ -1,0 +1,3 @@
+instalamos react y tailwind
+
+instalamos axios (npm i axios)

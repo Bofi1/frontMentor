@@ -1,0 +1,26 @@
+axios to get data.json (npm i axios)
+react icons for icons (npm i react-icons)
+centrar algo en medio (flex items-center justify-center min-h-screen)
+
+- al momento de querer recuperar el data.json daba error porq cargaba primero el html
+solucion:   
+
+if (media.length === 0) {
+    return <div>Cargando datos...</div>;
+  }
+
+- para darle animation usamos frammer motion (npm i framer-motion)
+    esta es la estructura
+
+(muchos parametros pueden cambiar)
+<AnimatePresence mode="wait">
+  <motion.div
+    key={secuence} // Indispensable para que sepa que el contenido cambió
+    initial={}
+    animate={}
+    exit={}
+    transition={{ }}
+  >
+    {contenido}
+  </motion.div>
+</AnimatePresence>;
