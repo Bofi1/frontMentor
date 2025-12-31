@@ -3,8 +3,8 @@ import MortgageResults from "./MortgageResults";
 
 function MortgageCalculator() {
   return (
-    <div>
-      <div>MortgageCalculator</div>
+    <div className="">
+      <MortgageForm />
     </div>
   );
 }

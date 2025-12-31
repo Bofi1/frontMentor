@@ -3,4 +3,7 @@
 
 @theme {
   --font-principal: "Plus Jakarta Sans", sans-serif;
+  --color-blue-sky: #e4f4fd;
+  --color-bg-results: #133040;
+  --color-pickle: #dadb30;
 }
