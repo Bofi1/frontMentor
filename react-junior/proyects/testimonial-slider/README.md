@@ -1,3 +1,3 @@
 link: https://testimonial-slider-tau-one.vercel.app/
 
-![Texto Descriptivo](./src/assets/imagen.png)
+![Texto Descriptivo](./src/assets/image.png)
