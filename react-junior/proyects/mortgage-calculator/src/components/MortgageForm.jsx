@@ -5,7 +5,7 @@ import { FaCalculator } from "react-icons/fa6";
 
 function MortgageForm() {
   return (
-    <div className="p-5 font-principal flex flex-col gap-8">
+    <div className="p-5 font-principal flex flex-col gap-8 w-full">
       <div>
         <h1 className="text-2xl font-bold mb-2">Mortgage Calculator</h1>
         <p className="text-gray-400 underline decoration-gray-400 underline-offset-4 text-sm">
@@ -57,7 +57,7 @@ function MortgageForm() {
           <span>Mortgage Type</span>
           <div className="flex w-full mt-3">
             <div className="flex flex-col w-full">
-              <label className=" mb-2 w-full border border-black p-2 px-5 rounded-lg has-checked:bg-[#FAFAE0] has-checked:border-pickle">
+              <label className=" mb-2 w-full border border-black p-2 px-5 rounded-lg has-checked:bg-[#FAFAE0] has-checked:border-pickle cursor-pointer">
                 <input
                   type="radio"
                   name="type"
@@ -66,7 +66,7 @@ function MortgageForm() {
                 <span className="font-bold ">Repayment</span>
               </label>
 
-              <label className="w-full border border-black p-2 px-5 rounded-lg has-checked:bg-[#FAFAE0] has-checked:border-pickle">
+              <label className="w-full border border-black p-2 px-5 rounded-lg has-checked:bg-[#FAFAE0] has-checked:border-pickle cursor-pointer">
                 <input
                   type="radio"
                   name="type"
@@ -80,7 +80,7 @@ function MortgageForm() {
       </div>
 
       <button className="flex items-center justify-center w-full rounded-full bg-pickle">
-        <div className="flex items-center justify-center p-3 ">
+        <div className="flex items-center justify-center p-3 cursor-pointer">
           {" "}
           <FaCalculator />
           <span className="ml-2">Calculate</span>
