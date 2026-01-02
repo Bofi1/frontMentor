@@ -7,7 +7,7 @@ function MortgageCalculator() {
       <div className="p-10 bg-white rounded-2xl w-full">
         <MortgageForm />
       </div>
-      <div>
+      <div className="bg-bg-results md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl">
         <MortgageResults />
       </div>
     </div>
