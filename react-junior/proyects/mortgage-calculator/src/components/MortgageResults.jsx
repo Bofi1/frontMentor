@@ -1,6 +1,42 @@
 function MortgageResults() {
+  const show = true;
+
+  if (show == true) {
+    return (
+      <div className="w-full h-full bg-bg-results flex flex-col justify-center text-start p-15 gap-8 md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl">
+        <h2 className="text-white font-medium text-2xl">Your results</h2>
+        <p className="text-sm text-[#7997AB]">
+          Your results are shown below based on the information you provided. To
+          adjust the results, edit the form and click "calculate repayments" aga
+          in
+        </p>
+        <div className="border-t-3 border-pickle rounded-2xl p-5 text-start flex flex-col gap-3 bg-[#0D2431] w-full">
+          <div>
+            <span className="text-[#7997AB] text-sm">
+              Your monthly repayments
+            </span>
+            <div className="text-pickle flex items-center mt-2.5">
+              <span className="text-5xl font-bold">$</span>
+              <span className="text-5xl font-bold">1,000</span>
+            </div>
+          </div>
+          <div className="bg-[#293E4B] h-0.5"></div>
+          <div className="flex flex-col justify-center">
+            <span className="text-[#7997AB] text-sm">
+              Total you´ll repay over the term
+            </span>
+            <div className="mt-2.5">
+              <span className="text-lg text-white font-bold">$</span>
+              <span className="text-lg text-white font-bold">1,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full h-full bg-bg-results flex flex-col justify-center items-center p-10 text-center gap-5">
+    <div className="w-full h-full bg-bg-results flex flex-col justify-center items-center p-15 text-center gap-5 md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl">
       <img className="h-40" src="/images/illustration-empty.svg" alt="" />
       <p className="text-white font-bold text-xl">Results shown here</p>
       <span className="text-[#7997AB] text-sm">

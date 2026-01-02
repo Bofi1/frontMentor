@@ -6,4 +6,17 @@
   --color-blue-sky: #e4f4fd;
   --color-bg-results: #133040;
   --color-pickle: #dadb30;
+  --color-border: #a4b4bb;
+}
+
+/* quitar las flechitas del input:number */
+@layer components {
+  .no-spinner {
+    -moz-appearance: textfield;
+  }
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }

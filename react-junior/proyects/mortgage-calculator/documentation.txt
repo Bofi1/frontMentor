@@ -1,3 +1,33 @@
 ESTILOS
 
+    // centrar al medio
 dentro del body (flex items-center justify-center min-h-screen) para centrar en el puro medio
+
+    // has-[]
+si pone la propiedad en el contenedor padre " has-[:{pseudoclase}]:{style} " y algun input hijo se activa 
+ej. focus (has-[:focus]:bg-red-400) la propiedad se activara
+
+    // group 
+se usa como peer pero si el objetivo principal esta hacia abajo
+el contener padre se le agrega (group) y a donde se va a aplicar se poner group-{pseudoclase}-within
+ej group-focus-within:bg-red-400
+
+    // peer
+se usa para cuando el objetivo principal esta arriba
+(peer) se agrega al input por ejemplo
+y (peer-{pseudoclase}:{style}) al que se le cambiara el estilo
+ej. <input className="peer"> <div className="peer-focus:bg-red-400"></div>
+
+
+    // quitar las flechitas del input:number
+        /index.css
+@layer components {
+  .no-spinner {
+    -moz-appearance: textfield;
+  }
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
