@@ -1,7 +1,5 @@
-function MortgageResults() {
-  const show = true;
-
-  if (show == true) {
+function MortgageResults({ showResults }) {
+  if (showResults) {
     return (
       <div className="w-full h-full bg-bg-results flex flex-col justify-center text-start p-15 gap-8 md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl">
         <h2 className="text-white font-medium text-2xl">Your results</h2>
@@ -33,18 +31,18 @@ function MortgageResults() {
         </div>
       </div>
     );
+  } else {
+    return (
+      <div className="w-full h-full bg-bg-results flex flex-col justify-center items-center p-15 text-center gap-5 md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl">
+        <img className="h-40" src="/images/illustration-empty.svg" alt="" />
+        <p className="text-white font-bold text-xl">Results shown here</p>
+        <span className="text-[#7997AB] text-sm">
+          Complete the form and click "calculate repayments" to see what your
+          monthly repayments would be
+        </span>
+      </div>
+    );
   }
-
-  return (
-    <div className="w-full h-full bg-bg-results flex flex-col justify-center items-center p-15 text-center gap-5 md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl">
-      <img className="h-40" src="/images/illustration-empty.svg" alt="" />
-      <p className="text-white font-bold text-xl">Results shown here</p>
-      <span className="text-[#7997AB] text-sm">
-        Complete the form and click "calculate repayments" to see what your
-        monthly repayments would be
-      </span>
-    </div>
-  );
 }
 
 export default MortgageResults;

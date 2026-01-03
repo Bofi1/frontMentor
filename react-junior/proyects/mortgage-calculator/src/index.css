@@ -7,6 +7,7 @@
   --color-bg-results: #133040;
   --color-pickle: #dadb30;
   --color-border: #a4b4bb;
+  --color-redError: #d53328;
 }
 
 /* quitar las flechitas del input:number */
