@@ -73,7 +73,6 @@ function MortgageForm({ setShowResults }) {
     }
 
     setSubmit(true);
-    setSubmitClearAll(false);
   };
 
   useEffect(() => {
@@ -86,6 +85,7 @@ function MortgageForm({ setShowResults }) {
       ) {
         setShowResults(true);
         setSubmit(false);
+        setSubmitClearAll(false);
       } else {
         setShowResults(false);
       }
