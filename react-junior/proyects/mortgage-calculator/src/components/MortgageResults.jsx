@@ -40,7 +40,7 @@ function MortgageResults({
     }, [interestOnly]);
 
     return (
-      <div className="w-full h-full bg-bg-results flex flex-col justify-center text-start p-15 gap-8 md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl">
+      <div className="w-full h-full bg-bg-results flex flex-col justify-center text-start p-15 gap-8 md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl ">
         <h2 className="text-white font-medium text-2xl">Your results</h2>
         <p className="text-sm text-[#7997AB]">
           {`Your results are shown below based on the information you provided. To

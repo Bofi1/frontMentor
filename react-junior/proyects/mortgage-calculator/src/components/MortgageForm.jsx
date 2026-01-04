@@ -109,7 +109,7 @@ function MortgageForm({
       <div className="md:flex md:flex-row justify-between items-center">
         <h1 className="text-2xl font-bold mb-2 ">Mortgage Calculator</h1>
         <p
-          className="text-gray-400 underline decoration-gray-400 underline-offset-4 text-sm cursor-pointer h-full mb-2 hover:text-black"
+          className="text-gray-400 underline decoration-gray-400 underline-offset-4 text-sm cursor-pointer h-full mb-2  hover:text-black"
           onClick={clearAll}
         >
           Clear All
@@ -120,14 +120,14 @@ function MortgageForm({
         <div className="">
           <span>Mortgage Amount</span>
           <div
-            className={`flex w-full mt-3 border border-border hover:border-black rounded-lg  has-[:focus]:border-pickle group ${
+            className={`flex w-full mt-3 border border-border hover:border-black rounded-lg  has-[:focus]:border-pickle  group animation${
               mortgageAmountValueError != false
                 ? "border-redError has-[:focus]:border-redError hover:border-redError"
                 : ""
             }`}
           >
             <div
-              className={`bg-blue-sky w-15 h-12 flex justify-center items-center rounded-l-lg group-focus-within:bg-pickle ${
+              className={`bg-blue-sky w-15 h-12 flex justify-center items-center rounded-l-lg group-focus-within:bg-pickle  ${
                 mortgageAmountValueError != false
                   ? "bg-redError group-focus-within:bg-redError"
                   : ""
@@ -157,7 +157,7 @@ function MortgageForm({
           <div className="mb-5 md:mb-0">
             <span>Mortgage Term</span>
             <div
-              className={`flex w-full mt-3 border border-border hover:border-black rounded-lg  has-[:focus]:border-pickle group ${
+              className={`flex w-full mt-3 border border-border hover:border-black rounded-lg  has-[:focus]:border-pickle group animation${
                 mortgageTermValueError != false
                   ? "border-redError has-[:focus]:border-redError hover:border-redError"
                   : ""
@@ -197,7 +197,7 @@ function MortgageForm({
           <div>
             <span>Interest Rate</span>
             <div
-              className={`flex w-full mt-3 border border-border hover:border-black rounded-lg  has-[:focus]:border-pickle group ${
+              className={`flex w-full mt-3 border border-border hover:border-black rounded-lg  has-[:focus]:border-pickle group animation${
                 interestRateValueError != false
                   ? "border-redError has-[:focus]:border-redError hover:border-redError"
                   : ""
@@ -234,8 +234,8 @@ function MortgageForm({
         <div className="mt-2">
           <span>Mortgage Type</span>
           <div className="flex w-full mt-3">
-            <div className="flex flex-col w-full">
-              <label className=" mb-2 w-full border border-border hover:border-black p-2 px-5 rounded-lg has-checked:bg-[#FAFAE0] has-checked:border-pickle cursor-pointer">
+            <div className="flex flex-col w-full ">
+              <label className=" mb-2 w-full border border-border hover:border-black p-2 px-5 rounded-lg has-checked:bg-[#FAFAE0] has-checked:border-pickle cursor-pointer animation">
                 <input
                   type="radio"
                   name="type"
@@ -249,7 +249,7 @@ function MortgageForm({
                 <span className="font-bold ">Repayment</span>
               </label>
 
-              <label className="w-full border border-border hover:border-black p-2 px-5 rounded-lg has-checked:bg-[#FAFAE0] has-checked:border-pickle cursor-pointer">
+              <label className="w-full border border-border hover:border-black p-2 px-5 rounded-lg has-checked:bg-[#FAFAE0] has-checked:border-pickle cursor-pointer animation">
                 <input
                   type="radio"
                   name="type"
@@ -276,7 +276,7 @@ function MortgageForm({
 
       <button
         onClick={validation}
-        className="flex items-center justify-center w-full rounded-full bg-pickle cursor-pointer hover:bg-[#ECED97] active:bg-pickle active:scale-[0.95]"
+        className="flex items-center justify-center w-full rounded-full bg-pickle cursor-pointer hover:bg-[#ECED97] active:bg-pickle active:scale-[0.95] animation"
       >
         <div className="flex items-center justify-center p-3 ">
           <FaCalculator />
