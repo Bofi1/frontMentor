@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import illustrationEmpty from "../assets/images/illustration-empty.svg";
+import illustrationEmpty from "../assets/illustration-empty.svg";
 
 function MortgageResults({
   showResults,
