@@ -3,21 +3,27 @@ import { FaDollarSign } from "react-icons/fa";
 import { FaPercent } from "react-icons/fa";
 import { FaCalculator } from "react-icons/fa6";
 
-function MortgageForm({ setShowResults }) {
-  const [mortgageAmountValue, setMortgageAmountValue] = useState("");
+function MortgageForm({
+  setShowResults,
+  mortgageAmountValue,
+  setMortgageAmountValue,
+  mortgageTermValue,
+  setMortgageTermValue,
+  interestRateValue,
+  setInterestRateValue,
+  mortgageType,
+  setMortgageType,
+  submit,
+  setSubmit,
+}) {
   const [mortgageAmountValueError, setMortgageAmountValueError] =
     useState(false);
 
-  const [mortgageTermValue, setMortgageTermValue] = useState("");
   const [mortgageTermValueError, setMortgageTermValueError] = useState(false);
 
-  const [interestRateValue, setInterestRateValue] = useState("");
   const [interestRateValueError, setInterestRateValueError] = useState(false);
 
-  const [mortgageType, setMortgageType] = useState("");
   const [mortgageTypeError, setMortgageTypeError] = useState(false);
-
-  const [submit, setSubmit] = useState(false);
 
   const [submitClearAll, setSubmitClearAll] = useState(false);
 
@@ -237,6 +243,7 @@ function MortgageForm({ setShowResults }) {
                   checked={mortgageType === "Repayment"}
                   onChange={() => {
                     setMortgageType("Repayment");
+                    setShowResults(false);
                   }}
                 />
                 <span className="font-bold ">Repayment</span>
@@ -250,6 +257,7 @@ function MortgageForm({ setShowResults }) {
                   checked={mortgageType === "Interest Only"}
                   onChange={() => {
                     setMortgageType("Interest Only");
+                    setShowResults(false);
                   }}
                 />
                 <span className="font-bold ">Interest Only</span>
