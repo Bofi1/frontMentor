@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import illustrationEmpty from "../assets/images/illustration-empty.svg";
 
 function MortgageResults({
   showResults,
@@ -80,7 +81,7 @@ function MortgageResults({
   } else {
     return (
       <div className="w-full h-full bg-bg-results flex flex-col justify-center items-center p-15 text-center gap-5 md:rounded-bl-[100px] md:rounded-tr-2xl md:rounded-br-2xl">
-        <img className="h-40" src="/images/illustration-empty.svg" alt="" />
+        <img className="h-40" src={illustrationEmpty} alt="" />
         <p className="text-white font-bold text-xl">Results shown here</p>
         <span className="text-[#7997AB] text-sm">
           Complete the form and click "calculate" to see what your monthly
