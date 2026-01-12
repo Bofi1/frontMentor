@@ -1,3 +1,6 @@
+- tenemos que tener 2 estados uno el que maneja por debajo el json y otro que va a ver el usuario
+
+
 - aplicar el dark mode 
 
   const [isDark, setIsDark] = useState(() => {

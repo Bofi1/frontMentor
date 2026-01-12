@@ -1,4 +1,4 @@
-function Extension({ logo, name, description, active, onToggle }) {
+function Extension({ logo, name, description, active, onToggle, remove }) {
   return (
     <div className="bg-white dark:bg-[#1F2535] shadow-lg flex flex-col p-5 justify-between h-[210px] rounded-2xl ">
       <div className="flex items-start gap-5">
@@ -12,7 +12,10 @@ function Extension({ logo, name, description, active, onToggle }) {
       </div>
 
       <div className="flex items-center justify-between ">
-        <button className="px-3 py-2  rounded-full border border-gray-500 font-semibold text-[#091540] dark:text-white">
+        <button
+          className="px-3 py-2  rounded-full border border-gray-500 font-semibold text-[#091540] dark:text-white cursor-pointer"
+          onClick={remove}
+        >
           Remove
         </button>
 

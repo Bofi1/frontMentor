@@ -5,6 +5,24 @@ import * as Images from "./index"; // Importamos el barril completo como un obje
 
 function BrowserContainer({ checkStatus }) {
   const [data, setData] = useState([]);
+  const [displayData, setDisplayData] = useState([]); // Lo que se ve en pantalla
+
+  useEffect(() => {
+    axios.get("/data.json").then((response) => {
+      setData(response.data);
+      setDisplayData(response.data); // Al inicio coinciden
+    });
+  }, []);
+
+  // ESCUCHA EL CLIC DE LOS BOTONES: Solo aquí filtramos físicamente la lista
+  useEffect(() => {
+    const filtered = data.filter((item) => {
+      if (checkStatus === "active") return item.isActive;
+      if (checkStatus === "inactive") return !item.isActive;
+      return true;
+    });
+    setDisplayData(filtered);
+  }, [checkStatus]); // <--- Solo se dispara cuando cambias de pestaña
 
   const toggleExtension = (name) => {
     setData((prevData) =>
@@ -12,39 +30,39 @@ function BrowserContainer({ checkStatus }) {
         item.name === name ? { ...item, isActive: !item.isActive } : item
       )
     );
+    // NOTA: No actualizamos displayData aquí, para que no desaparezca la tarjeta
   };
 
-  useEffect(() => {
-    axios
-      .get("/data.json")
-      .then((response) => {
-        setData(response.data);
-        console.log("JSON recuperado con Axios:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error al cargar el archivo:", error.message);
-      });
-  }, []);
+  const removeExtension = (name) => {
+    // 1. Lo quitamos de la "verdad absoluta"
+    setData((prevData) => prevData.filter((item) => item.name !== name));
+
+    // 2. Lo quitamos de lo que se está viendo en pantalla actualmente
+    setDisplayData((prevDisplay) =>
+      prevDisplay.filter((item) => item.name !== name)
+    );
+  };
 
   return (
     <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {data
-        // .filter((item) => {
-        //   if (checkStatus === "active") return item.isActive;
-        //   if (checkStatus === "inactive") return !item.isActive;
-        //   return true; // para "all"
-        // })
-        .map((item) => (
+      {displayData.map((item) => {
+        // Buscamos el estado real en 'data' para que el switch se mueva
+        const realItem = data.find((d) => d.name === item.name);
+
+        return (
           <Extension
             key={item.name}
             logo={Images[item.logo]}
             name={item.name}
             description={item.description}
-            active={item.isActive}
-            // PASA LA FUNCIÓN QUE CAMBIA EL ARRAY ORIGINAL
+            active={realItem ? realItem.isActive : item.isActive}
             onToggle={() => toggleExtension(item.name)}
+            remove={() => {
+              removeExtension(item.name);
+            }}
           />
-        ))}
+        );
+      })}
     </div>
   );
 }
