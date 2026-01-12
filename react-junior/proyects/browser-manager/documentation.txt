@@ -1,4 +1,4 @@
-// aplicar el dark mode 
+- aplicar el dark mode 
 
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -23,3 +23,39 @@
   const toggleDarkMode = () => {
     setIsDark(!isDark);
   };
+
+
+
+- pasar props ({props})
+
+- trabajar con axios y obtener JSON
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/data.json")
+      .then((response) => {
+        setData(response.data);
+        console.log("JSON recuperado con Axios:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error al cargar el archivo:", error.message);
+      });
+  }, []);
+
+
+- map
+
+va {} o [] uno por uno 
+
+    <div>
+      {data.map((item) => (
+        <Extension key={item.name} logo={Images[item.logo]} />
+      ))}
+    </div>
+
+
+
+
+

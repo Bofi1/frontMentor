@@ -36,7 +36,7 @@ function NavBar() {
       </div>
 
       <button
-        className="bg-[#EDF0EF] dark:bg-[#2F354C] rounded-xl active:scale-95 cursor-pointer"
+        className="bg-[#EDF0EF] hover:bg-[#C6C6C5] dark:bg-[#2F354C] dark:hover:bg-[#525868] rounded-xl active:scale-95 cursor-pointer dark:cursor-pointer"
         onClick={toggleDarkMode}
       >
         <img className="p-3 cursor-pointer" src={isDark ? sun : moon} alt="" />
