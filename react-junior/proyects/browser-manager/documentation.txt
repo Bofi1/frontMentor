@@ -1,4 +1,5 @@
 - tenemos que tener 2 estados uno el que maneja por debajo el json y otro que va a ver el usuario
+si lo que quieres es algo no tan agresivo a la hora de jugar con switches
 
 
 - aplicar el dark mode 
