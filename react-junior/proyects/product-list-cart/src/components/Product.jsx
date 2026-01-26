@@ -6,18 +6,28 @@ import { FaRegTrashCan, FaPlus, FaMinus } from "react-icons/fa6";
 
 import { useEffect, useState } from "react";
 
-function Product({ imageProduct, categoryProduct, nameProduct, priceProduct }) {
+function Product({
+  imageProduct,
+  categoryProduct,
+  nameProduct,
+  priceProduct,
+
+  onAdd,
+  onAddDecrement,
+  onRemove,
+}) {
   const [itemAdded, setItemAdded] = useState(false);
   const [quantity, setQuantity] = useState(0);
-
   const handleIncrement = (e) => {
     e.stopPropagation(); // Evita conflictos de clicks
     setQuantity((prev) => prev + 1);
+    onAdd();
   };
 
   const handleDecrement = (e) => {
     e.stopPropagation(); // Evita conflictos de clicks
     setQuantity((prev) => prev - 1);
+    onAddDecrement();
   };
 
   useEffect(() => {
@@ -44,6 +54,7 @@ function Product({ imageProduct, categoryProduct, nameProduct, priceProduct }) {
                     e.stopPropagation();
                     setItemAdded(false);
                     setQuantity(0);
+                    onRemove();
                   }}
                 />
               ) : (
@@ -59,6 +70,7 @@ function Product({ imageProduct, categoryProduct, nameProduct, priceProduct }) {
               onClick={() => {
                 setItemAdded(true);
                 setQuantity(1);
+                onAdd();
               }}
             >
               <img src={cartLogo} alt="cart-logo" />
