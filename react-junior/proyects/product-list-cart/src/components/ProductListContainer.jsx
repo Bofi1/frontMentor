@@ -7,6 +7,7 @@ import axios from "axios";
 function ProductListContainer() {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
+  const [totalItemsCart, setTotalItemsCart] = useState([0]);
 
   useEffect(() => {
     axios.get("/data.json").then((response) => {
@@ -50,21 +51,34 @@ function ProductListContainer() {
 
   const RemoveTo = (product) => {
     setCart((prevCart) => {
-      const isProductOnCart = prevCart.find(
-        (item) => item.name === product.name
-      );
+      // Versión simplificada sin llaves (return implícito)
+      return prevCart.filter((item) => item.name !== product.name);
+    });
+  };
 
-      if (isProductOnCart) {
-        return prevCart.filter((item) => {
-          return item.name !== product.name;
-        });
-      }
+  const totalQuantity = cart.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0);
+
+  const clearData = (product) => {
+    setData((prevData) => {
+      const name = prevData.find((item) => {
+        item.name === product.name;
+      });
+
+      setQuantity(0);
     });
   };
 
   useEffect(() => {
     console.log(cart);
+
+    setTotalItemsCart(totalQuantity);
   }, [cart]);
+
+  useEffect(() => {
+    console.log(totalItemsCart);
+  }, [totalItemsCart]);
 
   return (
     <div className="p-5">
@@ -94,7 +108,12 @@ function ProductListContainer() {
         })}
       </div>
 
-      <Cart />
+      <Cart
+        cart={cart}
+        totalItemsCart={totalItemsCart}
+        RemoveTo={RemoveTo}
+        clearData={clearData}
+      />
     </div>
   );
 }

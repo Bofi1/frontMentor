@@ -18,6 +18,7 @@ function Product({
 }) {
   const [itemAdded, setItemAdded] = useState(false);
   const [quantity, setQuantity] = useState(0);
+
   const handleIncrement = (e) => {
     e.stopPropagation(); // Evita conflictos de clicks
     setQuantity((prev) => prev + 1);

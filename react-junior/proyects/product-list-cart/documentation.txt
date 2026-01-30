@@ -1,0 +1,14 @@
+GUÍA RÁPIDA DE MÉTODOS DE ARRAYS EN JAVASCRIPT / REACT
+
+-----------------------------------------------------------------------
+| SI QUIERES...              | USA EL MÉTODO... | RESULTADO           |
+-----------------------------------------------------------------------
+| Cambiar formato/mapear     | .map()           | Un nuevo Array []   |
+| Sumar cantidades o precios | .reduce()        | Un solo Número (7)  |
+| Quitar elementos (borrar)  | .filter()        | Un Array más corto []|
+-----------------------------------------------------------------------
+
+NOTAS TÉCNICAS:
+- .map(): No modifica el array original, devuelve uno nuevo con las transformaciones.
+- .reduce(): Requiere un valor inicial (normalmente 0 para sumas).
+- .filter(): Devuelve un nuevo array con los elementos que cumplen la condición.
