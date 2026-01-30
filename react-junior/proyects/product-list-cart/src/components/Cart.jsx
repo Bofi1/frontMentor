@@ -30,7 +30,6 @@ function Cart({ totalItemsCart, cart, RemoveTo, clearData }) {
                 totalValue={item.price * item.quantity}
                 onRemove={() => {
                   RemoveTo(item);
-                  clearData(item);
                 }}
               />
             );

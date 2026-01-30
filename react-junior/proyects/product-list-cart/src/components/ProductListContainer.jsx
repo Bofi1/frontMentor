@@ -7,6 +7,7 @@ import axios from "axios";
 function ProductListContainer() {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
+
   const [totalItemsCart, setTotalItemsCart] = useState([0]);
 
   useEffect(() => {
@@ -60,16 +61,6 @@ function ProductListContainer() {
     return acc + item.quantity;
   }, 0);
 
-  const clearData = (product) => {
-    setData((prevData) => {
-      const name = prevData.find((item) => {
-        item.name === product.name;
-      });
-
-      setQuantity(0);
-    });
-  };
-
   useEffect(() => {
     console.log(cart);
 
@@ -87,6 +78,12 @@ function ProductListContainer() {
       </div>
       <div className="py-5 grid grid-rows-1 gap-10">
         {data.map((item) => {
+          // Buscamos si el item actual ya está en el carrito para saber su cantidad
+          const productInCart = cart.find(
+            (cartItem) => cartItem.name === item.name
+          );
+          const currentQuantity = productInCart ? productInCart.quantity : 0;
+
           return (
             <Product
               key={item.name}
@@ -94,6 +91,7 @@ function ProductListContainer() {
               categoryProduct={item.category}
               nameProduct={item.name}
               priceProduct={item.price}
+              quantity={currentQuantity}
               onAdd={() => {
                 addToCart(item);
               }}
@@ -108,12 +106,7 @@ function ProductListContainer() {
         })}
       </div>
 
-      <Cart
-        cart={cart}
-        totalItemsCart={totalItemsCart}
-        RemoveTo={RemoveTo}
-        clearData={clearData}
-      />
+      <Cart cart={cart} totalItemsCart={totalItemsCart} RemoveTo={RemoveTo} />
     </div>
   );
 }

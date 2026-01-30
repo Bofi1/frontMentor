@@ -1,95 +1,82 @@
 import cartLogo from "../assets/images/icon-add-to-cart.svg";
-import decrement from "../assets/images/icon-decrement-quantity.svg";
-import increment from "../assets/images/icon-increment-quantity.svg";
-
-import { FaRegTrashCan, FaPlus, FaMinus } from "react-icons/fa6";
-
-import { useEffect, useState } from "react";
+import { FaPlus, FaMinus, FaRegTrashCan } from "react-icons/fa6";
 
 function Product({
   imageProduct,
   categoryProduct,
   nameProduct,
   priceProduct,
-
   onAdd,
   onAddDecrement,
   onRemove,
+  quantity,
 }) {
-  const [itemAdded, setItemAdded] = useState(false);
-  const [quantity, setQuantity] = useState(0);
-
-  const handleIncrement = (e) => {
-    e.stopPropagation(); // Evita conflictos de clicks
-    setQuantity((prev) => prev + 1);
-    onAdd();
-  };
-
-  const handleDecrement = (e) => {
-    e.stopPropagation(); // Evita conflictos de clicks
-    setQuantity((prev) => prev - 1);
-    onAddDecrement();
-  };
-
-  useEffect(() => {
-    console.log(quantity);
-  }, [quantity]);
+  const isAdded = quantity > 0;
 
   return (
     <div className="flex flex-col justify-center">
       <div className="flex flex-col items-center relative">
-        {/* cambiar */}
-        <img className="w-full rounded-lg" src={imageProduct} alt="" />
-        <button
-          className={`py-3 px-5 rounded-full  border  font-semibold absolute -bottom-6 flex gap-2 cursor-pointer outline-none appearance-none ${
-            itemAdded
-              ? "bg-[#C83B10] border-none text-white"
-              : "bg-white border-[#B9ABAD]"
+        <img
+          className={`w-full rounded-lg transition-all ${
+            isAdded ? "border-2 border-[#C83B10]" : "border-transparent"
           }`}
-        >
-          {itemAdded ? (
-            <div className="flex justify-between w-30 items-center">
-              {quantity === 1 ? (
-                <FaRegTrashCan
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setItemAdded(false);
-                    setQuantity(0);
-                    onRemove();
-                  }}
-                />
-              ) : (
-                <FaMinus onClick={handleDecrement} />
-              )}
+          src={imageProduct}
+          alt={nameProduct}
+        />
 
-              <span>{quantity}</span>
-              <FaPlus onClick={handleIncrement} />
+        {/* Cambiamos <button> por <div> para evitar el error de anidación */}
+        <div
+          className={`py-3 px-5 rounded-full border font-semibold absolute -bottom-6 flex gap-2 transition-all w-40 justify-center h-[50px] items-center ${
+            isAdded
+              ? "bg-[#C83B10] text-white border-none"
+              : "bg-white border-[#B9ABAD] text-[#230E07] cursor-pointer"
+          }`}
+          // Solo ponemos el onClick aquí si NO está agregado, para que el div actúe como botón inicial
+          onClick={!isAdded ? onAdd : undefined}
+        >
+          {isAdded ? (
+            <div className="flex justify-between w-full items-center px-1">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  quantity === 1 ? onRemove() : onAddDecrement();
+                }}
+                className="border border-white rounded-full p-1 hover:bg-white hover:text-[#C83B10] flex items-center justify-center transition-colors w-6 h-6"
+              >
+                {quantity === 1 ? (
+                  <FaRegTrashCan size={10} />
+                ) : (
+                  <FaMinus size={10} />
+                )}
+              </button>
+
+              <span className="font-bold select-none">{quantity}</span>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onAdd();
+                }}
+                className="border border-white rounded-full p-1 hover:bg-white hover:text-[#C83B10] flex items-center justify-center transition-colors w-6 h-6"
+              >
+                <FaPlus size={10} />
+              </button>
             </div>
           ) : (
-            <div
-              className="flex gap-2"
-              onClick={() => {
-                setItemAdded(true);
-                setQuantity(1);
-                onAdd();
-              }}
-            >
-              <img src={cartLogo} alt="cart-logo" />
+            <div className="flex gap-2 items-center">
+              <img src={cartLogo} alt="cart-logo" className="w-5" />
               <span>Add to Cart</span>
             </div>
           )}
-        </button>
+        </div>
       </div>
 
       <div className="mt-10">
-        <p className="font-semibold text-sm text-[#B1A3A0]">
-          {categoryProduct}
-        </p>
-        <h2 className="text-[#230E07] font-semibold text-lg">{nameProduct}</h2>
-        <p className="text-[#BA4C25] font-semibold ">
-          <span>$</span>
-          {priceProduct}
-        </p>
+        <p className="font-medium text-sm text-[#B1A3A0]">{categoryProduct}</p>
+        <h2 className="text-[#230E07] font-bold text-lg">{nameProduct}</h2>
+        <p className="text-[#BA4C25] font-bold">${priceProduct.toFixed(2)}</p>
       </div>
     </div>
   );
