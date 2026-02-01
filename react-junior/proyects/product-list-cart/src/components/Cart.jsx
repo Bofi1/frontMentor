@@ -2,6 +2,10 @@ import emptyCart from "../assets/images/illustration-empty-cart.svg";
 import ProductInCart from "./ProductInCart";
 
 function Cart({ totalItemsCart, cart, RemoveTo, clearData }) {
+  const orderTotal = cart.reduce((acc, item) => {
+    return acc + item.quantity * item.price;
+  }, 0);
+
   return (
     <div className="w-full my-5 px-5 py-5 pb-10 bg-white rounded-lg flex flex-col items-center h-[312px]">
       <h2 className="text-[#C83B10] text-xl font-bold self-start">
@@ -34,6 +38,15 @@ function Cart({ totalItemsCart, cart, RemoveTo, clearData }) {
               />
             );
           })}
+
+          <div className="flex items-center justify-between w-full my-2">
+            <span className="text-[#8F8688] font-semibold text-sm">
+              Order Total
+            </span>
+            <span className="font-bold text-[#200C09] text-2xl">
+              ${orderTotal}
+            </span>
+          </div>
         </div>
       )}
     </div>

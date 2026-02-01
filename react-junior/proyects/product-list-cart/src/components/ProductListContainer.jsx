@@ -72,7 +72,7 @@ function ProductListContainer() {
   }, [totalItemsCart]);
 
   return (
-    <div className="p-5">
+    <div className="p-5 bg-black">
       <div className="text-[#230E07] w-full mb-10 font-bold text-4xl">
         Desserts
       </div>
