@@ -1,5 +1,6 @@
 import Product from "./product";
 import Cart from "./Cart";
+import OrderConfirmed from "./OrderConfirmed";
 import { useState, useEffect } from "react";
 import * as Images from "./index";
 import axios from "axios";
@@ -7,8 +8,8 @@ import axios from "axios";
 function ProductListContainer() {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
-
-  const [totalItemsCart, setTotalItemsCart] = useState([0]);
+  const [totalItemsCart, setTotalItemsCart] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios.get("/data.json").then((response) => {
@@ -68,46 +69,61 @@ function ProductListContainer() {
   }, [cart]);
 
   useEffect(() => {
-    console.log(totalItemsCart);
-  }, [totalItemsCart]);
+    if (showModal) {
+      document.body.style.overflow = "hidden";
+    }
+  }, [showModal]);
 
   return (
-    <div className="p-5 bg-black">
-      <div className="text-[#230E07] w-full mb-10 font-bold text-4xl">
-        Desserts
-      </div>
-      <div className="py-5 grid grid-rows-1 gap-10">
-        {data.map((item) => {
-          // Buscamos si el item actual ya está en el carrito para saber su cantidad
-          const productInCart = cart.find(
-            (cartItem) => cartItem.name === item.name
-          );
-          const currentQuantity = productInCart ? productInCart.quantity : 0;
+    <>
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 z-[99] flex items-end justify-center ">
+          <OrderConfirmed />
+        </div>
+      )}
 
-          return (
-            <Product
-              key={item.name}
-              imageProduct={Images[item.image.mobile]}
-              categoryProduct={item.category}
-              nameProduct={item.name}
-              priceProduct={item.price}
-              quantity={currentQuantity}
-              onAdd={() => {
-                addToCart(item);
-              }}
-              onAddDecrement={() => {
-                addToCartDecrement(item);
-              }}
-              onRemove={() => {
-                RemoveTo(item);
-              }}
-            />
-          );
-        })}
-      </div>
+      <div className="p-5 relative bg-[#FBF9F5] ">
+        <div className="text-[#230E07] w-full mb-10 font-bold text-4xl">
+          Desserts
+        </div>
+        <div className="py-5 grid grid-rows-1 gap-10">
+          {data.map((item) => {
+            // Buscamos si el item actual ya está en el carrito para saber su cantidad
+            const productInCart = cart.find(
+              (cartItem) => cartItem.name === item.name
+            );
+            const currentQuantity = productInCart ? productInCart.quantity : 0;
 
-      <Cart cart={cart} totalItemsCart={totalItemsCart} RemoveTo={RemoveTo} />
-    </div>
+            return (
+              <Product
+                key={item.name}
+                imageProduct={Images[item.image.mobile]}
+                categoryProduct={item.category}
+                nameProduct={item.name}
+                priceProduct={item.price}
+                quantity={currentQuantity}
+                onAdd={() => {
+                  addToCart(item);
+                }}
+                onAddDecrement={() => {
+                  addToCartDecrement(item);
+                }}
+                onRemove={() => {
+                  RemoveTo(item);
+                }}
+              />
+            );
+          })}
+        </div>
+
+        <Cart
+          cart={cart}
+          totalItemsCart={totalItemsCart}
+          RemoveTo={RemoveTo}
+          setShowModal={setShowModal}
+        />
+      </div>
+    </>
   );
 }
 
