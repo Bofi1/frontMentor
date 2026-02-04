@@ -5,3 +5,7 @@
 @theme {
   --font-red-hat: "Red Hat Text", sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}

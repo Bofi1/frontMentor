@@ -4,6 +4,7 @@ import OrderConfirmed from "./OrderConfirmed";
 import { useState, useEffect } from "react";
 import * as Images from "./index";
 import axios from "axios";
+import { AnimatePresence, motion } from "framer-motion";
 
 function ProductListContainer() {
   const [data, setData] = useState([]);
@@ -71,16 +72,32 @@ function ProductListContainer() {
   useEffect(() => {
     if (showModal) {
       document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "scroll";
     }
   }, [showModal]);
 
   return (
     <>
-      {showModal && (
-        <div className="fixed inset-0 bg-black/50 z-[99] flex items-end justify-center ">
-          <OrderConfirmed />
-        </div>
-      )}
+      {
+        <AnimatePresence>
+          {showModal && (
+            /* BACKDROP: Se encarga del fondo oscuro y de centrar el modal */
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50 z-[99] flex items-end md:items-center justify-center"
+            >
+              <OrderConfirmed
+                cart={cart}
+                setCart={setCart}
+                setShowModal={setShowModal}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      }
 
       <div className="p-5 relative bg-[#FBF9F5] ">
         <div className="text-[#230E07] w-full mb-10 font-bold text-4xl">
