@@ -9,17 +9,17 @@ function Cart({ totalItemsCart, cart, RemoveTo, setShowModal }) {
 
   return (
     <div className="w-full my-5 px-5 py-5 pb-10 bg-white rounded-lg flex flex-col items-center ">
-      <h2 className="text-[#C83B10] text-xl font-bold self-start">
+      <h2 className="text-[#C83B10] text-xl md:text-3xl font-bold self-start">
         Your Cart ( {totalItemsCart} )
       </h2>
       {totalItemsCart == 0 ? (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center md:p-10">
           <img
             className="mt-10 mb-5 w-35"
             src={emptyCart}
             alt="empty-cart-image"
           />
-          <span className="text-[#988583] font-semibold ">
+          <span className="text-[#988583] font-semibold md:text-xl">
             Your added items will appear here
           </span>
         </div>

@@ -99,11 +99,11 @@ function ProductListContainer() {
         </AnimatePresence>
       }
 
-      <div className="p-5 relative bg-[#FBF9F5] ">
-        <div className="text-[#230E07] w-full mb-10 font-bold text-4xl">
+      <div className="p-5 md:py-10 relative bg-[#FBF9F5] ">
+        <div className="text-[#230E07] w-full mb-10 font-bold text-4xl md:text-6xl">
           Desserts
         </div>
-        <div className="py-5 grid grid-rows-1 gap-10">
+        <div className="py-5 grid grid-cols-1 md:grid-cols-2 gap-10">
           {data.map((item) => {
             // Buscamos si el item actual ya está en el carrito para saber su cantidad
             const productInCart = cart.find(
@@ -114,7 +114,7 @@ function ProductListContainer() {
             return (
               <Product
                 key={item.name}
-                imageProduct={Images[item.image.mobile]}
+                imageProduct={item.image}
                 categoryProduct={item.category}
                 nameProduct={item.name}
                 priceProduct={item.price}

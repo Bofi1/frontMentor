@@ -1,5 +1,6 @@
 import cartLogo from "../assets/images/icon-add-to-cart.svg";
 import { FaPlus, FaMinus, FaRegTrashCan } from "react-icons/fa6";
+import * as Images from "./index";
 
 function Product({
   imageProduct,
@@ -16,13 +17,23 @@ function Product({
   return (
     <div className="flex flex-col justify-center">
       <div className="flex flex-col items-center relative">
-        <img
-          className={`w-full rounded-lg transition-all ${
-            isAdded ? "border-2 border-[#C83B10]" : "border-transparent"
-          }`}
-          src={imageProduct}
-          alt={nameProduct}
-        />
+        <picture className="w-full">
+          <source
+            media="(min-width: 1024px)"
+            srcSet={Images[imageProduct?.desktop]}
+          />
+          <source
+            media="(min-width: 768px)"
+            srcSet={Images[imageProduct?.tablet]}
+          />
+          <img
+            src={Images[imageProduct?.mobile]}
+            alt={nameProduct}
+            className={`w-full rounded-lg transition-all ${
+              isAdded ? "border-2 border-[#C83B10]" : "border-transparent"
+            }`}
+          />
+        </picture>
 
         {/* Cambiamos <button> por <div> para evitar el error de anidación */}
         <div
@@ -42,12 +53,12 @@ function Product({
                   e.stopPropagation();
                   quantity === 1 ? onRemove() : onAddDecrement();
                 }}
-                className="border border-white rounded-full p-1 hover:bg-white hover:text-[#C83B10] flex items-center justify-center transition-colors w-6 h-6"
+                className="border border-white rounded-full p-1 hover:bg-white hover:text-[#C83B10] flex items-center justify-center transition-colors w-6 h-6 cursor-pointer"
               >
                 {quantity === 1 ? (
-                  <FaRegTrashCan size={10} />
+                  <FaRegTrashCan size={10} className="cursor-pointer" />
                 ) : (
-                  <FaMinus size={10} />
+                  <FaMinus size={10} className="cursor-pointer" />
                 )}
               </button>
 
@@ -59,7 +70,7 @@ function Product({
                   e.stopPropagation();
                   onAdd();
                 }}
-                className="border border-white rounded-full p-1 hover:bg-white hover:text-[#C83B10] flex items-center justify-center transition-colors w-6 h-6"
+                className="border border-white cursor-pointer rounded-full p-1 hover:bg-white hover:text-[#C83B10] flex items-center justify-center transition-colors w-6 h-6"
               >
                 <FaPlus size={10} />
               </button>

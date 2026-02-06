@@ -14,14 +14,14 @@ function OrderConfirmed({ cart, setCart, setShowModal }) {
         damping: 25,
         stiffness: 200,
       }}
-      className="bg-white rounded-t-2xl p-5 w-full flex flex-col gap-10 "
+      className="bg-white rounded-t-2xl md:rounded-3xl p-5 w-full flex flex-col gap-10 "
     >
       <div>
         <img className="mb-5" src={check} alt="check-icon" />
         <h2 className="font-bold text-4xl mr-50 mb-2 text-[#302924]">
           Order Confirmed
         </h2>
-        <span className="text-sm ">We hope you enjoy your food</span>
+        <span className="text-sm md:text-lg">We hope you enjoy your food</span>
       </div>
       <div className="bg-[#FBF9F5]">
         <div className=" flex flex-col gap-5 p-5 max-h-[200px] overflow-y-scroll">
