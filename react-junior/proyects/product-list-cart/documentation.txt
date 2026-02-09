@@ -1,14 +1,87 @@
-GUÍA RÁPIDA DE MÉTODOS DE ARRAYS EN JAVASCRIPT / REACT
+============================================================
+DOCUMENTACIÓN TÉCNICA: PRODUCT LIST WITH CART
+============================================================
 
------------------------------------------------------------------------
-| SI QUIERES...              | USA EL MÉTODO... | RESULTADO           |
------------------------------------------------------------------------
-| Cambiar formato/mapear     | .map()           | Un nuevo Array []   |
-| Sumar cantidades o precios | .reduce()        | Un solo Número (7)  |
-| Quitar elementos (borrar)  | .filter()        | Un Array más corto []|
------------------------------------------------------------------------
+PROYECTO: Product List with Cart (Frontend Mentor Challenge)
+TECNOLOGÍAS: React 18, Tailwind CSS, Framer Motion, Axios.
+ESTADO: Funcional / Responsive
 
-NOTAS TÉCNICAS:
-- .map(): No modifica el array original, devuelve uno nuevo con las transformaciones.
-- .reduce(): Requiere un valor inicial (normalmente 0 para sumas).
-- .filter(): Devuelve un nuevo array con los elementos que cumplen la condición.
+------------------------------------------------------------
+1. RESUMEN DE LA APLICACIÓN
+------------------------------------------------------------
+Esta aplicación es una Single Page Application (SPA) que 
+simula un flujo de compra de postres. Permite visualizar 
+productos desde un JSON, gestionar cantidades en un carrito 
+dinámico y confirmar la orden mediante un modal interactivo.
+
+------------------------------------------------------------
+2. ARQUITECTURA DE COMPONENTES
+------------------------------------------------------------
+
+[ProductListContainer] (Cerebro/Padre)
+ ├── Maneja el estado global 'cart' y 'data'.
+ ├── Contiene las funciones addToCart, addToCartDecrement y RemoveTo.
+ └── Distribuye la información a los hijos.
+
+   ├── [Product] (Hijo)
+   │    ├── Recibe props de imagen, nombre y precio.
+   │    ├── Implementa <picture> para imágenes responsivas.
+   │    └── Cambia el botón de "Add to Cart" por controles +/- 
+   │        según la cantidad actual.
+   │
+   ├── [Cart] (Hijo)
+   │    ├── Resumen lateral con cálculo de Order Total.
+   │    ├── Lista los productos mediante [ProductInCart].
+   │    └── Posee comportamiento 'sticky' para seguir el scroll.
+   │
+   └── [OrderConfirmed] (Hijo/Modal)
+        ├── Se activa mediante AnimatePresence (Framer Motion).
+        └── Muestra el resumen final y permite resetear el carrito.
+
+------------------------------------------------------------
+3. LÓGICA DE NEGOCIO Y FLUJO DE DATOS
+------------------------------------------------------------
+
+A. SINCRONIZACIÓN DE ESTADO:
+El estado 'cart' es la única fuente de verdad. Cuando se 
+modifica la cantidad en un 'Product', el 'Cart' se actualiza 
+automáticamente mediante un useEffect que escucha los cambios 
+en el array del carrito.
+
+B. RESPONSIVE IMAGES:
+Se utiliza un objeto 'imageProduct' que contiene rutas para 
+mobile, tablet y desktop. El componente Product usa:
+- media="(min-width: 1024px)" -> Desktop
+- media="(min-width: 768px)" -> Tablet
+- img default -> Mobile
+
+C. DISEÑO DE FILAS (GRID):
+Para evitar que nombres largos deformen las filas, se 
+implementó 'min-h' en los títulos y 'flex-grow' con 'mt-auto' 
+en los precios. Esto garantiza que todos los precios estén 
+alineados horizontalmente al mismo nivel.
+
+------------------------------------------------------------
+4. ESTILOS Y LAYOUT (TAILWIND CSS)
+------------------------------------------------------------
+
+- GRID PRINCIPAL: lg:grid-cols-[2fr_1fr]. Reparto de 70% 
+  para productos y 30% para el carrito.
+- STICKY CART: El carrito usa 'sticky top-10 h-fit' para 
+  mantenerse visible mientras el usuario explora la lista.
+- VIEWPORT CONTROL: Se configuró el meta tag en index.html 
+  para evitar el zoom accidental en móviles:
+  (width=device-width, initial-scale=1.0, user-scalable=no).
+
+------------------------------------------------------------
+5. CÓMO EJECUTAR EL PROYECTO
+------------------------------------------------------------
+
+1. Clonar: git clone https://github.com/Bofi1/frontMentor.git
+2. Entrar a carpeta: cd react-junior/proyects/product-list-cart
+3. Instalar: npm install
+4. Correr: npm run dev
+
+------------------------------------------------------------
+Documentación generada por Gemini para Bofi1. 2026.
+============================================================
