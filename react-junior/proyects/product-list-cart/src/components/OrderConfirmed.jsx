@@ -14,7 +14,7 @@ function OrderConfirmed({ cart, setCart, setShowModal }) {
         damping: 25,
         stiffness: 200,
       }}
-      className="bg-white rounded-t-2xl md:rounded-3xl p-5 w-full flex flex-col gap-10 lg:max-w-[700px]"
+      className="bg-white rounded-t-2xl md:rounded-3xl p-5 w-full flex flex-col gap-10 md:max-w-[700px]"
     >
       <div>
         <img className="mb-5" src={check} alt="check-icon" />
