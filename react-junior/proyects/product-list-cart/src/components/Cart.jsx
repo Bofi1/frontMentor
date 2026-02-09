@@ -24,7 +24,7 @@ function Cart({ totalItemsCart, cart, RemoveTo, setShowModal }) {
           </span>
         </div>
       ) : (
-        <div className=" w-full flex flex-col justify-between  gap-5 mt-5">
+        <div className=" w-full flex flex-col justify-between  gap-5 mt-5 md:mt-7">
           <div className="flex flex-col items-center w-full ">
             {cart.map((item) => {
               return (
@@ -42,10 +42,10 @@ function Cart({ totalItemsCart, cart, RemoveTo, setShowModal }) {
             })}
 
             <div className="flex items-center justify-between w-full my-2 ">
-              <span className="text-[#8F8688] font-semibold text-sm">
+              <span className="text-[#8F8688] font-semibold text-sm md:text-lg">
                 Order Total
               </span>
-              <span className="font-bold text-[#200C09] text-2xl">
+              <span className="font-bold text-[#200C09] text-2xl md:text-3xl">
                 ${orderTotal}
               </span>
             </div>
@@ -53,14 +53,14 @@ function Cart({ totalItemsCart, cart, RemoveTo, setShowModal }) {
 
           <div className="bg-[#FBF9F5] w-full flex justify-center gap-2 py-3 rounded-xl">
             <img src={carbonNeutral} alt="carbon-neutral-img" />
-            <span className="text-[#6F6361] text-sm">
+            <span className="text-[#6F6361] text-sm md:text-lg">
               This is a<span className="font-bold"> carbon-neutral </span>
               delivery
             </span>
           </div>
 
           <button
-            className="w-full rounded-full bg-[#C83B10] text-white py-4 font-[500] flex justify-center"
+            className="w-full rounded-full bg-[#C83B10] text-white py-4 font-[500] flex justify-center md:text-lg"
             onClick={() => {
               setShowModal(true);
             }}

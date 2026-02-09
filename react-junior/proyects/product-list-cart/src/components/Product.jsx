@@ -37,7 +37,7 @@ function Product({
 
         {/* Cambiamos <button> por <div> para evitar el error de anidación */}
         <div
-          className={`py-3 px-5 rounded-full border font-semibold absolute -bottom-6 flex gap-2 transition-all w-40 justify-center h-[50px] items-center ${
+          className={`py-3 px-5 rounded-full border font-semibold absolute -bottom-6 flex gap-2 transition-all w-40 md:w-50 md:text-lg justify-center h:[50px] h-[60px] items-center ${
             isAdded
               ? "bg-[#C83B10] text-white border-none"
               : "bg-white border-[#B9ABAD] text-[#230E07] cursor-pointer"
@@ -62,7 +62,9 @@ function Product({
                 )}
               </button>
 
-              <span className="font-bold select-none">{quantity}</span>
+              <span className="font-bold select-none md:text-lg">
+                {quantity}
+              </span>
 
               <button
                 type="button"
@@ -76,7 +78,7 @@ function Product({
               </button>
             </div>
           ) : (
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center ">
               <img src={cartLogo} alt="cart-logo" className="w-5" />
               <span>Add to Cart</span>
             </div>
@@ -85,9 +87,15 @@ function Product({
       </div>
 
       <div className="mt-10">
-        <p className="font-medium text-sm text-[#B1A3A0]">{categoryProduct}</p>
-        <h2 className="text-[#230E07] font-bold text-lg">{nameProduct}</h2>
-        <p className="text-[#BA4C25] font-bold">${priceProduct.toFixed(2)}</p>
+        <p className="font-medium text-sm md:text-lg text-[#B1A3A0]">
+          {categoryProduct}
+        </p>
+        <h2 className="text-[#230E07] font-bold text-lg md:text-xl">
+          {nameProduct}
+        </h2>
+        <p className="text-[#BA4C25] font-bold md:text-xl md:mt-1">
+          ${priceProduct.toFixed(2)}
+        </p>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ function OrderConfirmed({ cart, setCart, setShowModal }) {
         <span className="text-sm md:text-lg">We hope you enjoy your food</span>
       </div>
       <div className="bg-[#FBF9F5]">
-        <div className=" flex flex-col gap-5 p-5 max-h-[200px] overflow-y-scroll">
+        <div className=" flex flex-col gap-5 md:gap-8 p-5 max-h-[200px] overflow-y-scroll">
           {cart.map((item) => {
             return (
               <OrderConfirmedProduct
@@ -39,8 +39,8 @@ function OrderConfirmed({ cart, setCart, setShowModal }) {
           })}
         </div>
         <div className="flex justify-between items-center mt-2 p-5">
-          <span className="text-sm">Order Total</span>
-          <span className="text-2xl font-bold">
+          <span className="text-sm md:text-lg md:font-[500]">Order Total</span>
+          <span className="text-2xl font-bold ">
             $
             {cart.reduce((acc, item) => {
               return acc + item.price * item.quantity;
@@ -49,7 +49,7 @@ function OrderConfirmed({ cart, setCart, setShowModal }) {
         </div>
       </div>
       <button
-        className="bg-[#C83B10] text-white py-4 font-[500] rounded-full"
+        className="bg-[#C83B10] text-white py-4 font-[500] rounded-full md:text-lg"
         onClick={() => {
           setCart([]);
           setShowModal(false);
