@@ -1,4 +1,4 @@
-import Product from "./product";
+import Product from "./Product";
 import Cart from "./Cart";
 import OrderConfirmed from "./OrderConfirmed";
 import { useState, useEffect } from "react";
