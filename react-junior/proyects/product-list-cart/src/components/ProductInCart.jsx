@@ -19,7 +19,7 @@ function ProductInCart({ productName, x, productValue, totalValue, onRemove }) {
       </div>
 
       <IoIosCloseCircleOutline
-        className="w-[25] h-[25px] md:w-[30px] md:h-[30px]"
+        className="w-[25] h-[25px] md:w-[30px] md:h-[30px] cursor-pointer"
         color="#C2BBB8"
         onClick={onRemove}
       />

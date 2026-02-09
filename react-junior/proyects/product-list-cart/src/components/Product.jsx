@@ -15,7 +15,7 @@ function Product({
   const isAdded = quantity > 0;
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col h-full ">
       <div className="flex flex-col items-center relative">
         <picture className="w-full">
           <source

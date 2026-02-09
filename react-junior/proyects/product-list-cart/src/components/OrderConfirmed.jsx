@@ -14,7 +14,7 @@ function OrderConfirmed({ cart, setCart, setShowModal }) {
         damping: 25,
         stiffness: 200,
       }}
-      className="bg-white rounded-t-2xl md:rounded-3xl p-5 w-full flex flex-col gap-10 "
+      className="bg-white rounded-t-2xl md:rounded-3xl p-5 w-full flex flex-col gap-10 lg:max-w-[700px]"
     >
       <div>
         <img className="mb-5" src={check} alt="check-icon" />
@@ -49,7 +49,7 @@ function OrderConfirmed({ cart, setCart, setShowModal }) {
         </div>
       </div>
       <button
-        className="bg-[#C83B10] text-white py-4 font-[500] rounded-full md:text-lg"
+        className="bg-[#C83B10] text-white py-4 font-[500] rounded-full md:text-lg cursor-pointer"
         onClick={() => {
           setCart([]);
           setShowModal(false);

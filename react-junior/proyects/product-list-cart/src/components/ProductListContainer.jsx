@@ -99,46 +99,52 @@ function ProductListContainer() {
         </AnimatePresence>
       }
 
-      <div className="p-5 md:py-10 relative bg-[#FBF9F5] ">
-        <div className="text-[#230E07] w-full mb-10 font-bold text-4xl md:text-6xl">
-          Desserts
-        </div>
-        <div className="py-5 grid grid-cols-1 md:grid-cols-2 gap-10">
-          {data.map((item) => {
-            // Buscamos si el item actual ya está en el carrito para saber su cantidad
-            const productInCart = cart.find(
-              (cartItem) => cartItem.name === item.name
-            );
-            const currentQuantity = productInCart ? productInCart.quantity : 0;
+      <div className="p-5 md:py-10 relative bg-[#FBF9F5] lg:grid lg:justify-center ">
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] lg:px-15 lg:gap-20 max-w-[2000px]">
+          <div>
+            <div className="text-[#230E07]  mb-10 font-bold text-4xl md:text-6xl">
+              Desserts
+            </div>
+            <div className="py-5 gap-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
+              {data.map((item) => {
+                // Buscamos si el item actual ya está en el carrito para saber su cantidad
+                const productInCart = cart.find(
+                  (cartItem) => cartItem.name === item.name
+                );
+                const currentQuantity = productInCart
+                  ? productInCart.quantity
+                  : 0;
 
-            return (
-              <Product
-                key={item.name}
-                imageProduct={item.image}
-                categoryProduct={item.category}
-                nameProduct={item.name}
-                priceProduct={item.price}
-                quantity={currentQuantity}
-                onAdd={() => {
-                  addToCart(item);
-                }}
-                onAddDecrement={() => {
-                  addToCartDecrement(item);
-                }}
-                onRemove={() => {
-                  RemoveTo(item);
-                }}
-              />
-            );
-          })}
-        </div>
+                return (
+                  <Product
+                    key={item.name}
+                    imageProduct={item.image}
+                    categoryProduct={item.category}
+                    nameProduct={item.name}
+                    priceProduct={item.price}
+                    quantity={currentQuantity}
+                    onAdd={() => {
+                      addToCart(item);
+                    }}
+                    onAddDecrement={() => {
+                      addToCartDecrement(item);
+                    }}
+                    onRemove={() => {
+                      RemoveTo(item);
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
 
-        <Cart
-          cart={cart}
-          totalItemsCart={totalItemsCart}
-          RemoveTo={RemoveTo}
-          setShowModal={setShowModal}
-        />
+          <Cart
+            cart={cart}
+            totalItemsCart={totalItemsCart}
+            RemoveTo={RemoveTo}
+            setShowModal={setShowModal}
+          />
+        </div>
       </div>
     </>
   );

@@ -8,7 +8,7 @@ function Cart({ totalItemsCart, cart, RemoveTo, setShowModal }) {
   }, 0);
 
   return (
-    <div className="w-full my-5 px-5 py-5 pb-10 bg-white rounded-lg flex flex-col items-center ">
+    <div className="w-full my-5 px-5 py-5 pb-10 bg-white rounded-lg flex flex-col items-center lg:max-h-[750px] lg:sticky lg:top-10 h-fit">
       <h2 className="text-[#C83B10] text-xl md:text-3xl font-bold self-start">
         Your Cart ( {totalItemsCart} )
       </h2>
@@ -24,8 +24,8 @@ function Cart({ totalItemsCart, cart, RemoveTo, setShowModal }) {
           </span>
         </div>
       ) : (
-        <div className=" w-full flex flex-col justify-between  gap-5 mt-5 md:mt-7">
-          <div className="flex flex-col items-center w-full ">
+        <div className=" w-full flex flex-col justify-between  gap-5 mt-5 md:mt-7 ">
+          <div className="flex flex-col items-center w-full lg:max-h-[400px] lg:overflow-scroll">
             {cart.map((item) => {
               return (
                 <ProductInCart
@@ -40,15 +40,15 @@ function Cart({ totalItemsCart, cart, RemoveTo, setShowModal }) {
                 />
               );
             })}
+          </div>
 
-            <div className="flex items-center justify-between w-full my-2 ">
-              <span className="text-[#8F8688] font-semibold text-sm md:text-lg">
-                Order Total
-              </span>
-              <span className="font-bold text-[#200C09] text-2xl md:text-3xl">
-                ${orderTotal}
-              </span>
-            </div>
+          <div className="flex items-center justify-between w-full my-2 ">
+            <span className="text-[#8F8688] font-semibold text-sm md:text-lg">
+              Order Total
+            </span>
+            <span className="font-bold text-[#200C09] text-2xl md:text-3xl">
+              ${orderTotal}
+            </span>
           </div>
 
           <div className="bg-[#FBF9F5] w-full flex justify-center gap-2 py-3 rounded-xl">
@@ -60,7 +60,7 @@ function Cart({ totalItemsCart, cart, RemoveTo, setShowModal }) {
           </div>
 
           <button
-            className="w-full rounded-full bg-[#C83B10] text-white py-4 font-[500] flex justify-center md:text-lg"
+            className="w-full rounded-full bg-[#C83B10] text-white py-4 font-[500] flex justify-center md:text-lg cursor-pointer"
             onClick={() => {
               setShowModal(true);
             }}
