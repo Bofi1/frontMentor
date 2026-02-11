@@ -15,8 +15,8 @@ function MainContainer() {
     console.log(data);
   }, [data]);
   return (
-    <div className="bg-white p-5">
-      <div className="flex justify-between items-center">
+    <div className="bg-white p-5 pt-0 grid gap-5">
+      <div className="flex justify-between items-center sticky top-0 bg-white py-5">
         <div className="flex items-center">
           <h2 className="mr-3 text-[#191D26] font-bold text-2xl">
             Notifications
@@ -29,7 +29,7 @@ function MainContainer() {
           Mark all as read
         </span>
       </div>
-      <NotiContainer />
+      <NotiContainer data={data} />
     </div>
   );
 }
