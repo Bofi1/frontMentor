@@ -1,4 +1,4 @@
-import NotiPageApp from "./components/notipageApp";
+import NotiPageApp from "./components/NotipageApp";
 
 function App() {
   return <NotiPageApp />;
