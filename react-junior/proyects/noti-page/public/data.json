@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "user_name": "Mark Webber",
+    "avatar": "markWebber",
+    "action": "reacted to your recent post",
+    "target": "My first tournament today!",
+    "target_type": "post",
+    "time": "1m ago",
+    "is_unread": true
+  },
+  {
+    "id": 2,
+    "user_name": "Angela Gray",
+    "avatar": "angelaGray",
+    "action": "followed you",
+    "target": null,
+    "target_type": null,
+    "time": "5m ago",
+    "is_unread": true
+  },
+  {
+    "id": 3,
+    "user_name": "Jacob Thompson",
+    "avatar": "jacobThompson",
+    "action": "has joined your group",
+    "target": "Chess Club",
+    "target_type": "group",
+    "time": "1 day ago",
+    "is_unread": true
+  },
+  {
+    "id": 4,
+    "user_name": "Rizky Hasanuddin",
+    "avatar": "rizkyHasanuddin",
+    "action": "sent you a private message",
+    "target": null,
+    "target_type": null,
+    "time": "5 days ago",
+    "is_unread": false,
+    "private_message": "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game."
+  },
+  {
+    "id": 5,
+    "user_name": "Kimberly Smith",
+    "avatar": "kimberlySmith",
+    "action": "commented on your picture",
+    "target": null,
+    "target_type": "picture",
+    "time": "1 week ago",
+    "is_unread": false,
+    "attached_image": "imageChess"
+  },
+  {
+    "id": 6,
+    "user_name": "Nathan Peterson",
+    "avatar": "nathanPeterson",
+    "action": "reacted to your recent post",
+    "target": "5 end-game strategies to increase your win rate",
+    "target_type": "post",
+    "time": "2 weeks ago",
+    "is_unread": false
+  },
+  {
+    "id": 7,
+    "user_name": "Anna Kim",
+    "avatar": "annaKim",
+    "action": "left the group",
+    "target": "Chess Club",
+    "target_type": "group",
+    "time": "2 weeks ago",
+    "is_unread": false
+  }
+]
