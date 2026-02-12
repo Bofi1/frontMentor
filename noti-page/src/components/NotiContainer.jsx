@@ -1,7 +1,7 @@
 import Notification from "./Notification";
 import * as Images from "./index";
 
-function notiContainer({ data }) {
+function notiContainer({ data, onRead }) {
   return (
     <div className="grid gap-4">
       {data.map((item) => {
@@ -14,6 +14,10 @@ function notiContainer({ data }) {
             target={item.target}
             targetType={item.target_type}
             time={item.time}
+            isUnRead={item.is_unread}
+            privateMessage={item.private_message}
+            attachedImage={Images[item.attached_image]}
+            onRead={() => onRead(item.id)}
           />
         );
       })}
