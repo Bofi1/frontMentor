@@ -17,6 +17,7 @@ function MainContainer() {
     console.log(data);
   }, [data]);
 
+  // funcion para marcar elemento como leido
   const onRead = (id) => {
     setData(() =>
       data.map((item) => {
@@ -25,6 +26,7 @@ function MainContainer() {
     );
   };
 
+  // funcion para marcar todo como leido
   const allRead = () => {
     setData(() =>
       data.map((item) => {
