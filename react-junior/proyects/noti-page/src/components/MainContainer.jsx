@@ -1,4 +1,4 @@
-import NotiContainer from "./notiContainer";
+import NotiContainer from "./NotiContainer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
