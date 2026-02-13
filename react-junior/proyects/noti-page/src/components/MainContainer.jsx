@@ -1,15 +1,24 @@
 import NotiContainer from "./NotiContainer";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BarLoader } from "react-spinners";
 
 function MainContainer() {
   const [data, setData] = useState([]);
   const [unreadCount, setUnreadCount] = useState([]);
+  const [loading, setLoading] = useState(true); // 1. Empezamos en true
 
   useEffect(() => {
-    axios.get("/data.json").then((response) => {
-      setData(response.data);
-    });
+    axios
+      .get("/data.json")
+      .then((response) => {
+        setData(response.data);
+        setLoading(false); // 2. Cuando llegan los datos, apagamos el loading
+      })
+      .catch((error) => {
+        console.error("Error cargando datos", error);
+        setLoading(false); // También lo apagamos si hay error
+      });
   }, []);
 
   useEffect(() => {
@@ -34,6 +43,10 @@ function MainContainer() {
       })
     );
   };
+
+  if (loading) {
+    return <BarLoader speedMultiplier={1.5} />;
+  }
 
   return (
     <div className="bg-white p-5 lg:p-10  pt-0 grid gap-5 lg:max-w-[800px] lg:rounded-3xl lg:my-10 lg:shadow-2xl font-principal">
