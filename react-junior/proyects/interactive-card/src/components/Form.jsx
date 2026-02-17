@@ -1,18 +1,22 @@
-import { useState } from "react";
-
-function Form() {
-  const [cardHolder, setCardHolder] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [mm, setMM] = useState("");
-  const [yy, setYY] = useState("");
-  const [cvc, setCVC] = useState("");
-
+function Form({
+  cardHolder,
+  setCardHolder,
+  cardNumber,
+  setCardNumber,
+  mm,
+  setMM,
+  yy,
+  setYY,
+  cvc,
+  setCVC,
+  className,
+}) {
   const handleCardHolderChange = (e) => {
     // La regex /[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g significa:
     // "Todo lo que NO sea letras (mayúsculas/minúsculas), acentos, eñes o espacios"
     const onlyLetters = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, "");
 
-    setCardHolder(onlyLetters);
+    setCardHolder(onlyLetters.slice(0, 22));
   };
 
   const handleCardNumberChange = (e) => {
@@ -52,7 +56,7 @@ function Form() {
   };
 
   return (
-    <div className="p-7 w-full grid gap-7">
+    <div className={`w-full grid gap-7 ${className}`}>
       <label className="grid gap-3">
         <span className="text-sm font-bold text-[#241437] tracking-widest">
           CARDHOLDER NAME
