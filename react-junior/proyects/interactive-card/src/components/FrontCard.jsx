@@ -7,7 +7,7 @@ function FrontCard({ cardHolder, cardNumber, mm, yy, className }) {
   return (
     <div
       style={{ backgroundImage: `url(${frontCardImg})` }}
-      className={`bg-cover bg-center aspect-[1.82/1] w-full max-w-[447px] p-6 text-white rounded-xl shadow-2xl flex flex-col justify-between ${className}`}
+      className={`bg-cover bg-center aspect-[1.82/1] w-full max-w-[200px] p-6 text-white rounded-xl shadow-2xl flex flex-col justify-between ${className}`}
     >
       {/* Logo */}
       <div className="w-16">
@@ -16,11 +16,11 @@ function FrontCard({ cardHolder, cardNumber, mm, yy, className }) {
 
       {/* Información */}
       <div className="flex flex-col gap-4">
-        <span className="text-xl md:text-2xl tracking-[0.15em] font-medium">
+        <span className="text-xl  tracking-[0.15em] font-medium">
           {cardNumber || "0000 0000 0000 0000"}
         </span>
 
-        <div className="flex justify-between uppercase text-[10px] md:text-xs tracking-widest text-slate-200">
+        <div className="flex justify-between uppercase text-[10px]  tracking-widest text-slate-200">
           <span className=" max-w-[70%]">
             {cardHolderMayus || "JANE APPLESEED"}
           </span>

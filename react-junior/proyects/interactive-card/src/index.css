@@ -3,5 +3,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-principal: "SpaceGrotesk", sans-serif;
+  --font-principal: "Space Grotesk", sans-serif;
+
+  /* Registramos las imágenes de fondo */
+  /* Asegúrate de que la ruta sea correcta según tu carpeta de assets */
+  --background-image-mobile: url("./assets/images/bg-main-mobile.png");
+  --background-image-desktop: url("./assets/images/bg-main-desktop.png");
 }

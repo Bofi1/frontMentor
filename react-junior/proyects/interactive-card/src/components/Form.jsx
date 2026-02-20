@@ -101,7 +101,7 @@ function Form({
   };
 
   return (
-    <div className={`w-full grid gap-7 ${className}`}>
+    <div className={`w-full grid gap-7 lg:max-w-[450px] lg:ml-50 ${className}`}>
       <label className="grid gap-3">
         <span className="text-sm font-bold text-[#241437] tracking-widest">
           CARDHOLDER NAME
@@ -115,7 +115,7 @@ function Form({
           value={cardHolder}
           onChange={handleCardHolderChange}
         />
-        <span className="text-[#E5AAA8] text-sm font-bold ">
+        <span className="text-[#E5AAA8] text-sm font-bold -mt-2">
           {errors.cardHolder}
         </span>
       </label>
@@ -134,7 +134,7 @@ function Form({
           value={cardNumber}
           onChange={handleCardNumberChange}
         />
-        <span className="text-[#E5AAA8] text-sm font-bold ">
+        <span className="text-[#E5AAA8] text-sm font-bold -mt-2">
           {errors.cardNumber}
         </span>
       </label>

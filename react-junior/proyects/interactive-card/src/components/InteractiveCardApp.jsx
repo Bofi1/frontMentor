@@ -14,21 +14,21 @@ function InteractiveCardApp() {
   const [cvc, setCVC] = useState("");
 
   return (
-    <div className="grid grid-cols-1 bg-red-40  ">
-      <div
-        style={{ backgroundImage: `url(${bgMobile})` }}
-        className="relative flex flex-col justify-center items-center px-7 pt-5 bg-cover "
-      >
-        <BackCard cvc={cvc} className="-mb-19 left-2.5" />
+    <div className="grid grid-cols-1 bg-red-4 h-full min-h-screen lg:grid-cols-[1fr_2fr]">
+      <div className="relative flex flex-col justify-center items-center px-7 pt-5 bg-cover bg-no-repeat bg-mobile lg:bg-desktop transition-all duration-500 h-[280px] lg:h-full gap-12">
+        <BackCard
+          cvc={cvc}
+          className="top-[33%] lg:top-0 left-2.5 order-1 lg:mb-0 lg:left-[60%] lg:order-2 min-w-[321px] lg:min-w-[374px]"
+        />
         <FrontCard
-          className="-mb-10 z-100 relative right-2.5"
+          className="bottom-[15%] lg:bottom-0 z-100 order-2 relative right-2.5 lg:mb-0 lg:left-[30%] lg:order-1 lg:z-0 min-w-[321px] lg:min-w-[374px]"
           cardHolder={cardHolder}
           cardNumber={cardNumber}
           mm={mm}
           yy={yy}
         />
       </div>
-      <div className="p-7">
+      <div className="p-7  lg:flex lg:justify-center lg:items-center ">
         <Form
           className="mt-10"
           cardHolder={cardHolder}
