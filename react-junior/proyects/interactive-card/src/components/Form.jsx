@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function Form({
   cardHolder,
   setCardHolder,
@@ -55,6 +57,49 @@ function Form({
     setCVC(value.slice(0, 3));
   };
 
+  const [errors, setErrors] = useState({
+    cardHolder: "",
+    cardNumber: "",
+    mm: "",
+    yy: "",
+    cvc: "",
+  });
+
+  const handleConfirm = () => {
+    const newErrors = {};
+
+    // Validaciones una por una
+    if (!cardHolder.trim()) {
+      newErrors.cardHolder = "Can't be blank";
+    }
+
+    // Usamos regex para verificar que solo haya números (opcional pero recomendado)
+    if (!cardNumber.trim()) {
+      newErrors.cardNumber = "Can't be blank";
+    } else if (cardNumber.length < 19) {
+      newErrors.cardNumber = "Wrong format, must be 16 digits";
+    }
+
+    if (!mm.trim()) newErrors.mm = "Can't be blank";
+    if (!yy.trim()) newErrors.yy = "Can't be blank";
+
+    if (!cvc.trim()) {
+      newErrors.cvc = "Can't be blank";
+    } else if (cvc.length < 3) {
+      newErrors.cvc = "Wrong format, must be 3 digits";
+    }
+
+    // ACTUALIZACIÓN DEL OBJETO COMPLETO
+    setErrors(newErrors);
+
+    // ¿Cómo saber si todo está bien?
+    // Si el objeto newErrors no tiene ninguna llave, el formulario es válido.
+    if (Object.keys(newErrors).length === 0) {
+      console.log("¡Formulario listo para enviar!");
+      // Aquí podrías mostrar la pantalla de agradecimiento
+    }
+  };
+
   return (
     <div className={`w-full grid gap-7 ${className}`}>
       <label className="grid gap-3">
@@ -62,12 +107,17 @@ function Form({
           CARDHOLDER NAME
         </span>
         <input
-          className="w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 "
+          className={`w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 ${
+            errors.cardHolder && "border-[#E5AAA8]"
+          } `}
           placeholder="e.g. Jane Appleseed"
           type="text"
           value={cardHolder}
           onChange={handleCardHolderChange}
         />
+        <span className="text-[#E5AAA8] text-sm font-bold ">
+          {errors.cardHolder}
+        </span>
       </label>
 
       <label className="grid gap-3">
@@ -75,13 +125,18 @@ function Form({
           CARD NUMBER
         </span>
         <input
-          className="w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 "
+          className={`w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 ${
+            errors.cardNumber && "border-[#E5AAA8]"
+          } `}
           placeholder="e.g. 1234 5678 9123 0000"
           inputMode="numeric"
           type="text"
           value={cardNumber}
           onChange={handleCardNumberChange}
         />
+        <span className="text-[#E5AAA8] text-sm font-bold ">
+          {errors.cardNumber}
+        </span>
       </label>
 
       <div className="w-full grid grid-cols-2 gap-5">
@@ -89,17 +144,22 @@ function Form({
           <span className="text-sm font-bold text-[#241437] tracking-wide ">
             EXP. DATE (MM/YY)
           </span>
-          <div className="w-full grid grid-cols-2 gap-2">
+          <div className="w-full grid grid-cols-2 gap-3">
             <input
-              className="w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 "
+              className={`w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 ${
+                errors.mm && "border-[#E5AAA8]"
+              }`}
               placeholder="MM"
               inputMode="numeric"
               type="text"
               value={mm}
               onChange={handleMMChange}
             />
+
             <input
-              className="w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 "
+              className={`w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 ${
+                errors.yy && "border-[#E5AAA8]"
+              } `}
               placeholder="YY"
               inputMode="numeric"
               type="text"
@@ -108,12 +168,15 @@ function Form({
             />
           </div>
         </label>
+
         <label className="grid gap-3">
           <span className="text-sm font-bold text-[#241437] tracking-widest">
             CVC
           </span>
           <input
-            className="w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 "
+            className={`w-full outline-none rounded-xl px-5 py-3 border border-[#E3E3E3] placeholder:text-[#E3E3E3] font-semibold placeholder:text-lg text-[#241437] focus:border-[#846195] transition duration-100 ${
+              errors.cvc && "border-[#E5AAA8]"
+            }`}
             placeholder="YY"
             inputMode="numeric"
             type="text"
@@ -123,7 +186,17 @@ function Form({
         </label>
       </div>
 
-      <button className="w-full flex justify-center py-3 text-white rounded-xl text-lg bg-[#220A30] tracking-wider cursor-pointer">
+      <div className="grid grid-cols-2 gap-5 -mt-5">
+        <span className="text-[#E5AAA8] text-sm font-bold ">
+          {(errors.mm || errors.yy) && "Can´t be blank"}
+        </span>
+        <span className="text-[#E5AAA8] text-sm font-bold "> {errors.cvc}</span>
+      </div>
+
+      <button
+        className="w-full flex justify-center py-3 text-white rounded-xl text-lg bg-[#220A30] tracking-wider cursor-pointer outline-none appearance-none"
+        onClick={handleConfirm}
+      >
         Confirm
       </button>
     </div>
