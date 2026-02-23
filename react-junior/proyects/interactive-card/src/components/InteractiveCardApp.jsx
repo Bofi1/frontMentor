@@ -28,7 +28,7 @@ function InteractiveCardApp() {
           yy={yy}
         />
       </div>
-      <div className="p-7  lg:flex lg:justify-center lg:items-center ">
+      <div className="p-7  lg:flex lg:justify-center lg:items-center transition-all duration-500">
         <Form
           className="mt-10"
           cardHolder={cardHolder}

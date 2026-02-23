@@ -80,7 +80,13 @@ function Form({
       newErrors.cardNumber = "Wrong format, must be 16 digits";
     }
 
-    if (!mm.trim()) newErrors.mm = "Can't be blank";
+    if (!mm.trim()) {
+      newErrors.mm = "Can't be blank";
+    } else if (mm > 12 || mm < 1) {
+      newErrors.mm = "Select a valid date";
+      console.log(mm);
+    }
+
     if (!yy.trim()) newErrors.yy = "Can't be blank";
 
     if (!cvc.trim()) {
@@ -188,7 +194,7 @@ function Form({
 
       <div className="grid grid-cols-2 gap-5 -mt-5">
         <span className="text-[#E5AAA8] text-sm font-bold ">
-          {(errors.mm || errors.yy) && "Can´t be blank"}
+          {errors.mm || errors.yy}
         </span>
         <span className="text-[#E5AAA8] text-sm font-bold "> {errors.cvc}</span>
       </div>
