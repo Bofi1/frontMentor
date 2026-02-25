@@ -1,4 +1,4 @@
-import backCardImg from "../assets/images/bg-card-back.png";
+import backCardImg from "/bg-card-back.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 function BackCard({ cvc, className }) {
