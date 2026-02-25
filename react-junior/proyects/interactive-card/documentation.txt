@@ -1,0 +1,75 @@
+============================================================
+PROYECTO: INTERACTIVE CARD DETAILS FORM
+Autor: Bofi1
+Repositorio: https://github.com/Bofi1/frontMentor
+============================================================
+
+1. DESCRIPCIÓN DEL PROYECTO
+------------------------------------------------------------
+Este proyecto es una solución avanzada al desafío de Frontend Mentor.
+Se trata de un formulario de detalles de tarjeta de crédito que se 
+actualiza en tiempo real. El objetivo principal fue crear una 
+experiencia de usuario fluida, validaciones robustas y transiciones 
+animadas de alta calidad.
+
+2. TECNOLOGÍAS CLAVE
+------------------------------------------------------------
+* React.js (Hooks, Estado, Manejo de Formularios)
+* Framer Motion (Animaciones de interfaz)
+* CSS Moderno (Layouts responsivos)
+* Lógica de Skeleton Screens para UX
+
+3. APRENDIZAJES DESTACADOS (TECHNICAL INSIGHTS)
+------------------------------------------------------------
+Durante el desarrollo, me enfoqué en tres pilares fundamentales
+que elevaron la calidad técnica del proyecto:
+
+A) Dominio de Framer Motion y AnimatePresence:
+   Implementé 'AnimatePresence' para gestionar el ciclo de vida de los 
+   componentes. Esto permitió que, al validar el formulario, el 
+   componente de entrada desaparezca con un "fade-out" suave mientras 
+   el estado de éxito (Success State) aparece, evitando cambios 
+   bruscos de contenido en el DOM.
+
+B) Diferenciación entre Preload + Background Color y Skeleton:
+   Este fue uno de los mayores aprendizajes a nivel de Performance 
+   y UX (User Experience):
+   
+   * Preload + Background Color: Aprendí a usar colores de respaldo
+     mientras los assets pesados (como los gradientes de las tarjetas)
+     se cargan, evitando que el usuario vea un espacio en blanco.
+     
+   * Skeleton Screens: A diferencia de un simple spinner, utilicé 
+     estructuras de esqueleto para los textos de la tarjeta. Esto 
+     mantiene la jerarquía visual del diseño mientras los datos 
+     están siendo procesados o cargados, reduciendo la carga 
+     cognitiva del usuario.
+
+4. FUNCIONALIDADES IMPLEMENTADAS
+------------------------------------------------------------
+* Reactividad Total: Los datos de la tarjeta se actualizan al escribir.
+* Formateo de Tarjeta: Inserción automática de espacios cada 4 dígitos.
+* Validación de Errores: 
+  - Mensajes de error en tiempo real para campos vacíos.
+  - Validación de formato numérico (impide letras en campos de fecha/CVC).
+* Estado de Éxito: Pantalla de confirmación animada al completar el flujo.
+
+5. INSTALACIÓN Y EJECUCIÓN
+------------------------------------------------------------
+Para ejecutar este proyecto localmente:
+
+1. Clonar el repositorio:
+   git clone https://github.com/Bofi1/frontMentor.git
+
+2. Entrar a la carpeta del proyecto:
+   cd react-junior/proyects/interactive-card
+
+3. Instalar dependencias:
+   npm install
+
+4. Correr servidor de desarrollo:
+   npm run dev
+
+------------------------------------------------------------
+Documentación generada para el portafolio profesional de Bofi1.
+============================================================
