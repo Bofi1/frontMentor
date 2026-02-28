@@ -29,7 +29,7 @@ function AdviceGenApp() {
   }, []);
 
   return (
-    <div className="bg-[#303A49] font-Manrope rounded-xl shadow-lg px-5 py-10 text-center relative flex flex-col items-center w-full min-w-[300px] max-w-[437px]">
+    <div className="bg-[#303A49] font-Manrope rounded-xl shadow-lg px-7 py-10 text-center relative flex flex-col items-center w-full min-w-[300px] max-w-[437px]">
       {loading || !advice ? (
         <div className="w-full">
           <AdviceSkeleton />
