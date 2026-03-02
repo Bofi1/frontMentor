@@ -1,0 +1,59 @@
+==========================================================
+DOCUMENTACIÓN DEL PROYECTO: ADVICE GENERATOR APP
+==========================================================
+Desarrollador: Bofi1
+Nivel: React Junior (Frontend Mentor Challenge)
+Stack: React.js, Vite/CRA, CSS Moderno, Advice Slip API
+
+1. DESCRIPCIÓN GENERAL
+----------------------------------------------------------
+Una aplicación web interactiva que consume la "Advice Slip API" 
+para generar consejos aleatorios de forma dinámica. El proyecto 
+se enfoca en la gestión de estados asíncronos y diseño 
+responsivo basado en los estándares de Frontend Mentor.
+
+2. ARQUITECTURA Y LÓGICA CORE
+----------------------------------------------------------
+* Fetching de Datos: Se utiliza el hook `useEffect` o una 
+  función manejadora (handler) vinculada a un evento de click 
+  para consultar el endpoint: https://api.adviceslip.com/advice.
+
+* Gestión de Estado: Se emplea el hook `useState` para:
+  - Almacenar el objeto del consejo (ID y texto).
+  - Manejar estados de carga (opcionalmente) para mejorar la UX.
+
+* Componentización: La lógica se divide habitualmente en un 
+  contenedor principal que maneja el estado y componentes 
+  presentacionales (UI) para el botón (dado) y la tarjeta.
+
+3. PUNTOS CLAVE (LO MÁS IMPORTANTE)
+----------------------------------------------------------
+* React Hooks: Uso correcto de `useState` para reflejar 
+  cambios en la UI sin recargar la página.
+* Consumo de API: Implementación de `fetch` o `axios` 
+  con manejo de promesas (async/await).
+* Responsive Design: Uso de Media Queries o Flexbox para que 
+  el componente se adapte a Mobile y Desktop.
+* Accessibilidad: Uso de elementos semánticos (main, section) 
+  y manejo de hover states en el botón de dado.
+
+4. ANOTACIONES DEL SENIOR DEV (TIPS DE MEJORA)
+----------------------------------------------------------
+* Manejo de Errores: Asegúrate de incluir un bloque .catch() 
+  o try/catch en el fetch para evitar que la app se rompa si 
+  la API falla o no hay internet.
+* Optimización de API: La API de Advice Slip tiene un "caché" 
+  de 2 segundos. Si el usuario hace click muy rápido, recibirá 
+  el mismo consejo. Un Senior añadiría una validación para 
+  no permitir peticiones repetidas en menos de 2 segundos.
+* Estilo: Para el "glow" del botón (efecto neón), asegúrate 
+  de usar `box-shadow` con el color primario del diseño.
+* Código Limpio: Extrae la función de fetch a un archivo 
+  separado de servicios si planeas escalar el proyecto.
+
+5. CÓMO EJECUTAR
+----------------------------------------------------------
+1. Clonar el repo: git clone [tu-url]
+2. Instalar dependencias: npm install
+3. Iniciar proyecto: npm run dev (o npm start)
+==========================================================
