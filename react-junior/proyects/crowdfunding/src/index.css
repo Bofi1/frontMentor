@@ -1,0 +1,12 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"); */
+
+@import "tailwindcss";
+
+@theme {
+  /* --font-principal: "Space Grotesk", sans-serif; */
+
+  /* Registramos las imágenes de fondo */
+  /* Asegúrate de que la ruta sea correcta según tu carpeta de assets */
+  --background-image-mobile: url("./image-hero-mobile.webp");
+  --background-image-desktop: url("./image-hero-desktop.webp");
+}
