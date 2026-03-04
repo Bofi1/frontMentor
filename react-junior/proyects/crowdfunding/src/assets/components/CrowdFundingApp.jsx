@@ -8,11 +8,18 @@ function CrowdFundingApp() {
   const [menu, setMenu] = useState(false); // false = closed, true = open
 
   return (
-    <div className="bg-mobile bg-cover bg-top lg:bg-desktop h-75 lg:h-100">
-      <header className="flex justify-between px-5 py-7">
-        <img src={logo} alt="logo" />
+    <div className="bg-mobile bg-cover bg-top lg:bg-desktop h-75 lg:h-100 px-5 py-8 lg:py-12 flex justify-center items-start">
+      <header className="flex justify-between items-center relative w-full max-w-340">
+        <img className="z-2" src={logo} alt="logo" />
+        <nav className="hidden lg:block">
+          <ul className="flex gap-8 text-white font-medium">
+            <li className="hover:text-gray-300 cursor-pointer">About</li>
+            <li className="hover:text-gray-300 cursor-pointer ">Discover</li>
+            <li className="hover:text-gray-300 cursor-pointer ">Get Started</li>
+          </ul>
+        </nav>
         <button
-          className="cursor-pointer"
+          className="cursor-pointer z-2 lg:hidden"
           onClick={() => {
             setMenu(!menu);
           }}
@@ -43,6 +50,34 @@ function CrowdFundingApp() {
             )}
           </AnimatePresence>
         </button>
+        <AnimatePresence>
+          {menu && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/40 z-1"
+                onClick={() => setMenu(false)} // Permite cerrar el menú al hacer clic fuera
+              />
+
+              <motion.nav
+                key="navOpen"
+                initial={{ opacity: 0, top: 35 }}
+                animate={{ opacity: 1, top: 50 }}
+                exit={{ opacity: 0, top: 35 }}
+                transition={{ duration: 0.1 }}
+                className="bg-white absolute w-full top-10 rounded-xl z-2"
+              >
+                <ul className="text-lg font-semibold">
+                  <li className="p-5 border-b border-gray-200">About</li>
+                  <li className="p-5 border-b border-gray-200">Discover</li>
+                  <li className="p-5 border-b border-gray-200">Get Started</li>
+                </ul>
+              </motion.nav>
+            </>
+          )}
+        </AnimatePresence>
       </header>
     </div>
   );
