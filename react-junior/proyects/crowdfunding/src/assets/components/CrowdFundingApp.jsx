@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./Header";
+import Stats from "./Stats";
 
 import BackThisProyect from "./BackThisProyect";
 
@@ -12,8 +13,9 @@ function CrowdFundingApp() {
         <Header menu={menu} setMenu={setMenu} />
       </div>
 
-      <div className="p-4 -mt-20 flex flex-col items-center">
+      <div className="p-4 -mt-20 flex flex-col items-center gap-5">
         <BackThisProyect />
+        <Stats />
       </div>
     </div>
   );
