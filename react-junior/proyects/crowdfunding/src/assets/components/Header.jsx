@@ -63,12 +63,12 @@ function Header({ menu, setMenu }) {
               animate={{ opacity: 1, top: 50 }}
               exit={{ opacity: 0, top: 35 }}
               transition={{ duration: 0.1 }}
-              className="bg-white absolute w-full top-10 rounded-xl z-2 "
+              className="bg-white absolute w-full top-10 rounded-xl z-2"
             >
               <ul className="text-lg font-semibold lg:hidden">
                 <li className="p-5 border-b border-gray-200">About</li>
                 <li className="p-5 border-b border-gray-200">Discover</li>
-                <li className="p-5 border-b border-gray-200">Get Started</li>
+                <li className="p-5">Get Started</li>
               </ul>
             </motion.nav>
           </>
