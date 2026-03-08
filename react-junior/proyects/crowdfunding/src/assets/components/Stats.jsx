@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 function Stats() {
   return (
-    <div className="bg-white flex flex-col items-center gap-5 border border-gray-200 rounded-xl w-full py-10 px-10 max-w-170 lg:justify-start">
+    <div className="bg-white flex flex-col items-center gap-5 border border-gray-200 rounded-xl w-full py-10 px-10 lg:justify-start max-w-170">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 w-full lg:gap-10 ">
         <div className="border-b border-gray-100 lg:border-gray-300 pb-5 lg:pb-0 text-center border-w-10 lg:border-b-0 lg:border-r  lg:text-start">
           <p className="font-bold text-3xl">

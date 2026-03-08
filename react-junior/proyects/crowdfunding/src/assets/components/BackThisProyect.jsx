@@ -3,7 +3,7 @@ import iconCheck from "../images/icon-bookmark.svg";
 
 function BackThisProyect() {
   return (
-    <div className="bg-white rounded-xl flex flex-col items-center border border-gray-200 p-5 relative text-center w-full max-w-170 lg:px-10 lg:pb-10">
+    <div className="bg-white rounded-xl flex flex-col items-center border border-gray-200 p-5 relative text-center w-full lg:px-10 lg:pb-10 max-w-170">
       <img
         className="rounded-full absolute -top-7"
         src={logoMaster}
