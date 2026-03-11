@@ -1,4 +1,4 @@
-function Reward() {
+function Reward({ donation }) {
   return (
     <div className="border border-gray-200 px-5 py-7 rounded-xl">
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-7 gap-3 lg:gap-0">
@@ -16,7 +16,10 @@ function Reward() {
           <span className="text-[#9B9A9B]">left</span>
         </div>
 
-        <button className="bg-[#3DB3AB] text-white text-center px-10 py-4 rounded-full font-bold text-sm cursor-pointer">
+        <button
+          className="bg-[#3DB3AB] text-white text-center px-10 py-4 rounded-full font-bold text-sm cursor-pointer"
+          onClick={donation}
+        >
           Select Reward
         </button>
       </div>

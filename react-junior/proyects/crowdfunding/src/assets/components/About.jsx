@@ -1,6 +1,6 @@
 import Reward from "./Reward";
 
-function About() {
+function About({ donation }) {
   return (
     <div className="bg-white p-10 border border-gray-200 w-full max-w-170 rounded-xl">
       <h2 className="font-bold text-xl mb-5">About this project</h2>
@@ -20,7 +20,7 @@ function About() {
         </p>
       </div>
 
-      <Reward />
+      <Reward donation={donation} />
     </div>
   );
 }
