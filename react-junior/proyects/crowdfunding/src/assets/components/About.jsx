@@ -1,6 +1,7 @@
 import Reward from "./Reward";
 
-function About({ donation }) {
+function About({ donation, data }) {
+  if (!data || !data.rewards) return null;
   return (
     <div className="bg-white p-10 border border-gray-200 w-full max-w-170 rounded-xl">
       <h2 className="font-bold text-xl mb-5">About this project</h2>
@@ -20,7 +21,19 @@ function About({ donation }) {
         </p>
       </div>
 
-      <Reward donation={donation} />
+      <div className="flex flex-col gap-7">
+        {data.rewards.slice(1).map((item) => (
+          <Reward
+            key={item.id}
+            donation={donation}
+            title={item.title}
+            minPledge={item.minPledge}
+            description={item.description}
+            stock={item.stock}
+            isAvailable={item.isAvailable}
+          />
+        ))}
+      </div>
     </div>
   );
 }

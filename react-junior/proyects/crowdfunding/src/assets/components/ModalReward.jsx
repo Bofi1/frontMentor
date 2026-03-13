@@ -1,9 +1,16 @@
 import { IoLogoUsd } from "react-icons/io";
+import { useState } from "react";
 
-function ModalReward({ name }) {
+function ModalReward({ name, setBackProyect, setFundSent }) {
+  const [isSelected, setIsSelected] = useState(false);
+
   return (
     <label className="flex cursor-pointer group">
-      <div className="border border-gray-200  rounded-xl has-[:checked]:border-[#3DB2AA] transition-all ease-in duration-300 border-2 w-full">
+      <div
+        className={`border rounded-xl transition-all ease-in duration-100 border-2 w-full ${
+          isSelected ? "border-[#3DB2AA]" : "border-gray-200"
+        }`}
+      >
         <div className="border-b border-gray-200 p-5 pb-0 mb-5">
           <div className="flex gap-5 mb-5 items-center">
             <div className="relative flex items-center justify-center w-6 h-6">
@@ -11,6 +18,8 @@ function ModalReward({ name }) {
                 className="peer cursor-pointer appearance-none w-full h-full rounded-full border border-gray-300 checked:border-[#3DB2AA] transition-all duration-100"
                 type="radio"
                 name={name}
+                checked={isSelected}
+                onChange={() => setIsSelected(true)}
               />
               <div className="absolute w-3 h-3 bg-[#3DB2AA] rounded-full scale-0 peer-checked:scale-100 transition-transform duration-100 pointer-events-none" />
             </div>
@@ -55,10 +64,17 @@ function ModalReward({ name }) {
                 type="text"
                 placeholder="25"
                 className="w-full outline-none appearance-none text-black font-bold"
-              />{" "}
+                onFocus={() => setIsSelected(true)}
+              />
             </div>
 
-            <button className="text-white bg-[#3DB2AA] p-3 rounded-full font-semibold w-full cursor-pointer max-w-[150px]">
+            <button
+              className="text-white bg-[#3DB2AA] p-3 rounded-full font-semibold w-full cursor-pointer max-w-[150px]"
+              onClick={() => {
+                setBackProyect(false);
+                setFundSent(true);
+              }}
+            >
               Continue
             </button>
           </div>

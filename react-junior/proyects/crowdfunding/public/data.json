@@ -1,0 +1,44 @@
+{
+  "project": {
+    "stats": {
+      "totalRaised": 89914,
+      "goal": 100000,
+      "totalBackers": 5007,
+      "daysLeft": "2026-05-08T00:00:00Z"
+    },
+    "rewards": [
+      {
+        "id": "reward-0",
+        "title": "Pledge with no reward",
+        "minPledge": 1,
+        "description": "Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.",
+        "stock": null,
+        "isAvailable": true
+      },
+      {
+        "id": "reward-1",
+        "title": "Bamboo Stand",
+        "minPledge": 25,
+        "description": "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
+        "stock": 101,
+        "isAvailable": true
+      },
+      {
+        "id": "reward-2",
+        "title": "Black Edition Stand",
+        "minPledge": 75,
+        "description": "You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
+        "stock": 64,
+        "isAvailable": true
+      },
+      {
+        "id": "reward-3",
+        "title": "Mahogany Special Edition",
+        "minPledge": 200,
+        "description": "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
+        "stock": 0,
+        "isAvailable": false
+      }
+    ]
+  }
+}
