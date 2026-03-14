@@ -1,12 +1,12 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"); */
+/* 1. Fuentes (si las usas) */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 
+/* 2. El motor de Tailwind */
 @import "tailwindcss";
 
+/* 3. Tu configuración personalizada */
 @theme {
-  /* --font-principal: "Space Grotesk", sans-serif; */
-
-  /* Registramos las imágenes de fondo */
-  /* Asegúrate de que la ruta sea correcta según tu carpeta de assets */
+  --font-principal: "Space Grotesk", sans-serif;
   --background-image-mobile: url("./image-hero-mobile.webp");
   --background-image-desktop: url("./image-hero-desktop.webp");
 }

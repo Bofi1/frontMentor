@@ -5,6 +5,7 @@ function Reward({
   description,
   stock,
   isAvailable,
+  key,
 }) {
   return (
     <div

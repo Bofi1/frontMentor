@@ -69,17 +69,18 @@ function CrowdFundingApp() {
       </div>
       <AnimatePresence>
         {(backProyect || fundSent) && (
-          <Overlay setBackProyect={setBackProyect} setFundSent={setFundSent} />
-        )}
+          <Overlay setBackProyect={setBackProyect} setFundSent={setFundSent}>
+            {backProyect && (
+              <ModalFunding
+                setBackProyect={setBackProyect}
+                setFundSent={setFundSent}
+                data={data}
+              />
+            )}
 
-        {backProyect && (
-          <ModalFunding
-            setBackProyect={setBackProyect}
-            setFundSent={setFundSent}
-          />
+            {fundSent && <ModalFundSent setFundSent={setFundSent} />}
+          </Overlay>
         )}
-
-        {fundSent && <ModalFundSent setFundSent={setFundSent} />}
       </AnimatePresence>
     </>
   );
