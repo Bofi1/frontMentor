@@ -10,3 +10,8 @@
   --background-image-mobile: url("./image-hero-mobile.webp");
   --background-image-desktop: url("./image-hero-desktop.webp");
 }
+
+body {
+  /* Mantiene el espacio de la barra de scroll siempre presente */
+  scrollbar-gutter: stable;
+}

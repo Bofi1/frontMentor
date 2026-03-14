@@ -1,7 +1,7 @@
 import { IoLogoUsd } from "react-icons/io";
 import { useState } from "react";
 
-function ModalReward({ name, setBackProyect, setFundSent }) {
+function ModalReward({ name, setBackProyect }) {
   const [isSelected, setIsSelected] = useState(false);
 
   return (

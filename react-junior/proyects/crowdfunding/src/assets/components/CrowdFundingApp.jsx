@@ -69,7 +69,14 @@ function CrowdFundingApp() {
       </div>
       <AnimatePresence>
         {(backProyect || fundSent) && (
-          <Overlay setBackProyect={setBackProyect} setFundSent={setFundSent}>
+          <Overlay
+            setBackProyect={setBackProyect}
+            setFundSent={setFundSent}
+          ></Overlay>
+        )}
+
+        {(backProyect || fundSent) && (
+          <div className="fixed inset-0 z-[100] bg-transparent overflow-y-auto flex justify-center items-start py-10 px-6">
             {backProyect && (
               <ModalFunding
                 setBackProyect={setBackProyect}
@@ -79,7 +86,7 @@ function CrowdFundingApp() {
             )}
 
             {fundSent && <ModalFundSent setFundSent={setFundSent} />}
-          </Overlay>
+          </div>
         )}
       </AnimatePresence>
     </>
