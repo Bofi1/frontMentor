@@ -6,7 +6,7 @@ function Overlay({ setBackProyect, setFundSent, children, className }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`fixed inset-0 z-[100] bg-black/50 overflow-y-auto flex justify-center items-start py-10 px-6 ${className}`}
+      className={`fixed inset-0 z-[100] bg-black/50  flex justify-center items-start py-10 px-6 ${className}`}
       onClick={() => {
         setFundSent(false), setBackProyect(false);
       }}
