@@ -1,7 +1,10 @@
 import { motion } from "motion/react";
 import ModalReward from "./ModalReward";
+import { useState } from "react";
 
 function ModalFunding({ setBackProyect, setFundSent, data }) {
+  const [selectedPlan, setSelectedPlan] = useState(""); // Guarda el ID o nombre del plan
+
   return (
     <motion.div
       initial={{ opacity: 0, top: "55%" }}
@@ -18,6 +21,8 @@ function ModalFunding({ setBackProyect, setFundSent, data }) {
       <div className="flex flex-col gap-7">
         {data.rewards.map((item) => (
           <ModalReward
+            selected={selectedPlan === item.title}
+            onChange={() => setSelectedPlan(item.title)}
             key={item.id}
             name={item.title}
             minPledge={item.minPledge}
