@@ -7,7 +7,7 @@ function ModalFunding({ setBackProyect, setFundSent, data }) {
       initial={{ opacity: 0, top: "55%" }}
       animate={{ opacity: 1, top: "50%" }}
       exit={{ opacity: 0, top: "55%" }}
-      className="bg-white z-20 w-full p-7 rounded-xl max-w-180"
+      className="bg-white w-full p-7 rounded-xl max-w-180"
     >
       <h2 className="font-bold  mb-5">Back this project</h2>
       <p className="text-[#9B9A9B] mb-5">
@@ -19,7 +19,11 @@ function ModalFunding({ setBackProyect, setFundSent, data }) {
         {data.rewards.map((item) => (
           <ModalReward
             key={item.id}
-            name={"reward"}
+            name={item.title}
+            minPledge={item.minPledge}
+            stock={item.stock}
+            description={item.description}
+            nameRadio={"rewards"}
             setBackProyect={setBackProyect}
             setFundSent={setFundSent}
           />
