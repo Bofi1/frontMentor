@@ -1,5 +1,5 @@
 import { IoLogoUsd } from "react-icons/io";
-import { useEffect, useRef } from "react"; // 1. Importar hooks
+import { useEffect, useRef, useState } from "react"; // 1. Importar hooks
 
 // darle ref al continue y que avalue y ver qp con el envio de datos
 
@@ -12,6 +12,7 @@ function ModalReward({
   description,
   selected,
   onChange,
+  setFundSent,
 }) {
   // 2. Crear la referencia
   const inputRef = useRef(null);
@@ -22,6 +23,52 @@ function ModalReward({
       inputRef.current.focus();
     }
   }, [selected]); // Se ejecuta cada vez que cambia 'selected'
+
+  const [inputValue, setInputValue] = useState("");
+
+  const [errorMinPledge, setErrorMinPledge] = useState(false);
+
+  const handleContinue = () => {
+    if (inputValue >= minPledge) {
+      setFundSent(true);
+      setBackProyect(false);
+      setInputValue(parseInt(inputValue));
+    } else {
+      setErrorMinPledge(true);
+    }
+  };
+
+  // imprime cada vez que el value del input cambia
+  useEffect(() => {
+    console.log(inputValue);
+  }, [inputValue]);
+
+  const handleKeyDown = (e) => {
+    // 1. Teclas permitidas (Borrar, Tab, flechas, etc.)
+    const allowedKeys = [
+      "Backspace",
+      "Tab",
+      "ArrowLeft",
+      "ArrowRight",
+      "Delete",
+      "Enter",
+    ];
+
+    // 2. Si es una tecla de control, dejar pasar
+    if (allowedKeys.includes(e.key)) return;
+
+    // 3. Bloquear espacios
+    if (e.key === " ") {
+      e.preventDefault();
+      return;
+    }
+
+    // 4. Bloquear si NO es un número (esto elimina 'e', '-', '+', '.', etc.)
+    if (!/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <label
       className={`flex group ${stock === 0 ? "opacity-60" : "cursor-pointer"}`}
@@ -83,7 +130,11 @@ function ModalReward({
               Enter your pledge
             </p>
             <div className="flex gap-5 lg:justify-end w-full justify-center">
-              <div className="flex  items-center gap-2 border border-gray-200 rounded-full px-4 py-3 focus-within:border-[#3DB2AA] transition-all w-full max-w-[150px]">
+              <div
+                className={`flex  items-center gap-2 border border-gray-200 rounded-full px-4 py-3 focus-within:border-[#3DB2AA] transition-all w-full max-w-[150px] ${
+                  errorMinPledge && "border-red-400"
+                }`}
+              >
                 {/* El icono "atrapado" a la izquierda */}
                 <IoLogoUsd className="text-gray-400 shrink-0" />
                 {/* El input sin bordes que llena el resto del espacio */}
@@ -91,6 +142,9 @@ function ModalReward({
                   ref={inputRef} // 4. Vincular la referencia aquí
                   type="text"
                   placeholder={minPledge}
+                  value={inputValue}
+                  onKeyDown={handleKeyDown} // Ya está definida arriba
+                  onChange={(e) => setInputValue(e.target.value)}
                   className="w-full outline-none appearance-none text-black font-bold"
                   disabled={stock != 0 ? false : true}
                 />
@@ -99,10 +153,7 @@ function ModalReward({
               <button
                 className="text-white bg-[#3DB2AA] cursor-pointer
                 }  p-3 rounded-full font-semibold w-full  max-w-[150px]"
-                onClick={() => {
-                  stock != 0 && setBackProyect(false);
-                  setFundSent(true);
-                }}
+                onClick={handleContinue}
               >
                 Continue
               </button>
