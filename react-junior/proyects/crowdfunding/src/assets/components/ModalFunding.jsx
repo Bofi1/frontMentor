@@ -11,6 +11,7 @@ function ModalFunding({ setBackProyect, setFundSent, data }) {
       animate={{ opacity: 1, top: "50%" }}
       exit={{ opacity: 0, top: "55%" }}
       className="bg-white w-full p-7 rounded-xl max-w-180"
+      onClick={(e) => e.stopPropagation()}
     >
       <h2 className="font-bold  mb-5">Back this project</h2>
       <p className="text-[#9B9A9B] mb-5">

@@ -76,7 +76,10 @@ function CrowdFundingApp() {
         )}
 
         {(backProyect || fundSent) && (
-          <div className="fixed inset-0 z-[100]  bg-transparent overflow-y-auto flex justify-center items-start py-10 px-6">
+          <div
+            className="fixed inset-0 z-[100]  bg-transparent overflow-y-auto flex justify-center items-start py-10 px-6"
+            onClick={() => setBackProyect(false)}
+          >
             {backProyect && (
               <ModalFunding
                 setBackProyect={setBackProyect}
