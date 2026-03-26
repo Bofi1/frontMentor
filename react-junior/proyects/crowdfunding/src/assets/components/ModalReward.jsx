@@ -13,6 +13,9 @@ function ModalReward({
   selected,
   onChange,
   setFundSent,
+  setTotalDonations,
+  handleRestarStock,
+  handleBackers,
 }) {
   // 2. Crear la referencia
   const inputRef = useRef(null);
@@ -29,10 +32,21 @@ function ModalReward({
   const [errorMinPledge, setErrorMinPledge] = useState(false);
 
   const handleContinue = () => {
-    if (inputValue >= minPledge) {
+    const valorNumerico = Number(inputValue); // Convertimos a número
+
+    if (valorNumerico >= minPledge) {
+      // 1. Sumamos al total global ANTES de cerrar todo
+      setTotalDonations((prev) => prev + valorNumerico);
+
+      handleRestarStock(name);
+      handleBackers();
+
+      // 2. Cambiamos los estados de los modales
       setFundSent(true);
       setBackProyect(false);
-      setInputValue(parseInt(inputValue));
+
+      // 3. Limpiamos errores
+      setErrorMinPledge(false);
     } else {
       setErrorMinPledge(true);
     }

@@ -15,6 +15,7 @@ function CrowdFundingApp() {
   const [backProyect, setBackProyect] = useState(false); // false = closed, true = open
   const [fundSent, setFundSent] = useState(false);
   const [data, setData] = useState([]);
+  const [totalDonations, setTotalDonations] = useState(0);
 
   const donation = () => {
     setBackProyect(true);
@@ -54,6 +55,38 @@ function CrowdFundingApp() {
     console.log(data);
   }, [data]);
 
+  const handleRestarStock = (nombreDeRecompensa) => {
+    setData((prevData) => {
+      // 1. Clonamos las recompensas y restamos a la elegida
+      const nuevasRewards = prevData.rewards.map((item) => {
+        if (item.title === nombreDeRecompensa) {
+          return { ...item, stock: item.stock - 1 }; // Restamos 1
+        }
+        return item; // Los demás se quedan igual
+      });
+
+      // 2. Retornamos el objeto DATA actualizado
+      return {
+        ...prevData,
+        rewards: nuevasRewards,
+      };
+    });
+  };
+
+  const handleBackers = () => {
+    setData((prevData) => {
+      // 1. Retornamos el nuevo objeto completo
+      return {
+        ...prevData, // Mantenemos todo lo demás (rewards, etc.)
+        stats: {
+          ...prevData.stats, // Mantenemos las otras stats (goal, totalRaised)
+          // 2. Solo sumamos 1 al número de personas
+          totalBackers: (prevData.stats.totalBackers || 0) + 1,
+        },
+      };
+    });
+  };
+
   return (
     <>
       <div className="grid relative ">
@@ -63,7 +96,7 @@ function CrowdFundingApp() {
 
         <div className="p-4 -mt-20 flex flex-col items-center gap-5 w-full ">
           <BackThisProyect donation={donation} />
-          <Stats data={data} />
+          <Stats data={data} totalDonations={totalDonations} />
           <About donation={donation} data={data} />
         </div>
       </div>
@@ -85,6 +118,10 @@ function CrowdFundingApp() {
                 setBackProyect={setBackProyect}
                 setFundSent={setFundSent}
                 data={data}
+                setTotalDonations={setTotalDonations}
+                totalDonations={totalDonations}
+                handleRestarStock={handleRestarStock}
+                handleBackers={handleBackers}
               />
             )}
 

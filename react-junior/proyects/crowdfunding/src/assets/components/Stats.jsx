@@ -1,12 +1,11 @@
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 
-function Stats({ data }) {
-  const total = data?.stats?.totalRaised || 0;
+function Stats({ data, totalDonations }) {
+  const total = (data?.stats?.totalRaised || 0) + totalDonations;
   const goal = data?.stats?.goal || 100000;
   // Calculamos el porcentaje (limitándolo al 100% para que no se salga de la barra)
   const percentage = Math.min((total / goal) * 100, 100);
-
   const now = new Date();
   const target = new Date(data?.stats?.daysLeft);
 
@@ -22,7 +21,7 @@ function Stats({ data }) {
         <div className="border-b border-gray-100 lg:border-gray-300 pb-5 lg:pb-0 text-center border-w-10 lg:border-b-0 lg:border-r  lg:text-start">
           <p className="font-bold text-3xl">
             <CountUp
-              end={data?.stats?.totalRaised || 0}
+              end={total}
               duration={0.2}
               separator=","
               prefix="$"

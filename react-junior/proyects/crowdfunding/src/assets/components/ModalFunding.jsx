@@ -2,7 +2,14 @@ import { motion } from "motion/react";
 import ModalReward from "./ModalReward";
 import { useState } from "react";
 
-function ModalFunding({ setBackProyect, setFundSent, data }) {
+function ModalFunding({
+  setBackProyect,
+  setFundSent,
+  data,
+  setTotalDonations,
+  handleRestarStock,
+  handleBackers,
+}) {
   const [selectedPlan, setSelectedPlan] = useState(""); // Guarda el ID o nombre del plan
 
   return (
@@ -32,6 +39,9 @@ function ModalFunding({ setBackProyect, setFundSent, data }) {
             nameRadio={"rewards"}
             setBackProyect={setBackProyect}
             setFundSent={setFundSent}
+            setTotalDonations={setTotalDonations}
+            handleRestarStock={handleRestarStock}
+            handleBackers={handleBackers}
           />
         ))}
       </div>
