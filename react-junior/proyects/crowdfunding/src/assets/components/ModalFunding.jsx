@@ -35,6 +35,7 @@ function ModalFunding({
             name={item.title}
             minPledge={item.minPledge}
             stock={item.stock}
+            noLimit={item.noLimit}
             description={item.description}
             nameRadio={"rewards"}
             setBackProyect={setBackProyect}

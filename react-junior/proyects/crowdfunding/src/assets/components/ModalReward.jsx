@@ -16,6 +16,7 @@ function ModalReward({
   setTotalDonations,
   handleRestarStock,
   handleBackers,
+  noLimit,
 }) {
   // 2. Crear la referencia
   const inputRef = useRef(null);
@@ -120,7 +121,7 @@ function ModalReward({
                 )}
               </div>
 
-              {stock != null && (
+              {stock != null && noLimit != true && (
                 <div className=" items-center hidden lg:flex">
                   <span className="mr-2 font-bold text-3xl">{stock}</span>
                   <span className="text-[#9B9A9B]">left</span>
