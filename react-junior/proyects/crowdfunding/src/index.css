@@ -7,8 +7,8 @@
 /* 3. Tu configuración personalizada */
 @theme {
   --font-principal: "Space Grotesk", sans-serif;
-  --background-image-mobile: url("/image-hero-mobile.webp");
-  --background-image-desktop: url("/image-hero-desktop.webp");
+  --background-image-mobile: url("./assets/images/image-hero-mobile.webp");
+  --background-image-desktop: url("./assets/images/image-hero-desktop.webp");
 
   --image-mobile: var(--background-image-mobile);
   --image-desktop: var(--background-image-desktop);
