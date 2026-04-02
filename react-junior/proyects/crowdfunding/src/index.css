@@ -4,16 +4,6 @@
 /* 2. El motor de Tailwind */
 @import "tailwindcss";
 
-/* 3. Tu configuración personalizada */
-@theme {
-  --font-principal: "Space Grotesk", sans-serif;
-  --background-image-mobile: url("./assets/image-hero-mobile.webp");
-  --background-image-desktop: url("./assets/image-hero-desktop.webp");
-
-  --image-mobile: var(--background-image-mobile);
-  --image-desktop: var(--background-image-desktop);
-}
-
 body {
   /* Mantiene el espacio de la barra de scroll siempre presente */
   scrollbar-gutter: stable;
