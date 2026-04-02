@@ -90,7 +90,7 @@ function CrowdFundingApp() {
   return (
     <>
       <div className="grid relative ">
-        <div className="bg-mobile bg-cover bg-top lg:bg-desktop h-75 lg:h-100 px-5 py-8 lg:py-12 flex justify-center items-start ">
+        <div className="bg-[url('/image-hero-mobile.webp')] bg-cover bg-top lg:bg-[url('/image-hero-desktop.webp')] h-75 lg:h-100 px-5 py-8 lg:py-12 flex justify-center items-start ">
           <Header menu={menu} setMenu={setMenu} />
         </div>
 
