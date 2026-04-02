@@ -1,4 +1,3 @@
-import header from "/logo.svg";
 import burgerIcon from "../images/icon-hamburger.svg";
 import closeMenu from "../images/icon-close-menu.svg";
 import { motion, AnimatePresence } from "motion/react";
@@ -6,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 function Header({ menu, setMenu }) {
   return (
     <header className="flex justify-between items-center relative w-full max-w-340">
-      <img className="z-2" src={header} alt="logo" />
+      <img className="z-2" src="/logo.svg" alt="logo" />
       <nav className="hidden lg:block">
         <ul className="flex gap-8 text-white font-medium">
           <li className="hover:text-gray-300 cursor-pointer">About</li>
