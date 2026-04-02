@@ -9,6 +9,9 @@
   --font-principal: "Space Grotesk", sans-serif;
   --background-image-mobile: url("/image-hero-mobile.webp");
   --background-image-desktop: url("/image-hero-desktop.webp");
+
+  --image-mobile: var(--background-image-mobile);
+  --image-desktop: var(--background-image-desktop);
 }
 
 body {
