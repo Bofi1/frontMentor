@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./Form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Main() {
   const [image, setImage] = useState(null);
@@ -10,14 +10,30 @@ function Main() {
     if (file) {
       // Validar tamaño (500KB = 512000 bytes)
       if (file.size > 512000) {
-        alert("¡Archivo muy grande! Máximo 500KB.");
+        setErrors((prev) => ({
+          ...prev,
+          DragAndDropError: true,
+        }));
+
         e.target.value = "";
         return;
       }
       // Crear la URL para la vista previa
       setImage(URL.createObjectURL(file));
+      setErrors((prev) => ({
+        ...prev,
+        DragAndDropError: false,
+      }));
     }
   };
+
+  const [errors, setErrors] = useState({
+    DragAndDropError: false,
+  });
+
+  useEffect(() => {
+    console.log(image);
+  }, [image]);
 
   return (
     <main className="relative min-h-screen w-full px-5">
@@ -34,7 +50,11 @@ function Main() {
           </p>
         </div>
 
-        <Form handleImageChange={handleImageChange} />
+        <Form
+          image={image}
+          handleImageChange={handleImageChange}
+          errors={errors}
+        />
       </section>
     </main>
   );
