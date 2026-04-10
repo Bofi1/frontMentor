@@ -7,6 +7,16 @@ function Main() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+
+    if (!file) {
+      setImage(null);
+    }
+
+    if (!file) {
+      console.log("El usuario canceló, mantenemos la imagen anterior.");
+      return;
+    }
+
     if (file) {
       // Validar tamaño (500KB = 512000 bytes)
       if (file.size > 512000) {
@@ -31,10 +41,6 @@ function Main() {
     DragAndDropError: false,
   });
 
-  useEffect(() => {
-    console.log(image);
-  }, [image]);
-
   return (
     <main className="relative min-h-screen w-full px-5">
       <section className="relative z-10 flex flex-col items-center justify-center py-20 gap-6">
@@ -54,6 +60,7 @@ function Main() {
           image={image}
           handleImageChange={handleImageChange}
           errors={errors}
+          setImage={setImage}
         />
       </section>
     </main>
