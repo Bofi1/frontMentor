@@ -1,9 +1,16 @@
 import React from "react";
 import Form from "./Form";
 import { useState, useEffect } from "react";
+import Ticket from "./Ticket";
 
 function Main() {
   const [image, setImage] = useState(null);
+  const [formSent, setFromSent] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    github: "",
+  });
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -30,10 +37,6 @@ function Main() {
       }
       // Crear la URL para la vista previa
       setImage(URL.createObjectURL(file));
-      setErrors((prev) => ({
-        ...prev,
-        DragAndDropError: false,
-      }));
     }
   };
 
@@ -48,25 +51,44 @@ function Main() {
   return (
     <main className="relative min-h-screen w-full px-5">
       <section className="relative z-10 flex flex-col items-center justify-center py-20 gap-6">
-        {/* <Navbar />
-      <FormularioTicket /> */}
-        <div className="flex flex-col items-center gap-5">
-          <img src="/logo-full.svg" alt="logo-full" />
-          <h1 className="text-white font-semibold text-3xl text-center">
-            Your Journey to Coding Conf 2025 Starts Here!
-          </h1>
-          <p className="text-[#9694AD] text-center px-10 text-lg">
-            Secure your spot at next year´s biggest coding conference.
-          </p>
-        </div>
-
-        <Form
-          image={image}
-          handleImageChange={handleImageChange}
-          dragError={dragError}
-          setImage={setImage}
-          setDragError={setDragError}
-        />
+        {!formSent ? (
+          <>
+            <div className="flex flex-col items-center gap-5">
+              <img src="/logo-full.svg" alt="logo-full" />
+              <h1 className="text-white font-semibold text-3xl text-center">
+                Your Journey to Coding Conf 2025 Starts Here!
+              </h1>
+              <p className="text-[#9694AD] text-center px-10 text-lg">
+                Secure your spot at next year´s biggest coding conference.
+              </p>
+            </div>
+            <Form
+              image={image}
+              handleImageChange={handleImageChange}
+              dragError={dragError}
+              setImage={setImage}
+              setDragError={setDragError}
+              setFromSent={setFromSent}
+              formData={formData}
+              setFormData={setFormData}
+            />
+          </>
+        ) : (
+          <>
+            <div className="flex flex-col items-center gap-5">
+              <img src="/logo-full.svg" alt="logo-full" />
+              <h1 className="text-white font-semibold text-3xl text-center">
+                Congrats, {formData.fullName}! Your ticket is ready.
+              </h1>
+              <p className="text-[#9694AD] text-center px-10 text-lg">
+                We´ve emailed your ticket to{" "}
+                <span className="text-[#FA7462]">{formData.email}</span> and
+                will send updates in the run up to the event.
+              </p>
+            </div>
+            <Ticket />
+          </>
+        )}
       </section>
     </main>
   );

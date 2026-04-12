@@ -3,13 +3,16 @@ import { useState } from "react";
 import DragAndDrop from "./DragAndDrop";
 import FormField from "./FormField";
 
-function Form({ handleImageChange, dragError, setDragError, image, setImage }) {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    github: "",
-  });
-
+function Form({
+  handleImageChange,
+  dragError,
+  setDragError,
+  image,
+  setImage,
+  setFromSent,
+  formData,
+  setFormData,
+}) {
   const [errors, setErrors] = useState({
     fullName: "",
     email: "",
@@ -17,7 +20,14 @@ function Form({ handleImageChange, dragError, setDragError, image, setImage }) {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    let finalValue = value;
+
+    if (name === "fullName") {
+      finalValue = value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
+    }
+
+    setFormData({ ...formData, [name]: finalValue });
 
     validate(e.target.name, e.target.value);
   };
@@ -59,8 +69,33 @@ function Form({ handleImageChange, dragError, setDragError, image, setImage }) {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // 2. Aquí es donde haces la validación final de todos los campos
+    const newErrors = {};
+    Object.keys(formData).forEach((name) => {
+      const error = validate(name, formData[name]);
+      if (error) newErrors[name] = error;
+    });
+
+    !image
+      ? setDragError({ ...dragError, DragAndDropError: true })
+      : setDragError({ ...dragError, DragAndDropError: false });
+
+    // 3. Si hay errores, los mostramos y no dejamos pasar
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // 4. Si todo está limpio, aquí ya puedes generar tu ticket
+    console.log("¡Formulario enviado con éxito!");
+    setFromSent(true);
+  };
+
   return (
-    <form className="w-full">
+    <form className="w-full grid gap-7" onSubmit={handleSubmit}>
       <DragAndDrop
         handleImageChange={handleImageChange}
         dragError={dragError}
@@ -69,35 +104,42 @@ function Form({ handleImageChange, dragError, setDragError, image, setImage }) {
         setDragError={setDragError}
       />
 
-      <FormField
-        label={"Full Name"}
-        type={"text"}
-        name={"fullName"}
-        value={formData.fullName}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={errors.fullName}
-      />
-      <FormField
-        label={"Email Address"}
-        type={"email"}
-        name={"email"}
-        placeholder={"example@email.com"}
-        value={formData.email}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={errors.email}
-      />
-      <FormField
-        label={"Github Username"}
-        type={"text"}
-        name={"github"}
-        placeholder={"@yourusername"}
-        value={formData.github}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        error={errors.github}
-      />
+      <div className="grid gap-5">
+        <FormField
+          label={"Full Name"}
+          type={"text"}
+          name={"fullName"}
+          value={formData.fullName}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={errors.fullName}
+        />
+        <FormField
+          label={"Email Address"}
+          type={"email"}
+          name={"email"}
+          placeholder={"example@email.com"}
+          value={formData.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={errors.email}
+        />
+        <FormField
+          label={"Github Username"}
+          type={"text"}
+          name={"github"}
+          placeholder={"@yourusername"}
+          value={formData.github}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          error={errors.github}
+        />
+        <input
+          type="submit"
+          className="bg-[#F67564] w-full py-3 px-5 rounded-xl font-bold mt-5 cursor-pointer"
+          value={"Generate My Ticket"}
+        />
+      </div>
     </form>
   );
 }

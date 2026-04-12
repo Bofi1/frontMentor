@@ -37,6 +37,8 @@ function DragAndDrop({
         (file) => file.type === "image/jpeg" || file.type === "image/png"
       );
 
+      setDragError({ ...dragError, DragAndDropError: false });
+
       if (!allValid) {
         setDragError({ ...dragError, DragAndDropError: true });
         return; // Detenemos la ejecución si hay archivos no permitidos
@@ -100,8 +102,14 @@ function DragAndDrop({
           }}
         >
           {image ? (
-            <div className="flex flex-col items-center mb-5">
-              <img className="scale-50 max-h-[200px]" src={image} alt="" />
+            <div className="flex flex-col items-center ">
+              <div className="bg-white overflow-hidden aspect-square w-20 h-20 mb-5">
+                <img
+                  className="object-cover w-full h-full"
+                  src={image}
+                  alt=""
+                />
+              </div>
               <div className="flex gap-3">
                 <button
                   type="button"

@@ -11,7 +11,7 @@ const FormField = ({
   onBlur,
 }) => {
   return (
-    <div className="flex flex-col gap-2 mb-4">
+    <div className="flex flex-col gap-2">
       <label className="text-white font-medium">{label}</label>
       <input
         type={type}
