@@ -1,7 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
-function DragAndDrop({ handleImageChange, errors, image, setImage }) {
+function DragAndDrop({
+  handleImageChange,
+  dragError,
+  setDragError,
+  image,
+  setImage,
+}) {
   const fileInputRef = useRef(null);
   const [isDragging, setIsDragging] = useState();
   const [isShaking, setIsShaking] = useState(false);
@@ -23,12 +29,22 @@ function DragAndDrop({ handleImageChange, errors, image, setImage }) {
     e.stopPropagation();
     setIsDragging(false);
 
-    const files = e.dataTransfer.files;
-    if (files && files.length > 0) {
-      // 1. Inyectamos los archivos arrastrados al input real
-      fileInputRef.current.files = files;
+    const files = Array.from(e.dataTransfer.files); // Convertimos a Array para usar .every o .filter
 
-      // 2. Disparamos manualmente el evento change para que 'handleImageChange' en Main.js se ejecute
+    if (files && files.length > 0) {
+      // Validamos que TODOS los archivos sean jpg o png
+      const allValid = files.every(
+        (file) => file.type === "image/jpeg" || file.type === "image/png"
+      );
+
+      if (!allValid) {
+        setDragError({ ...dragError, DragAndDropError: true });
+        return; // Detenemos la ejecución si hay archivos no permitidos
+      }
+
+      // Si son válidos, los asignamos al input
+      fileInputRef.current.files = e.dataTransfer.files;
+
       const event = {
         target: fileInputRef.current,
       };
@@ -131,7 +147,7 @@ function DragAndDrop({ handleImageChange, errors, image, setImage }) {
         >
           <img
             src={` ${
-              errors.DragAndDropError
+              dragError.DragAndDropError
                 ? "/icon-info-error.svg"
                 : "/icon-info.svg"
             } `}
@@ -139,7 +155,7 @@ function DragAndDrop({ handleImageChange, errors, image, setImage }) {
           />
           <span
             className={`text-[#686782] text-[0.7rem] ${
-              errors.DragAndDropError && "text-red-400"
+              dragError.DragAndDropError && "text-red-400"
             }`}
           >
             Upload your photo (JPG or PNG, max size: 500KB)

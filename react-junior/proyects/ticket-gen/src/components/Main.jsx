@@ -37,9 +37,13 @@ function Main() {
     }
   };
 
-  const [errors, setErrors] = useState({
+  const [dragError, setDragError] = useState({
     DragAndDropError: false,
   });
+
+  useEffect(() => {
+    console.log(image);
+  }, [image]);
 
   return (
     <main className="relative min-h-screen w-full px-5">
@@ -59,8 +63,9 @@ function Main() {
         <Form
           image={image}
           handleImageChange={handleImageChange}
-          errors={errors}
+          dragError={dragError}
           setImage={setImage}
+          setDragError={setDragError}
         />
       </section>
     </main>

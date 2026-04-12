@@ -1,13 +1,102 @@
-import DragAndDrop from "./DragAndDrop";
+import { useState } from "react";
 
-function Form({ handleImageChange, errors, image, setImage }) {
+import DragAndDrop from "./DragAndDrop";
+import FormField from "./FormField";
+
+function Form({ handleImageChange, dragError, setDragError, image, setImage }) {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    github: "",
+  });
+
+  const [errors, setErrors] = useState({
+    fullName: "",
+    email: "",
+    github: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    validate(e.target.name, e.target.value);
+  };
+
+  const validate = (name, value) => {
+    const trimmedValue = value.trim();
+
+    switch (name) {
+      case "fullName":
+        if (trimmedValue.length === 0) return "This field cannot be empty";
+        if (trimmedValue.length < 3) return "Name is too short";
+        // Ya no necesitamos validar números aquí porque el handleChange los bloquea
+        return "";
+
+      case "email":
+        if (trimmedValue.length === 0) return "Email is required";
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return !emailRegex.test(value) ? "Please enter a valid email" : "";
+
+      case "github":
+        if (trimmedValue.length === 0) return "Github username is required";
+        return !value.startsWith("@") ? "Username must start with @" : "";
+
+      default:
+        return "";
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+
+    // 1. Obtenemos el string del error
+    const errorMessage = validate(name, value);
+
+    // 2. ACTUALIZAMOS EL UI (el estado errors)
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: errorMessage,
+    }));
+  };
+
   return (
     <form className="w-full">
       <DragAndDrop
         handleImageChange={handleImageChange}
-        errors={errors}
+        dragError={dragError}
         image={image}
         setImage={setImage}
+        setDragError={setDragError}
+      />
+
+      <FormField
+        label={"Full Name"}
+        type={"text"}
+        name={"fullName"}
+        value={formData.fullName}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={errors.fullName}
+      />
+      <FormField
+        label={"Email Address"}
+        type={"email"}
+        name={"email"}
+        placeholder={"example@email.com"}
+        value={formData.email}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={errors.email}
+      />
+      <FormField
+        label={"Github Username"}
+        type={"text"}
+        name={"github"}
+        placeholder={"@yourusername"}
+        value={formData.github}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={errors.github}
       />
     </form>
   );
