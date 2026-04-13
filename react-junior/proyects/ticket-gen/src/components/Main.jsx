@@ -75,18 +75,18 @@ function Main() {
           </>
         ) : (
           <>
-            <div className="flex flex-col items-center gap-5">
+            <div className="flex flex-col items-center gap-10">
               <img src="/logo-full.svg" alt="logo-full" />
-              <h1 className="text-white font-semibold text-3xl text-center">
+              <h1 className="text-white font-semibold text-3xl lg:text-6xl text-center max-w-180">
                 Congrats, {formData.fullName}! Your ticket is ready.
               </h1>
-              <p className="text-[#9694AD] text-center px-10 text-lg">
+              <p className="text-[#9694AD] text-center  text-lg max-w-110">
                 We´ve emailed your ticket to{" "}
                 <span className="text-[#FA7462]">{formData.email}</span> and
                 will send updates in the run up to the event.
               </p>
+              <Ticket />
             </div>
-            <Ticket />
           </>
         )}
       </section>
