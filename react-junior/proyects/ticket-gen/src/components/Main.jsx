@@ -85,7 +85,7 @@ function Main() {
                 <span className="text-[#FA7462]">{formData.email}</span> and
                 will send updates in the run up to the event.
               </p>
-              <Ticket />
+              <Ticket image={image} formData={formData} />
             </div>
           </>
         )}
