@@ -51,7 +51,7 @@ function Main() {
   }, [image]);
 
   return (
-    <main className="relative min-h-screen w-full px-5 mx-auto">
+    <main className="relative min-h-screen w-full px-5 mx-auto font-Inconsolata min-w-[375px]">
       <section className="relative z-10 flex flex-col items-center justify-center py-20 gap-6">
         {!formSent ? (
           <>
