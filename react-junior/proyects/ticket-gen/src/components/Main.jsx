@@ -45,17 +45,19 @@ function Main() {
   });
 
   useEffect(() => {
-    console.log(image);
+    if (image) {
+      setDragError({ ...dragError, DragAndDropError: false });
+    }
   }, [image]);
 
   return (
-    <main className="relative min-h-screen w-full px-5">
+    <main className="relative min-h-screen w-full px-5 mx-auto">
       <section className="relative z-10 flex flex-col items-center justify-center py-20 gap-6">
         {!formSent ? (
           <>
-            <div className="flex flex-col items-center gap-5">
+            <div className="flex flex-col items-center gap-5 mb-5">
               <img src="/logo-full.svg" alt="logo-full" />
-              <h1 className="text-white font-semibold text-3xl text-center">
+              <h1 className="text-white font-semibold text-3xl text-center sm:text-5xl max-w-[628px]">
                 Your Journey to Coding Conf 2025 Starts Here!
               </h1>
               <p className="text-[#9694AD] text-center px-10 text-lg">

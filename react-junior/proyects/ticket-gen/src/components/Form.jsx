@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import DragAndDrop from "./DragAndDrop";
 import FormField from "./FormField";
+import { OrbitProgress } from "react-loading-indicators";
 
 function Form({
   handleImageChange,
@@ -18,6 +19,8 @@ function Form({
     email: "",
     github: "",
   });
+
+  const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -68,6 +71,8 @@ function Form({
     }
   };
 
+  const [loading, setLoading] = useState(false);
+
   const handleBlur = async (e) => {
     // Agregamos 'async'
     const { name, value } = e.target;
@@ -77,7 +82,7 @@ function Form({
 
     // 2. Validación de existencia (Solo si el formato está bien y es el campo de github)
     if (!errorMessage && name === "github" && value.length > 1) {
-      // Opcional: podrías poner un estado de "cargando" aquí
+      setLoading(true);
 
       const username = value.replace("@", ""); // GitHub no usa la @ en su API
       try {
@@ -114,25 +119,30 @@ function Form({
       ? setDragError({ ...dragError, DragAndDropError: true })
       : setDragError({ ...dragError, DragAndDropError: false });
 
+    !image
+      ? console.log("no hay archivo" + fileInputRef.value)
+      : console.log("si hay" + fileInputRef.value);
+
     // 3. Si hay errores, los mostramos y no dejamos pasar
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
+    } else if (image) {
+      console.log("¡Formulario enviado con éxito!");
+      setFromSent(true);
+      console.log(image);
     }
-
-    // 4. Si todo está limpio, aquí ya puedes generar tu ticket
-    console.log("¡Formulario enviado con éxito!");
-    setFromSent(true);
   };
 
   return (
-    <form className="w-full grid gap-7" onSubmit={handleSubmit}>
+    <form className="w-full grid gap-7 max-w-[400px]" onSubmit={handleSubmit}>
       <DragAndDrop
         handleImageChange={handleImageChange}
         dragError={dragError}
         image={image}
         setImage={setImage}
         setDragError={setDragError}
+        fileInputRef={fileInputRef}
       />
 
       <div className="grid gap-5">
@@ -166,11 +176,25 @@ function Form({
           onBlur={handleBlur}
           error={errors.github}
         />
-        <input
-          type="submit"
-          className="bg-[#F67564] w-full py-3 px-5 rounded-xl font-bold mt-5 cursor-pointer"
-          value={"Generate My Ticket"}
-        />
+        <div className="w-full relative flex justify-center mt-5">
+          <input
+            type="submit"
+            className="bg-[#F67564] w-full py-3 px-5 rounded-xl font-bold cursor-pointer"
+            value={"Generate My Ticket"}
+          />
+          {loading && (
+            <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
+              <div className="scale-50">
+                <OrbitProgress
+                  variant="track-disc"
+                  speedPlus="0"
+                  easing="linear"
+                  color="#1A163B" // Un color que contraste con el fondo naranja
+                />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </form>
   );

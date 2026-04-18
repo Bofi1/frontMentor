@@ -7,8 +7,8 @@ function DragAndDrop({
   setDragError,
   image,
   setImage,
+  fileInputRef,
 }) {
-  const fileInputRef = useRef(null);
   const [isDragging, setIsDragging] = useState();
   const [isShaking, setIsShaking] = useState(false);
 
@@ -147,6 +147,7 @@ function DragAndDrop({
           className="text-white hidden"
           accept="image/png, image/jpeg"
           onChange={handleImageChange}
+          name="image"
         />
         <div
           className={`flex gap-1 items-center mt-3 transition-all ease-in-out duration-100${
