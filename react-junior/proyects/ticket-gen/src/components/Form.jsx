@@ -25,6 +25,16 @@ function Form({
 
     if (name === "fullName") {
       finalValue = value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
+
+      finalValue = finalValue.replace(/\s{2,}/g, " ");
+    }
+
+    if (name === "github") {
+      finalValue = value.replace(/\s/g, "");
+
+      if (finalValue.length > 0 && !finalValue.startsWith("@")) {
+        finalValue = "@" + finalValue;
+      }
     }
 
     setFormData({ ...formData, [name]: finalValue });
@@ -49,20 +59,41 @@ function Form({
 
       case "github":
         if (trimmedValue.length === 0) return "Github username is required";
-        return !value.startsWith("@") ? "Username must start with @" : "";
+        if (!value.startsWith("@")) return "Username must start with @";
+
+      // Validamos que después de la @ solo haya letras, números o guiones (formato oficial de GH)
 
       default:
         return "";
     }
   };
 
-  const handleBlur = (e) => {
+  const handleBlur = async (e) => {
+    // Agregamos 'async'
     const { name, value } = e.target;
 
-    // 1. Obtenemos el string del error
-    const errorMessage = validate(name, value);
+    // 1. Validación de formato (la que ya tienes)
+    let errorMessage = validate(name, value);
 
-    // 2. ACTUALIZAMOS EL UI (el estado errors)
+    // 2. Validación de existencia (Solo si el formato está bien y es el campo de github)
+    if (!errorMessage && name === "github" && value.length > 1) {
+      // Opcional: podrías poner un estado de "cargando" aquí
+
+      const username = value.replace("@", ""); // GitHub no usa la @ en su API
+      try {
+        const response = await fetch(
+          `https://api.github.com/users/${username}`
+        );
+        if (response.status === 404) {
+          errorMessage = "User not found on GitHub";
+        }
+      } catch (error) {
+        // Si falla la red, no bloqueamos al usuario, pero avisamos por consola
+        console.error("GitHub API error:", error);
+      }
+    }
+
+    // 3. Actualizamos los errores
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: errorMessage,
@@ -113,6 +144,7 @@ function Form({
           onChange={handleChange}
           onBlur={handleBlur}
           error={errors.fullName}
+          maxLength={20}
         />
         <FormField
           label={"Email Address"}

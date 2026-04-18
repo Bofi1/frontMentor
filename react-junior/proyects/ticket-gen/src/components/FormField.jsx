@@ -9,6 +9,7 @@ const FormField = ({
   onChange,
   error,
   onBlur,
+  maxLength,
 }) => {
   return (
     <div className="flex flex-col gap-2">
@@ -20,6 +21,7 @@ const FormField = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        maxLength={maxLength}
         className={`bg-[#1A163B] border appearance-none ${
           error ? "border-red-400" : "border-gray-500"
         } 
