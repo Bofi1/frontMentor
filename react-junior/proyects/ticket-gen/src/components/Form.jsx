@@ -71,8 +71,6 @@ function Form({
     }
   };
 
-  const [loading, setLoading] = useState(false);
-
   const handleBlur = async (e) => {
     // Agregamos 'async'
     const { name, value } = e.target;
@@ -82,8 +80,6 @@ function Form({
 
     // 2. Validación de existencia (Solo si el formato está bien y es el campo de github)
     if (!errorMessage && name === "github" && value.length > 1) {
-      setLoading(true);
-
       const username = value.replace("@", ""); // GitHub no usa la @ en su API
       try {
         const response = await fetch(
@@ -182,18 +178,6 @@ function Form({
             className="bg-[#F67564] w-full py-3 px-5 rounded-xl font-bold cursor-pointer"
             value={"Generate My Ticket"}
           />
-          {loading && (
-            <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-              <div className="scale-50">
-                <OrbitProgress
-                  variant="track-disc"
-                  speedPlus="0"
-                  easing="linear"
-                  color="#1A163B" // Un color que contraste con el fondo naranja
-                />
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </form>
