@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import wordsData from "../../public/data.json";
 
-const TypingEngine = ({ startTyping, setStartTyping }) => {
+const TypingEngine = ({
+  startTyping,
+  setStartTyping,
+  inputTying,
+  SetAccuracy,
+}) => {
   const [chars, setChars] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -18,6 +23,7 @@ const TypingEngine = ({ startTyping, setStartTyping }) => {
         // letter es la letra osea cada array que recorre
         char: letter,
         status: "pending",
+        lastStatus: "",
       })); // hace un solo array asi
     /**
        
@@ -38,12 +44,16 @@ const TypingEngine = ({ startTyping, setStartTyping }) => {
     setChars(initialChars); // se guarda en chars
   }, []);
 
-  useEffect(() => {
-    console.log(chars.length);
-  }, [chars]);
+  //   useEffect(() => {
+  //     console.log(chars.length);
+  //   }, [chars]);
 
   useEffect(() => {
     console.log("el current index es de " + currentIndex);
+    console.log("el caracter correcto seria " + chars[currentIndex]?.status);
+    console.log(
+      "el status anterior de la letra " + chars[currentIndex]?.lastStatus
+    );
   }, [currentIndex]);
 
   // 2. FUNCIÓN CLAVE: Maneja la escritura
@@ -60,8 +70,13 @@ const TypingEngine = ({ startTyping, setStartTyping }) => {
     // Comparamos la letra escrita con la que corresponde
     if (lastChar === chars[currentIndex].char) {
       newChars[currentIndex].status = "correct";
+
+      if (newChars[currentIndex].lastStatus !== "correct") {
+        SetAccuracy((prev) => ({ ...prev, correct: prev.correct + 1 }));
+      }
     } else {
       newChars[currentIndex].status = "incorrect";
+      SetAccuracy((prev) => ({ ...prev, errors: prev.errors + 1 }));
     }
 
     // Actualizamos estados
@@ -87,7 +102,11 @@ const TypingEngine = ({ startTyping, setStartTyping }) => {
         const prevIndex = currentIndex - 1;
 
         // Devolvemos la letra anterior al estado gris (pending)
+
+        let lastStatus = newChars[prevIndex].status;
+
         newChars[prevIndex].status = "pending";
+        newChars[prevIndex].lastStatus = lastStatus;
 
         setChars(newChars);
         setCurrentIndex(prevIndex);
@@ -128,6 +147,7 @@ const TypingEngine = ({ startTyping, setStartTyping }) => {
         autoFocus
         onChange={handleInput}
         onKeyDown={handleKeyDown} // <--- Añadimos este evento
+        ref={inputTying}
       />
     </div>
   );
