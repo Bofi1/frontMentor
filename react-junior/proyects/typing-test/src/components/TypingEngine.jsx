@@ -6,9 +6,10 @@ const TypingEngine = ({
   setStartTyping,
   inputTying,
   SetAccuracy,
+  currentIndex,
+  setCurrentIndex,
 }) => {
   const [chars, setChars] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   // 1. Cargamos las palabras al inicio
   useEffect(() => {
