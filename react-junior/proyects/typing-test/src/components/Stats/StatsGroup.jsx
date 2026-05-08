@@ -24,23 +24,24 @@ function StatsGroup({ time, accuracy, wpm }) {
         <p className="text-[#6C6D6C]">WPM:</p>
         <AnimatePresence mode="wait">
           <motion.span
-            // CLAVE: Al usar el valor de wpm como 'key', Framer re-renderiza
-            // y anima este elemento cada vez que el número cambia.
-            key={wpm}
-            // 1. Estado Inicial (de dónde viene)
-            initial={{ opacity: 0, y: 15, scale: 0.8 }} // 2. Estado de Animación (a dónde llega)
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            // 3. Estado de Salida (a dónde se va el número viejo)
-            exit={false}
-            // 4. Configuración de la transición (suavidad)
+            key={wpm} // importante para que vaya reenderizando
+            initial={
+              !Number.isNaN(wpm) && Number.isFinite(wpm)
+                ? { opacity: 0, scale: 0.8 }
+                : false
+            }
+            animate={{ opacity: 1, scale: 1 }}
+            exit={
+              !Number.isNaN(wpm) && Number.isFinite(wpm)
+                ? { opacity: 0, scale: 0.8 }
+                : false
+            }
             transition={{
-              duration: 0.15, // Muy rápido para que no distraiga al escribir
-              ease: "easeOut", // Comienza rápido, termina suave
+              duration: 0.15,
+              ease: "easeOut",
             }}
-            // Mantienes tus clases de Tailwind para el estilo
             className="text-white font-bold font-mono inline-block"
           >
-            {/* Tu validación lógica se mantiene igual */}
             {!Number.isNaN(wpm) && Number.isFinite(wpm) ? wpm : "-"}
           </motion.span>
         </AnimatePresence>
@@ -48,16 +49,42 @@ function StatsGroup({ time, accuracy, wpm }) {
       <div className="w-[1px] h-full bg-[#6C6D6C]"></div>
       <div className="flex flex-col items-center">
         <p className="text-[#6C6D6C]">Accuracy:</p>
-        <span className="text-white font-bold">{totalAccuracy + " %"}</span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={totalAccuracy}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{
+              duration: 0.15,
+              ease: "easeOut",
+            }}
+            className="text-white font-bold"
+          >
+            {totalAccuracy + " %"}
+          </motion.span>
+        </AnimatePresence>
       </div>
       <div className="w-[1px] h-full bg-[#6C6D6C]"></div>
       <div className="flex flex-col items-center">
         <p className="text-[#6C6D6C]">Time:</p>
-        <span className={` font-bold ${colorTimer}`}>
-          {time < 60 && "0:"}
-          {time < 10 && "0"}
-          {time}
-        </span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={time}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{
+              duration: 0.15,
+              ease: "easeOut",
+            }}
+            className={` font-bold ${colorTimer}`}
+          >
+            {time < 60 && "0:"}
+            {time < 10 && "0"}
+            {time}
+          </motion.span>
+        </AnimatePresence>
       </div>
     </div>
   );

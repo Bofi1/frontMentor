@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from "react";
 
 function TypingTest() {
   const [startTyping, setStartTyping] = useState(false);
-  const [time, setTime] = useState(60);
+  const [time, setTime] = useState(8);
   const inputTying = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wpm, setWpm] = useState();
@@ -40,12 +40,46 @@ function TypingTest() {
   }, [startTyping, time]);
 
   const calculateWPM = () => {
+    if (time == 0) {
+      return;
+    }
+
     const secondsElapsed = 60 - time;
 
     const wpm = Math.floor((currentIndex / 5 / secondsElapsed) * 60);
 
     setWpm(wpm);
   };
+
+  // local storage
+
+  const [bestWPM, setBestWPM] = useState(() => {
+    const saved = localStorage.getItem("wpmScores");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("wpmScores", JSON.stringify(bestWPM));
+  }, [bestWPM]);
+
+  const [record, setRecord] = useState();
+  const wpmRecord = () => {
+    if (time === 0) {
+      // Solo actualizamos el estado, el useEffect de arriba se encarga de guardarlo
+      setBestWPM((prev) => [...prev, wpm]);
+    }
+
+    setRecord(Math.max(...bestWPM));
+  };
+
+  useEffect(() => {
+    wpmRecord();
+  }, [time]);
+
+  useEffect(() => {
+    setRecord(Math.max(...bestWPM));
+    console.log(bestWPM);
+  }, [bestWPM]);
 
   return (
     <div className="flex flex-col w-full p-5">
@@ -58,7 +92,7 @@ function TypingTest() {
             <img src={iconPB} alt="iconPB" />
           </div>
           <p className="text-[#6C6D6C]">
-            Best: <span className="text-white">{"92"} + WPM</span>
+            Best: <span className="text-white">{record} + WPM</span>
           </p>
         </div>
       </header>
