@@ -19,7 +19,7 @@ function StatsGroup({ time, accuracy, wpm }) {
       : "0";
 
   return (
-    <div className="flex items-center justify-around w-full">
+    <div className="flex items-center justify-around w-full border-b-1 border-[#6C6D6C] pb-5">
       <div className="flex flex-col items-center">
         <p className="text-[#6C6D6C]">WPM:</p>
         <AnimatePresence mode="wait">

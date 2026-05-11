@@ -8,6 +8,8 @@ const TypingEngine = ({
   SetAccuracy,
   currentIndex,
   setCurrentIndex,
+  gameFinished,
+  setGameFinished,
 }) => {
   const [chars, setChars] = useState([]);
 
@@ -45,12 +47,13 @@ const TypingEngine = ({
     setChars(initialChars); // se guarda en chars
   }, []);
 
-  //   useEffect(() => {
-  //     console.log(chars.length);
-  //   }, [chars]);
+  useEffect(() => {
+    console.log(chars.length);
+  }, [chars]);
 
   useEffect(() => {
     console.log("el current index es de " + currentIndex);
+
     console.log("el caracter correcto seria " + chars[currentIndex]?.status);
     console.log(
       "el status anterior de la letra " + chars[currentIndex]?.lastStatus
@@ -63,7 +66,10 @@ const TypingEngine = ({
     const lastChar = inputValue.slice(-1); // toma la ultima letra escrita
 
     // Si ya terminamos el texto, no hacemos nada
-    if (currentIndex >= chars.length) return;
+    if (currentIndex >= chars.length) {
+      setGameFinished(true);
+      return;
+    }
 
     // Clonamos el estado para no mutarlo directamente (Buena práctica Front-end)
     const newChars = [...chars];
@@ -116,7 +122,7 @@ const TypingEngine = ({
   };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto p-10 bg-[#323437] rounded-xl overflow-hidden">
+    <div className="relative w-full mx-auto p-10 rounded-xl overflow-hidden">
       <div className="flex flex-wrap font-mono text-2xl leading-relaxed tracking-wider select-none">
         {chars.map((item, index) => {
           //el index es algo por defecto del map

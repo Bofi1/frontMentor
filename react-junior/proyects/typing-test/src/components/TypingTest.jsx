@@ -10,6 +10,7 @@ function TypingTest() {
   const inputTying = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wpm, setWpm] = useState();
+  const [gameFinished, setGameFinished] = useState(false);
   const [accuracy, SetAccuracy] = useState({
     errors: 0,
     correct: 0,
@@ -92,21 +93,28 @@ function TypingTest() {
             <img src={iconPB} alt="iconPB" />
           </div>
           <p className="text-[#6C6D6C]">
-            Best: <span className="text-white">{record} + WPM</span>
+            Best:{" "}
+            <span className="text-white">
+              {isFinite(record) ? record : ""} + WPM
+            </span>
           </p>
         </div>
       </header>
       <div className="w-full flex justify-center pt-8">
         <StatsGroup time={time} accuracy={accuracy} wpm={wpm} />
       </div>
-      <TypingEngine
-        startTyping={startTyping}
-        setStartTyping={setStartTyping}
-        inputTying={inputTying}
-        SetAccuracy={SetAccuracy}
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-      />
+      <div className="w-full flex justify-center ">
+        <TypingEngine
+          startTyping={startTyping}
+          setStartTyping={setStartTyping}
+          inputTying={inputTying}
+          SetAccuracy={SetAccuracy}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+          gameFinished={gameFinished}
+          setGameFinished={setGameFinished}
+        />
+      </div>
     </div>
   );
 }
