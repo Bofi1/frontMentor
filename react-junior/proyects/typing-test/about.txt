@@ -3,3 +3,4 @@ que aprendi/use
 - frammer motion
 - local storage
 - practicas con useState, useEffect y useRef
+- select

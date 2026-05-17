@@ -1,12 +1,13 @@
+import { useEffect, useState, useRef } from "react";
 import TypingEngine from "./TypingEngine";
 import logoSmall from "../assets/images/logo-small.svg";
 import iconPB from "../assets/images/icon-personal-best.svg";
 import StatsGroup from "./Stats/StatsGroup";
-import { useEffect, useState, useRef } from "react";
+import ModalResults from "./ModalResults";
 
 function TypingTest() {
   const [startTyping, setStartTyping] = useState(false);
-  const [time, setTime] = useState(8);
+  const [time, setTime] = useState(60);
   const inputTying = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wpm, setWpm] = useState();
@@ -83,7 +84,7 @@ function TypingTest() {
   }, [bestWPM]);
 
   return (
-    <div className="flex flex-col w-full p-5">
+    <div className="flex flex-col w-full p-5 relative">
       <header className="flex w-full justify-between items-center">
         <div className="flex items-center ">
           <img src={logoSmall} alt="logo" />
@@ -115,6 +116,8 @@ function TypingTest() {
           setGameFinished={setGameFinished}
         />
       </div>
+
+      <ModalResults />
     </div>
   );
 }

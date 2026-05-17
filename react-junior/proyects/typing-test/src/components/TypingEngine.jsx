@@ -15,7 +15,7 @@ const TypingEngine = ({
 
   // 1. Cargamos las palabras al inicio
   useEffect(() => {
-    const list = wordsData.english; // se obtiene el array
+    const list = wordsData.easy; // se obtiene el array
     const shuffled = [...list].sort(() => Math.random() - 0.5); // se revuelve todo
     const selected = shuffled.slice(0, 20); // se agarran los primeros 20 elementos del arrays (20 palabras)
 
