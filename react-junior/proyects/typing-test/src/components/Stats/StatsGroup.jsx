@@ -1,20 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-function StatsGroup({ time, accuracy, wpm }) {
+function StatsGroup({ time, totalAccuracy, wpm }) {
   let colorTimer = "text-white";
   if (time < 60) colorTimer = "text-green-400";
   if (time < 41) colorTimer = "text-yellow-400";
   if (time < 21) colorTimer = "text-red-400";
   if (time < 10) if (time == 0) colorTimer = "text-white";
-
-  let totalAtempts = accuracy.correct + accuracy.errors;
-
-  let totalAccuracy =
-    totalAtempts > 0
-      ? Math.floor(
-          (accuracy.correct / (accuracy.correct + accuracy.errors)) * 100
-        )
-      : "0";
 
   return (
     <div className="flex flex-col items-center justify-around w-full border-b-1 border-[#6C6D6C] pb-5">
@@ -87,16 +78,6 @@ function StatsGroup({ time, accuracy, wpm }) {
           </AnimatePresence>
         </div>
       </div>
-      {/* <div className="w-full">
-        <select
-          className="p-2 text-white border border-[#6C6D6C] rounded-lg text-sm"
-          name="difficulty"
-        >
-          <option value={"easy"}>easy</option>
-          <option value={"medium"}>medium</option>
-          <option value={"hard"}>hard</option>
-        </select>
-      </div> */}
     </div>
   );
 }

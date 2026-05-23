@@ -4,10 +4,11 @@ import logoSmall from "../assets/images/logo-small.svg";
 import iconPB from "../assets/images/icon-personal-best.svg";
 import StatsGroup from "./Stats/StatsGroup";
 import ModalResults from "./ModalResults";
+import Overlay from "./Overlay";
 
 function TypingTest() {
   const [startTyping, setStartTyping] = useState(false);
-  const [time, setTime] = useState(60);
+  const [time, setTime] = useState(2);
   const inputTying = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [wpm, setWpm] = useState();
@@ -22,6 +23,7 @@ function TypingTest() {
 
     if (time <= 0) {
       inputTying.current.disabled = true;
+      setGameFinished(true);
       return;
     }
 
@@ -83,42 +85,62 @@ function TypingTest() {
     console.log(bestWPM);
   }, [bestWPM]);
 
+  let totalAtempts = accuracy.correct + accuracy.errors;
+
+  let totalAccuracy =
+    totalAtempts > 0
+      ? Math.floor(
+          (accuracy.correct / (accuracy.correct + accuracy.errors)) * 100
+        )
+      : "0";
+
   return (
-    <div className="flex flex-col w-full p-5 relative">
-      <header className="flex w-full justify-between items-center">
-        <div className="flex items-center ">
-          <img src={logoSmall} alt="logo" />
-        </div>
-        <div className="flex gap-2 items-center pt-1">
-          <div>
-            <img src={iconPB} alt="iconPB" />
+    <>
+      <div className="flex flex-col w-full p-5 relative">
+        <header className="flex w-full justify-between items-center z-[100]">
+          <div className="flex items-center ">
+            <img src={logoSmall} alt="logo" />
           </div>
-          <p className="text-[#6C6D6C]">
-            Best:{" "}
-            <span className="text-white">
-              {isFinite(record) ? record : ""} + WPM
-            </span>
-          </p>
+          <div className="flex gap-2 items-center pt-1">
+            <div>
+              <img src={iconPB} alt="iconPB" />
+            </div>
+            <p className="text-[#6C6D6C]">
+              Best:{" "}
+              <span className="text-white">
+                {isFinite(record) ? record : ""} + WPM
+              </span>
+            </p>
+          </div>
+        </header>
+        <div className="w-full flex justify-center pt-8">
+          <StatsGroup time={time} totalAccuracy={totalAccuracy} wpm={wpm} />
         </div>
-      </header>
-      <div className="w-full flex justify-center pt-8">
-        <StatsGroup time={time} accuracy={accuracy} wpm={wpm} />
-      </div>
-      <div className="w-full flex justify-center ">
-        <TypingEngine
-          startTyping={startTyping}
-          setStartTyping={setStartTyping}
-          inputTying={inputTying}
-          SetAccuracy={SetAccuracy}
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
-          gameFinished={gameFinished}
-          setGameFinished={setGameFinished}
-        />
+        <div className="w-full flex justify-center ">
+          <TypingEngine
+            startTyping={startTyping}
+            setStartTyping={setStartTyping}
+            inputTying={inputTying}
+            SetAccuracy={SetAccuracy}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+            gameFinished={gameFinished}
+            setGameFinished={setGameFinished}
+          />
+        </div>
       </div>
 
-      <ModalResults />
-    </div>
+      {gameFinished && bestWPM.length == 1 && (
+        <>
+          <Overlay />
+          <ModalResults
+            wpm={wpm}
+            totalAccuracy={totalAccuracy}
+            accuracy={accuracy}
+          />
+        </>
+      )}
+    </>
   );
 }
 
