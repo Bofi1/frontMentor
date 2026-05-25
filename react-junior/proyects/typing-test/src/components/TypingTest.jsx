@@ -67,6 +67,8 @@ function TypingTest() {
   }, [bestWPM]);
 
   const [record, setRecord] = useState();
+  const [lastRecord, setLastRecord] = useState();
+
   const wpmRecord = () => {
     if (time === 0) {
       // Solo actualizamos el estado, el useEffect de arriba se encarga de guardarlo
@@ -74,6 +76,7 @@ function TypingTest() {
     }
 
     setRecord(Math.max(...bestWPM));
+    setLastRecord(record);
   };
 
   useEffect(() => {
@@ -130,13 +133,16 @@ function TypingTest() {
         </div>
       </div>
 
-      {gameFinished && bestWPM.length == 1 && (
+      {gameFinished && (
         <>
           <Overlay />
           <ModalResults
             wpm={wpm}
             totalAccuracy={totalAccuracy}
             accuracy={accuracy}
+            bestWPM={bestWPM}
+            record={record}
+            lastRecord={lastRecord}
           />
         </>
       )}
