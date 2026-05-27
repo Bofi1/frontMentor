@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import wordsData from "../../public/data.json";
+import OverlayStart from "./OverlayStart";
 
 const TypingEngine = ({
   startTyping,
@@ -122,8 +123,10 @@ const TypingEngine = ({
   };
 
   return (
-    <div className="relative w-full mx-auto p-10 rounded-xl overflow-hidden">
-      <div className="flex flex-wrap font-mono text-2xl leading-relaxed tracking-wider select-none">
+    <div className="relative w-full mx-auto p-10 rounded-xl overflow-hidden ">
+      <OverlayStart />
+
+      <div className="flex flex-wrap font-mono text-2xl leading-relaxed tracking-wider select-none blur-[4px] opacity-100">
         {chars.map((item, index) => {
           //el index es algo por defecto del map
           let colorClass = "text-[#646669]"; // Gris (pending)
@@ -134,7 +137,7 @@ const TypingEngine = ({
           return (
             <span
               key={index}
-              className={`relative inline-block font-mono text-2xl ${colorClass} ${
+              className={`relative inline-block font-mono text-2xl ${colorClass}  ${
                 index === currentIndex
                   ? "after:content-[''] after:absolute after:left-0  after:w-[2px] after:h-full after:bg-[#e2b714] after:animate-pulse"
                   : ""

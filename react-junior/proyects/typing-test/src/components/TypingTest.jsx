@@ -71,7 +71,6 @@ function TypingTest() {
 
   const wpmRecord = () => {
     if (time === 0) {
-      // Solo actualizamos el estado, el useEffect de arriba se encarga de guardarlo
       setBestWPM((prev) => [...prev, wpm]);
     }
 

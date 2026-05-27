@@ -8,7 +8,7 @@ function StatsGroup({ time, totalAccuracy, wpm }) {
   if (time < 10) if (time == 0) colorTimer = "text-white";
 
   return (
-    <div className="flex flex-col items-center justify-around w-full border-b-1 border-[#6C6D6C] pb-5">
+    <div className="flex flex-col items-center justify-around w-full border-b-1 border-[#6C6D6C] pb-5 gap-5">
       <div className="flex justify-around w-full h-full">
         <div className="flex flex-col items-center h-full">
           <p className="text-[#6C6D6C]">WPM:</p>
@@ -77,6 +77,26 @@ function StatsGroup({ time, totalAccuracy, wpm }) {
             </motion.span>
           </AnimatePresence>
         </div>
+      </div>
+      <div className="w-full grid grid-cols-2 gap-3">
+        <select
+          className="text-white text-center py-1 rounded-lg border border-gray-400"
+          name="difficulty"
+          id="difficulty"
+        >
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+
+        <select
+          className="text-white text-center py-1 rounded-lg border border-gray-400"
+          name="time"
+          id="time"
+        >
+          <option value="time60">time (60)</option>
+          <option value="Passage">Passage</option>
+        </select>
       </div>
     </div>
   );
