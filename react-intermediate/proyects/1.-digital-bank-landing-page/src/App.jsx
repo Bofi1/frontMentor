@@ -2,14 +2,15 @@ import { useState } from "react";
 import Header from "./components/Header";
 
 function App() {
-  const [burgerOpen, setBurgerOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const toggleMenu = () => {
-    setBurgerOpen(!burgerOpen);
+    setMenuOpen(!menuOpen);
   };
 
   return (
     <div>
-      <Header burgerOpen={burgerOpen} />
+      <Header menuOpen={menuOpen} toggleMenu={toggleMenu} />
     </div>
   );
 }
