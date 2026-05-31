@@ -17,6 +17,19 @@ function Header({ menuOpen, toggleMenu }) {
   return (
     <div className="w-full bg-amber-50 p-5 flex justify-between items-center relative ">
       <img src={logoDark} alt="logo-dark" />
+      <ul className="flex gap-5">
+        {menuList.map((item) => (
+          <li
+            className="hidden md:flex text-gray-400 cursor-pointer"
+            href={item.href}
+          >
+            {item.name}
+          </li>
+        ))}
+      </ul>
+      <button className="hidden md:flex rounded-full text-white font-bold bg-gradient-to-r from-[#31d35c] to-[#2bb7da] py-3 px-8">
+        Request Invite
+      </button>
       <button
         className="cursor-pointer relative w-8 h-8 flex items-center justify-center md:hidden"
         onClick={toggleMenu}
@@ -42,7 +55,7 @@ function Header({ menuOpen, toggleMenu }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.15, ease: "easeInOut" }}
-            className={`bg-white border border-gray-500 w-[90%] flex flex-col items-center absolute top-[130%] rounded-xl left-1/2 -translate-x-1/2`}
+            className={`bg-white border border-gray-500 w-[90%] flex flex-col items-center absolute top-[130%] rounded-xl left-1/2 -translate-x-1/2 md:hidden`}
           >
             {menuList.map((item) => (
               <li
