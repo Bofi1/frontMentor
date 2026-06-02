@@ -15,11 +15,12 @@ function Header({ menuOpen, toggleMenu }) {
   ];
 
   return (
-    <div className="w-full bg-amber-50 p-5 flex justify-between items-center relative ">
+    <div className="w-full bg-[#FFFEFF] p-5 flex justify-between items-center relative z-10">
       <img src={logoDark} alt="logo-dark" />
       <ul className="flex gap-5">
         {menuList.map((item) => (
           <li
+            key={item.name}
             className="hidden md:flex text-gray-400 cursor-pointer"
             href={item.href}
           >
@@ -55,7 +56,7 @@ function Header({ menuOpen, toggleMenu }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.15, ease: "easeInOut" }}
-            className={`bg-white border border-gray-500 w-[90%] flex flex-col items-center absolute top-[130%] rounded-xl left-1/2 -translate-x-1/2 md:hidden`}
+            className={`bg-white w-[90%] flex flex-col items-center absolute top-[130%] rounded-xl left-1/2 -translate-x-1/2 md:hidden`}
           >
             {menuList.map((item) => (
               <li
