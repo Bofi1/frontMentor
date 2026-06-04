@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import FirstPage from "./components/pages/FisrtPage";
+import SecondPage from "./components/pages/SecondPage";
 import Overlay from "./components/Overlay";
 import { AnimatePresence } from "framer-motion";
 
@@ -12,10 +13,11 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <Header menuOpen={menuOpen} toggleMenu={toggleMenu} />
       <AnimatePresence>{menuOpen && <Overlay />}</AnimatePresence>
       <FirstPage />
+      <SecondPage />
     </div>
   );
 }
