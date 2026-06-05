@@ -28,24 +28,34 @@ function SecondPage() {
   ];
 
   return (
-    <div className="bg-[#F5F5F7] px-5 py-20 flex flex-col gap-20">
+    <div className="bg-[#F5F5F7] px-5 py-20 flex flex-col gap-20 lg:p-30">
       <div className="flex flex-col gap-5">
-        <h2 className="text-4xl text-center text-[#2E3343]">
+        <h2 className="text-4xl text-center text-[#2E3343] lg:text-start lg:text-5xl">
           Why choose Digitalbank?
         </h2>
-        <p className="text-center text-[#B7B7B9]">
+        <p className="text-center text-[#B7B7B9] lg:text-start lg:text-xl">
           We leverage Open Banking to turn your bank account into your financial
-          hub. Control your finances like never before.
+          hub. <br className="hidden lg:flex" /> Control your finances like
+          never before.
         </p>
       </div>
 
-      {features.map((item, index) => (
-        <div key={index} className="flex flex-col gap-5 items-center">
-          <img src={item.icon} alt="" />
-          <h2 className="text-4xl text-center text-[#2E3343]">{item.title}</h2>
-          <p className="text-center text-[#B7B7B9]">{item.desc}</p>
-        </div>
-      ))}
+      <div className="grid grid-cols-1 gap-20 lg:grid-cols-4">
+        {features.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col gap-5 items-center lg:items-start"
+          >
+            <img src={item.icon} alt="" />
+            <h2 className="text-3xl text-center text-[#2E3343] lg:text-start whitespace-nowrap lg:text-2xl">
+              {item.title}
+            </h2>
+            <p className="text-center text-[#B7B7B9] lg:text-start ">
+              {item.desc}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

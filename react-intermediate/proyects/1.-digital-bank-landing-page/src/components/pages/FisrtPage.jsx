@@ -24,9 +24,9 @@ function FisrtPage() {
         />
       </div>
 
-      <div className="flex flex-col items-center lg:order-1 lg:justify-center">
-        <div className="flex flex-col py-10 px-5 gap-7 lg:pr-30">
-          <h2 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-6xl text-center text-[#2E3343] lg:text-start ">
+      <div className="flex flex-col items-center lg:order-1 lg:justify-center 2xl:px-31">
+        <div className="flex flex-col py-10 px-10 gap-7 lg:pr-30">
+          <h2 className="text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-center text-[#2E3343] lg:text-start ">
             Next generation digital banking
           </h2>
           <p className="text-center text-[#B7B7B9] lg:text-start lg:text-xl">
@@ -34,7 +34,7 @@ function FisrtPage() {
             one-stop-shop for spending, saving, budgeting, investing, and much
             more.
           </p>
-          <button className="self-center lg:self-start rounded-full text-white font-bold bg-gradient-to-r from-[#31d35c] to-[#2bb7da] py-3 px-8">
+          <button className="self-center lg:self-start rounded-full text-white font-bold bg-gradient-to-r from-[#31d35c] to-[#2bb7da] py-3 px-8 cursor-pointer">
             Request Invite
           </button>
         </div>

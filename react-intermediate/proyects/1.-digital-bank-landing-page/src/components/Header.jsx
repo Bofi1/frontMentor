@@ -28,7 +28,7 @@ function Header({ menuOpen, toggleMenu }) {
           </li>
         ))}
       </ul>
-      <button className="hidden md:flex rounded-full text-white font-bold bg-gradient-to-r from-[#31d35c] to-[#2bb7da] py-3 px-8">
+      <button className="hidden md:flex rounded-full text-white font-bold bg-gradient-to-r from-[#31d35c] to-[#2bb7da] py-3 px-8 cursor-pointer">
         Request Invite
       </button>
       <button
