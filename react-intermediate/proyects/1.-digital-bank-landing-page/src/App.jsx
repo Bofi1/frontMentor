@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import FirstPage from "./components/pages/FisrtPage";
 import SecondPage from "./components/pages/SecondPage";
+import ThirdPage from "./components/pages/ThirdPage";
 import Overlay from "./components/Overlay";
 import { AnimatePresence } from "framer-motion";
 
@@ -18,6 +19,7 @@ function App() {
       <AnimatePresence>{menuOpen && <Overlay />}</AnimatePresence>
       <FirstPage />
       <SecondPage />
+      <ThirdPage />
     </div>
   );
 }
